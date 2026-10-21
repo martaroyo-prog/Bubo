@@ -7,7 +7,7 @@ Sin inicio de sesión, sin historial y con botón de salida rápida. Guía: Bubo
 - `index.html`: la app completa (HTML, CSS y JavaScript sin frameworks).
 - `img/`: fotos de la sala Gesell y de la sala de juicio (caras difuminadas).
 - `manifest.webmanifest`, `sw.js`, `icon.svg`: para instalarla en el móvil y usarla sin conexión. Instalada, aparece como «Nube» con icono de nube (camuflaje).
-- `worker.js`: servidor gratuito opcional (Cloudflare Workers AI) que explica el texto oficial con palabras adaptadas a la edad.
+- `worker.js`: servidor gratuito opcional (Cloudflare Workers AI) con el que Bubo conversa de forma libre, apoyándose solo en los textos oficiales.
 
 ## Publicar en GitHub Pages
 1. Cread un repositorio y subid todo menos `worker.js` (incluida la carpeta `img`).
@@ -16,14 +16,14 @@ Sin inicio de sesión, sin historial y con botón de salida rápida. Guía: Bubo
 4. En el móvil: abrid la URL → menú del navegador → "Añadir a pantalla de inicio".
 
 ## Activar el LLM (opcional, gratis)
-Sin esto la app funciona igual: responde directamente con los textos oficiales preparados.
+Sin esto la app funciona igual: Bubo entiende saludos, emociones, respuestas de sí/no y los temas principales, y contesta con frases naturales y los textos oficiales preparados.
 1. Cuenta gratuita en cloudflare.com → Workers & Pages → Create Worker → pegad `worker.js`.
 2. Settings → Bindings → Add → Workers AI, nombre `AI`.
 3. Cambiad `ALLOWED_ORIGIN` por vuestra URL de GitHub Pages y desplegad.
 4. En `index.html`, poned la URL del worker en `CONFIG.WORKER_URL`.
 
 ## Privacidad
-- El chat no guarda ni envía lo que se escribe. Al llamar al especialista solo se usa el tema para elegir a la persona adecuada; no se envía la conversación.
+- El chat no guarda lo que se escribe. Sin LLM no envía nada; con el LLM activado se envían al worker los últimos mensajes (con los datos personales ya ocultos) para que la respuesta tenga contexto, y el worker no los guarda. Al llamar al especialista solo se usa el tema para elegir a la persona adecuada; no se envía la conversación.
 - La edad se elige al entrar y no se guarda.
 - Los datos personales escritos (teléfono, DNI, email, dirección, nombre, colegio) se ocultan antes de procesar nada.
 

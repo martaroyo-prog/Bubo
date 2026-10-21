@@ -10,7 +10,7 @@
 <link rel="icon" href="icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="icon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&family=Nunito:wght@400;600;700;800&family=Baloo+2:wght@600;700;800&display=swap" rel="stylesheet">
 <style>
 :root{
   --pri:#23395B; --pri-d:#162741; --pri-l:#E9EEF5; --acc:#8C1C2E; --acc-l:#F7ECEE;
@@ -206,6 +206,95 @@ select{padding:8px 10px;border-radius:var(--r);border:1px solid var(--line);back
 #camo .temp{font-size:72px;font-weight:300}
 #camo .city{font-size:22px}
 #camo .days{display:flex;gap:18px;margin-top:30px;font-size:15px;text-align:center}
+/* ===== 14+: iconos de línea en negro en lugar de emojis ===== */
+.gly{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;border:1.5px solid var(--line);background:var(--card);color:#1F2933;vertical-align:middle;flex:0 0 auto}
+.gly .ico{width:23px;height:23px;stroke-width:1.6}
+.flip .f .gly{width:56px;height:56px;margin-bottom:8px;border-color:#C5CDD8}.flip .f .gly .ico{width:28px;height:28px}
+.emo button .gly{display:flex;margin:0 auto 6px;width:auto;height:auto;border:0;background:none}.emo button .gly .ico{width:42px;height:42px;stroke-width:1.4}
+
+.lvh .gly{width:44px;height:44px;margin-right:6px;position:relative;top:-4px}.lvh .gly .ico{width:24px;height:24px}
+.lvic .e,.kic .e{font-size:26px}.aic .e{font-size:30px}
+.kic .gly{margin-bottom:6px}
+body.contrast .gly{color:#000;border-color:#000}
+/* ===== menores de 14: estilo infantil ===== */
+body.kid{--pri:#2C6BD8;--pri-d:#1C4BA0;--pri-l:#E4EEFF;--acc:#FF8A3D;--acc-l:#FFF0E4;--bg:#FFF7E8;--card:#FFFFFF;--text:#28304A;--muted:#5C6482;--line:#F0DFC0;--ok:#22A866;--ok-l:#E2F6EB;--r:20px;
+ font-family:"Nunito",system-ui,-apple-system,"Segoe UI",sans-serif;background-color:var(--bg);background-image:radial-gradient(#FFDFA3 1.4px,transparent 1.7px);background-size:26px 26px}
+body.kid h1,body.kid h2,body.kid h3,body.kid .brand .t1,body.kid .tile b,body.kid .lvl b,body.kid .word b,body.kid .flip b{font-family:"Baloo 2","Nunito",sans-serif}
+body.kid h1{font-size:1.95em;font-weight:800;color:var(--pri-d)}
+body.kid h2{font-weight:800}
+body.kid .proto{background:var(--pri-d)}
+body.kid .top{border-bottom:0;background:linear-gradient(90deg,#FF6B6B,#FFB84D,#FFD93D,#4CC38A,#4D9DFF,#A77BFF) bottom/100% 6px no-repeat,var(--card)}
+body.kid .brand .t1{font-size:1.35em;font-weight:800}
+body.kid .hbtn{border-radius:999px;border-width:2px}
+body.kid .btn{border-radius:999px;border:0;font-weight:800;box-shadow:0 4px 0 var(--pri-d);transition:transform .1s,box-shadow .1s}
+body.kid .btn:active{transform:translateY(3px);box-shadow:0 1px 0 var(--pri-d)}
+body.kid .btn.sec{background:#fff;color:var(--pri);border:2px solid #C8D8F6;box-shadow:0 4px 0 #C8D8F6}
+body.kid .btn.sos{box-shadow:0 4px 0 #7E160E}
+body.kid .btn.ok{box-shadow:0 4px 0 #157A49}
+body.kid .btn[disabled]{box-shadow:none}
+body.kid .card,body.kid details,body.kid .phone,body.kid .opt,body.kid .step{border-width:2px;box-shadow:0 4px 0 rgba(140,100,40,.07)}
+body.kid details{border-left-width:2px}
+body.kid .pill{background:#FFD166;color:#5A3A00}
+body.kid .hero{border:0;border-radius:28px;background:linear-gradient(135deg,#BFE4FF,#E6F6FF);box-shadow:0 6px 0 #A3D2F5}
+body.kid .hero svg{animation:float 3s ease-in-out infinite;flex:0 0 auto}
+@keyframes float{50%{transform:translateY(-7px) rotate(-3deg)}}
+body.kid .sosbar{border-radius:22px;border-width:2px}
+body.kid .grid .tile{--tb:#FFE4E7;--tc:#D63B47}
+body.kid .grid .tile:nth-child(6n+2){--tb:#FFF0C4;--tc:#B87400}
+body.kid .grid .tile:nth-child(6n+3){--tb:#DCF5E7;--tc:#178A50}
+body.kid .grid .tile:nth-child(6n+4){--tb:#DDEEFF;--tc:#2C6BD8}
+body.kid .grid .tile:nth-child(6n+5){--tb:#ECE4FF;--tc:#6F42D1}
+body.kid .grid .tile:nth-child(6n+6){--tb:#FFE6D3;--tc:#D45A12}
+body.kid .tile{border:0;border-radius:26px;background:var(--tb);padding:18px;box-shadow:0 6px 0 rgba(0,0,0,.07)}
+body.kid .tile:hover{transform:translateY(-3px) rotate(-1deg);box-shadow:0 9px 0 rgba(0,0,0,.07)}
+body.kid .tile .ic{width:58px;height:58px;border-radius:20px;background:#fff;color:var(--tc);box-shadow:0 3px 0 rgba(0,0,0,.08)}
+body.kid .tile .ic .ico{width:30px;height:30px;stroke-width:2.4}
+body.kid .tile b{color:var(--tc);font-size:1.2em;font-weight:800}
+body.kid .tile span.d{color:var(--text)}
+body.kid .side{background:#FFFDF7}
+body.kid .nav{border-left:0;border-radius:999px;margin:2px 0}
+body.kid .nav.on{background:#FFE7A8;color:#6A4200}
+body.kid .sub{border-left:2px dashed var(--line)}
+body.kid .msg{border-radius:22px}
+body.kid .msg.bot{background:#FFF9E6;border:2px solid #F6DFA4;border-bottom-left-radius:6px}
+body.kid .msg.me{background:var(--pri);border-bottom-right-radius:6px}
+body.kid .msg.info{background:#EAF8F0;border:2px solid #BEE7CF;border-bottom-left-radius:6px}
+body.kid .msg.crisis{border:2px solid #F1B8B2;background:var(--sos-l)}
+body.kid .chip{border-width:2px;font-weight:800}
+body.kid .composer input{border-radius:999px;border-width:2px;padding-left:20px}
+body.kid .privacy{border-radius:18px;border-width:2px}
+body.kid .lvl{border:0;border-radius:24px;box-shadow:0 5px 0 rgba(0,0,0,.07)}
+body.kid .lvl b{font-size:1.15em}
+body.kid .lvl .n{color:#fff;background:#FF8A3D}
+body.kid .lvl:nth-child(6n+2) .n{background:#4D9DFF}body.kid .lvl:nth-child(6n+3) .n{background:#A77BFF}
+body.kid .lvl:nth-child(6n+4) .n{background:#FF6B6B}body.kid .lvl:nth-child(6n+5) .n{background:#22A866}body.kid .lvl:nth-child(6n+6) .n{background:#FFB020}
+body.kid .lvl.done .n{background:var(--ok)}
+body.kid .lvic .e{font-size:34px}
+body.kid .progress{height:14px;border:2px solid #fff;box-shadow:0 0 0 2px var(--line)}
+body.kid .progress i{background:linear-gradient(90deg,#FF8A3D,#FFD166,#22A866)}
+body.kid .flip .f,body.kid .flip .b{border:0;border-radius:22px;box-shadow:0 5px 0 rgba(0,0,0,.07)}
+body.kid .grid3 .flip:nth-child(6n+1) .f{background:#FFE4E7;color:#B4313C}body.kid .grid3 .flip:nth-child(6n+2) .f{background:#FFF0C4;color:#8A5700}
+body.kid .grid3 .flip:nth-child(6n+3) .f{background:#DCF5E7;color:#136E40}body.kid .grid3 .flip:nth-child(6n+4) .f{background:#DDEEFF;color:#1C4BA0}
+body.kid .grid3 .flip:nth-child(6n+5) .f{background:#ECE4FF;color:#5732AE}body.kid .grid3 .flip:nth-child(6n+6) .f{background:#FFE6D3;color:#A9450D}
+body.kid .flip .f .e{font-size:46px}
+body.kid .emo button{border-width:2px;border-radius:22px;box-shadow:0 4px 0 rgba(0,0,0,.06)}
+body.kid .emo button .e{font-size:44px}
+body.kid .emo button.sel{border-color:#FF8A3D;background:#FFF0E4}
+body.kid .ball{background:radial-gradient(circle at 35% 35%,#FFF6D6,#FFD166);border-color:#FFB020}
+body.kid .word{border:0;border-radius:22px;box-shadow:0 5px 0 rgba(0,0,0,.06)}
+body.kid .words .word:nth-child(5n+1){background:#FFF0C4}body.kid .words .word:nth-child(5n+2){background:#DCF5E7}
+body.kid .words .word:nth-child(5n+3){background:#DDEEFF}body.kid .words .word:nth-child(5n+4){background:#ECE4FF}body.kid .words .word:nth-child(5n+5){background:#FFE4E7}
+body.kid .word .e{font-size:36px}
+body.kid .search{border-radius:999px;border-width:2px;padding-left:20px}
+body.kid .hs{background:#FF8A3D}
+body.kid .tabs button.on{border-bottom-color:#FF8A3D}
+body.kid footer{background:transparent}
+body.kid.contrast{--pri:#00213F;--pri-d:#000;--pri-l:#FFF;--bg:#FFF;--text:#000;--muted:#000;--line:#000;--acc:#5A0012;background-image:none}
+body.kid.contrast .tile,body.kid.contrast .word,body.kid.contrast .flip .f,body.kid.contrast .hero,body.kid.contrast .msg.bot,body.kid.contrast .msg.info{background:#fff;border:2px solid #000;color:#000}
+/* pantalla de edad: la opción infantil anticipa su estilo */
+.age .opt14.k{font-family:"Baloo 2","Nunito",sans-serif;background:#FFF1C9;border-color:#FFD166;color:#7A4A00;border-radius:24px;font-size:1.3em;box-shadow:0 5px 0 #FFD166}
+.age .opt14.k small{font-family:"Nunito",sans-serif;color:#7A5A20}
+.age .opt14.k:hover{border-color:#FFB020}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 :focus-visible{outline:3px solid #4C8BD6;outline-offset:2px}
 </style>
@@ -362,9 +451,45 @@ const IC = {
  alert:'<path d="M12 3l10 18H2zM12 10v5M12 18v.5"/>',
  lock:'<rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/>',
  sound:'<path d="M4 9h4l5-4v14l-5-4H4zM17 9a4 4 0 0 1 0 6"/>',
- arrowL:'<path d="M15 6l-6 6 6 6"/>', arrowR:'<path d="M9 6l6 6-6 6"/>', check:'<path d="M5 12l5 5 9-10"/>'
+ arrowL:'<path d="M15 6l-6 6 6 6"/>', arrowR:'<path d="M9 6l6 6-6 6"/>', check:'<path d="M5 12l5 5 9-10"/>',
+ /* iconos de línea que sustituyen a los emojis en la versión 14+ */
+ doc:'<path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/>',
+ gavel:'<path d="M14.5 12.5l-8 8a2.1 2.1 0 1 1-3-3l8-8M16 16l6-6M8 8l6-6M9 7l8 8M21 11l-8-8"/>',
+ court:'<path d="M3 21h18M5 17v-6M9.7 17v-6M14.3 17v-6M19 17v-6M12 3l9 5H3zM4 17h16"/>',
+ bubble:'<path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/>',
+ key:'<circle cx="7.5" cy="15.5" r="4.5"/><path d="M10.7 12.3L20 3M16.5 6.5l3 3M14 9l2 2"/>',
+ users:'<circle cx="9" cy="8" r="4"/><path d="M2 21c.8-4 3.6-6 7-6s6.2 2 7 6M16 4a4 4 0 0 1 0 8M22 21c-.5-2.8-2-4.6-4-5.4"/>',
+ ear:'<path d="M6 8.5a6.5 6.5 0 1 1 13 0c0 6-6 6-6 10a3.5 3.5 0 1 1-7 0"/><path d="M15 8.5a2.5 2.5 0 0 0-5 0v1a2 2 0 1 1 0 4"/>',
+ bulb:'<path d="M15 14c.2-1 .7-1.7 1.5-2.5A6 6 0 1 0 7.5 11.5c.8.8 1.3 1.5 1.5 2.5M9 18h6M10 22h4"/>',
+ scale:'<path d="M12 3v18M7 21h10M3 7h18M6 7l-3 8a3.5 3.5 0 0 0 6 0zM18 7l-3 8a3.5 3.5 0 0 0 6 0z"/>',
+ brief:'<rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 13h18"/>',
+ pen:'<path d="M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/>',
+ care:'<path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/><path d="M12 15.5l-2.7-2.6a1.7 1.7 0 0 1 2.7-2.1 1.7 1.7 0 0 1 2.7 2.1z"/>',
+ heart:'<path d="M19 14c1.5-1.5 3-3.2 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.8 0-3 .5-4.5 2-1.5-1.5-2.7-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4 3 5.5l7 7z"/>',
+ fCalm:'<circle cx="12" cy="12" r="9"/><path d="M9 10h.01M15 10h.01M8.5 14.5a4.5 4.5 0 0 0 7 0"/>',
+ fNervous:'<circle cx="12" cy="12" r="9"/><path d="M9 10h.01M15 10h.01M8 15.5c.7-.7 1.3-.7 2 0s1.3.7 2 0 1.3-.7 2 0 1.3.7 2 0"/>',
+ fSad:'<circle cx="12" cy="12" r="9"/><path d="M9 10h.01M15 10h.01M8.5 16.5a4.5 4.5 0 0 1 7 0"/>',
+ fAngry:'<circle cx="12" cy="12" r="9"/><path d="M7.5 8.5l3 1.5M16.5 8.5l-3 1.5M9 11.5h.01M15 11.5h.01M9 16h6"/>',
+ fScared:'<circle cx="12" cy="12" r="9"/><path d="M8 8q1-1 2 0M14 8q1-1 2 0M9 11h.01M15 11h.01"/><ellipse cx="12" cy="15.5" rx="1.8" ry="2.2"/>',
+ fConfused:'<circle cx="12" cy="12" r="9"/><path d="M9 10h.01M15 10h.01M9 16l6-1.5"/>',
+ okc:'<circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/>',
+ qmark:'<circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 0 1 4.9.8c0 1.7-2.4 2.2-2.4 3.7M12 17h.01"/>',
+ repeat:'<path d="M17 2l4 4-4 4M3 11V9a3 3 0 0 1 3-3h15M7 22l-4-4 4-4M21 13v2a3 3 0 0 1-3 3H3"/>',
+ pause:'<circle cx="12" cy="12" r="9"/><path d="M10 9v6M14 9v6"/>',
+ ban:'<circle cx="12" cy="12" r="9"/><path d="M5.6 5.6l12.8 12.8"/>',
+ mega:'<path d="M3 11l18-5v12L3 14zM11.6 16.8a3 3 0 1 1-5.8-1.6"/>',
+ speech:'<path d="M4 5h16v11H9l-5 4z"/><path d="M8 9h8M8 12h5"/>',
+ eye:'<path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>',
+ video:'<rect x="2" y="6" width="14" height="12" rx="2"/><path d="M16 10l6-3v10l-6-3"/>',
+ mirror:'<ellipse cx="12" cy="10" rx="6" ry="8"/><path d="M12 18v4M8 22h8M9.5 8l2-2M10 11.5l4-4"/>',
+ mobile:'<rect x="6" y="2" width="12" height="20" rx="2"/><path d="M11 18h2"/>'
 };
 const ic = n => `<svg class="ico" viewBox="0 0 24 24" aria-hidden="true">${IC[n]||''}</svg>`;
+/* Emojis para menores de 14; iconos de línea en negro para 14+. */
+const EMO_IC = {'📜':'doc','👩‍⚖️':'gavel','🏛️':'court','💭':'bubble','🗝️':'key','🤝':'users','👂':'ear','💡':'bulb','🛡️':'shield','🔒':'lock','⚖️':'scale',
+ '🧑‍💼':'brief','👨‍💼':'brief','📝':'pen','🧠':'care','💙':'heart','😊':'fCalm','😰':'fNervous','😢':'fSad','😠':'fAngry','😨':'fScared','😕':'fConfused',
+ '✅':'okc','🤷':'qmark','🔁':'repeat','⏸️':'pause','🙅':'ban','📣':'mega','🚫':'ban','🗣️':'speech','👀':'eye','🧑‍⚖️':'gavel','📄':'doc','🎥':'video','🪞':'mirror','📱':'mobile','🏫':'school'};
+const pic = e => TEEN() && EMO_IC[e] ? `<span class="gly" aria-hidden="true">${ic(EMO_IC[e])}</span>` : `<span class="e" aria-hidden="true">${e}</span>`;
 
 /* ======================= BUBO (búho guía) ======================= */
 function bubo(expr='happy', w=64){
@@ -576,7 +701,7 @@ const isRisk = s => { const n=norm(s).replace(/[^a-z0-9 ]/g,' ').replace(/\s+/g,
 const VENT = /(triste|sol[oa]\b|\bsoa?\b|miedo|medo|lloro|choro|llorar|chorar|agobi|ansiedad|ansiedade|nadie me|ninguen me|odio mi vida|estoy mal|estou mal|me siento mal|sintome mal|sad|alone|lonely|scared|afraid|cry|anxious|nobody|feel bad|feel awful)/;
 
 /* ======================= BUSCADOR BM25 (en el móvil) ======================= */
-const STOP=new Set('que los las del por para con una uno unos unas como mas pero sus les esta este eso esa hay muy sin sobre the and for you are with this that have what dos das nos unha non mais polo pola cando ten tes tengo teño'.split(' '));
+const STOP=new Set('que los las del por para con una uno unos unas como mas pero sus les esta este eso esa hay muy sin sobre the and for you are with this that have what dos das nos unha non mais polo pola cando ten tes tengo teño bien mal siento siente estoy estou ben'.split(' '));
 const tok = s => norm(s).replace(/[^a-z0-9ñ ]/g,' ').split(/\s+/).filter(w=>w.length>2&&!STOP.has(w)).map(w=>w.slice(0,5));
 let INDEX=null;
 function buildIndex(){
@@ -590,16 +715,6 @@ function search(q){
   return docs.map((d,i)=>{ let s=0; const tf={}; d.forEach(w=>tf[w]=(tf[w]||0)+1);
     qs.forEach(w=>{ if(!tf[w]) return; const idf=Math.log(1+(N-df[w]+.5)/(df[w]+.5)); s+=idf*(tf[w]*(k1+1))/(tf[w]+k1*(1-b+b*d.length/avg)); });
     return {doc:CORPUS[i], s}; }).sort((a,b)=>b.s-a.s);
-}
-/* ======================= LLM opcional ======================= */
-async function llmRephrase(question, doc){
-  if(!CONFIG.WORKER_URL) return null;
-  try{ const ctrl=new AbortController(); const to=setTimeout(()=>ctrl.abort(), CONFIG.WORKER_TIMEOUT_MS);
-    const r=await fetch(CONFIG.WORKER_URL,{method:'POST',headers:{'Content-Type':'application/json'},signal:ctrl.signal,
-      body:JSON.stringify({lang:LANG, age:S.age, question, context:L(doc), source:doc.src})});
-    clearTimeout(to); if(!r.ok) return null; const j=await r.json();
-    return (j&&typeof j.answer==='string'&&j.answer.trim())?j.answer.trim():null;
-  }catch(e){ return null; }
 }
 /* ======================= VOZ ======================= */
 function speak(text){ try{ if(!('speechSynthesis' in window)) return; speechSynthesis.cancel(); const u=new SpeechSynthesisUtterance(String(text).replace(/\[···\]/g,'')); u.lang={es:'es-ES',gl:'gl-ES',en:'en-GB'}[LANG]; u.rate=.95; speechSynthesis.speak(u);}catch(e){} }
@@ -663,7 +778,7 @@ function viewAge(){
   return `<div class="age">${bubo('happy',110)}
    <h1>${t('ageTitle')}</h1><p class="muted">${t('ageSub')}</p>
    <div class="opts">
-     <button class="opt14" onclick="setAge('kid')">${t('ageKid')}<small>${t('ageKidD')}</small></button>
+     <button class="opt14 k" onclick="setAge('kid')">${t('ageKid')}<small>${t('ageKidD')}</small></button>
      <button class="opt14" onclick="setAge('teen')">${t('ageTeen')}<small>${t('ageTeenD')}</small></button>
    </div>
    <div class="row" style="justify-content:center"><label for="langSel" class="note">${t('setLang')}</label>
@@ -690,54 +805,205 @@ function viewHome(){
 function viewHelp(){ return `<div class="crumb">${t('home')} › ${t('tHelp')}</div><h1>${t('tHelp')}</h1>${phonesHTML()}`; }
 
 /* ======================= CHAT ======================= */
+/* Frases de Bubo. Cada clave tiene varias versiones para no repetirse; "teen" = 14 o más. */
 const CH = {
- greet:{es:'¡Hola! Soy Bubo. Puedes contarme lo que te preocupa, a tu ritmo. Te explicaré las cosas con información oficial y palabras fáciles.',gl:'Ola! Son Bubo. Podes contarme o que che preocupa, ao teu ritmo. Explicareiche as cousas con información oficial e palabras doadas.',en:'Hi! I\'m Bubo. You can tell me what is worrying you, at your own pace. I\'ll explain things using official information and easy words.',
-  teen:{es:'Hola, soy Bubo. Te doy información oficial sobre tus derechos y los procedimientos judiciales, explicada de forma clara. Puedes escribir lo que quieras o elegir un tema.',gl:'Ola, son Bubo. Dou información oficial sobre os teus dereitos e os procedementos xudiciais, explicada de forma clara. Podes escribir o que queiras ou escoller un tema.',en:'Hi, I\'m Bubo. I give you official information about your rights and court proceedings, explained clearly. You can write anything or choose a topic.'}},
- qDanger:{es:'Antes de nada: ¿estás en peligro ahora mismo?',gl:'Antes de nada: estás en perigo agora mesmo?',en:'First of all: are you in danger right now?'},
+ greet:{es:'¡Hola! Soy Bubo. Me alegra mucho que hayas venido. Puedes contarme lo que quieras, a tu ritmo y con tus palabras.',gl:'Ola! Son Bubo. Alégrome moito de que viñeses. Podes contarme o que queiras, ao teu ritmo e coas túas palabras.',en:'Hi! I\'m Bubo. I\'m really glad you came. You can tell me anything, at your own pace and in your own words.',
+  teen:{es:'Hola, soy Bubo. Puedes hablarme de lo que te preocupe o preguntarme por tus derechos y cómo funcionan los juicios. Te respondo con información oficial, pero sin rollos.',gl:'Ola, son Bubo. Podes falarme do que che preocupe ou preguntarme polos teus dereitos e como funcionan os xuízos. Respóndoche con información oficial, pero sen rollos.',en:'Hi, I\'m Bubo. You can talk to me about whatever is on your mind or ask about your rights and how trials work. I answer with official information, minus the jargon.'}},
+ qDanger:{es:'Antes de nada, quiero asegurarme de que estás bien: ¿estás en peligro ahora mismo?',gl:'Antes de nada, quero asegurarme de que estás ben: estás en perigo agora mesmo?',en:'Before anything else, I want to make sure you\'re OK: are you in danger right now?'},
+ reDanger:[{es:'Antes de seguir, dime una cosa: ¿estás en peligro ahora mismo?',gl:'Antes de seguir, dime unha cousa: estás en perigo agora mesmo?',en:'Before we go on, tell me one thing: are you in danger right now?'}],
  dangerYes:{es:'Gracias por decírmelo. Si puedes, llama ahora al 112: es gratis y te ayudan enseguida. Si no puedes hablar, ve a un sitio con gente o con un adulto de confianza. Yo sigo aquí.',gl:'Grazas por dicirmo. Se podes, chama agora ao 112: é de balde e axúdante axiña. Se non podes falar, vai a un sitio con xente ou cun adulto de confianza. Eu sigo aquí.',en:'Thank you for telling me. If you can, call 112 now: it\'s free and they help straight away. If you can\'t talk, go somewhere with people or a trusted adult. I\'m still here.'},
- dangerNo:{es:'Me alegra que estés a salvo ahora.',gl:'Alégrome de que esteas a salvo agora.',en:'I\'m glad you are safe right now.'},
- qTopic:{es:'¿Sobre qué quieres hablar? Puedes tocar una opción o escribirlo con tus palabras.',gl:'Sobre que queres falar? Podes tocar unha opción ou escribilo coas túas palabras.',en:'What would you like to talk about? You can tap an option or write it in your own words.'},
- thanks:{es:'Gracias por contármelo. Esto es lo que dice la información oficial:',gl:'Grazas por contarmo. Isto é o que di a información oficial:',en:'Thank you for telling me. This is what the official information says:'},
- offer:{es:'Si quieres, puedo ponerte en contacto con una persona especialista. También puedes ver teléfonos de ayuda o seguir hablando conmigo. Tú decides.',gl:'Se queres, podo poñerte en contacto cunha persoa especialista. Tamén podes ver teléfonos de axuda ou seguir falando comigo. Ti decides.',en:'If you want, I can put you in touch with a specialist. You can also see help numbers or keep talking with me. It\'s up to you.'},
- crisis:{es:'Lo que me cuentas es muy importante y me preocupa cómo estás. No estás solo ni sola. Puedes llamar ahora al 024 (te escuchan a cualquier hora) o al 112 si estás en peligro. También puedo ponerte con una persona especialista. Y yo sigo aquí contigo.',gl:'O que me contas é moi importante e preocúpame como estás. Non estás só nin soa. Podes chamar agora ao 024 (escóitante a calquera hora) ou ao 112 se estás en perigo. Tamén podo poñerte cunha persoa especialista. E eu sigo aquí contigo.',en:'What you are telling me is very important and I\'m worried about how you are. You are not alone. You can call 024 now (they listen at any time) or 112 if you are in danger. I can also put you through to a specialist. And I\'m still here with you.'},
- notFound:{es:'No he encontrado esto en la información oficial que tengo, y prefiero no inventármelo. Una persona especialista sí podría ayudarte. Si quieres, también puedes contármelo con otras palabras.',gl:'Non atopei isto na información oficial que teño, e prefiro non inventalo. Unha persoa especialista si podería axudarte. Se queres, tamén podes contarmo con outras palabras.',en:'I couldn\'t find this in the official information I have, and I\'d rather not make it up. A specialist could help you. If you like, you can also tell me in other words.'},
- keep:{es:'Vale. Aquí sigo. Puedes contarme lo que quieras o preguntarme lo que necesites.',gl:'Vale. Aquí sigo. Podes contarme o que queiras ou preguntarme o que precises.',en:'OK. I\'m still here. You can tell me anything or ask me whatever you need.'},
+ dangerNo:[{es:'Vale, me alegra saberlo.',gl:'Vale, alégrome de sabelo.',en:'OK, I\'m glad to hear that.'},{es:'Menos mal, me quedo más tranquilo.',gl:'Menos mal, quedo máis tranquilo.',en:'Phew, that\'s a relief.'}],
+ dangerDunno:[{es:'No pasa nada si no lo tienes claro. Si en algún momento sientes que estás en peligro, llama al 112 o ve con un adulto de confianza.',gl:'Non pasa nada se non o tes claro. Se nalgún momento sentes que estás en perigo, chama ao 112 ou vai cun adulto de confianza.',en:'It\'s OK if you\'re not sure. If at any point you feel you\'re in danger, call 112 or go to a trusted adult.'}],
+ qTopic:[{es:'Cuéntame, ¿qué te ronda por la cabeza? Escríbelo como te salga, o toca una opción si te resulta más fácil.',gl:'Cóntame, que che anda pola cabeza? Escríbeo como che saia, ou toca unha opción se che resulta máis doado.',en:'So tell me, what\'s on your mind? Write it however it comes out, or tap an option if that\'s easier.'},
+  {es:'¿De qué te apetece hablar? Puedes escribirlo con tus palabras o elegir una de estas opciones.',gl:'De que che apetece falar? Podes escribilo coas túas palabras ou escoller unha destas opcións.',en:'What would you like to talk about? You can write it in your own words or pick one of these options.'}],
+ greetBack:[{es:'¡Hola! Qué bien que me escribas.',gl:'Ola! Que ben que me escribas.',en:'Hi! I\'m so glad you wrote to me.'},{es:'¡Hola, hola! Aquí estoy.',gl:'Ola, ola! Aquí estou.',en:'Hello there! I\'m here.'},{es:'¡Buenas! Me alegra leerte.',gl:'Boas! Alégrame lerte.',en:'Hey! Nice to hear from you.'}],
+ howAreYou:[{es:'¿Qué tal estás hoy?',gl:'Que tal estás hoxe?',en:'How are you doing today?'},{es:'¿Cómo te encuentras?',gl:'Como te atopas?',en:'How are you feeling?'}],
+ imFine:[{es:'Yo muy bien, gracias por preguntar. Me encanta que me lo preguntes. ¿Y tú, qué tal estás?',gl:'Eu moi ben, grazas por preguntar. Encántame que mo preguntes. E ti, que tal estás?',en:'I\'m very well, thanks for asking. That\'s really kind of you. And you, how are you?'},{es:'¡Pues bien, con las plumas en su sitio! ¿Y tú cómo estás?',gl:'Pois ben, coas plumas no seu sitio! E ti como estás?',en:'Pretty good, all my feathers in place! How about you?'}],
+ glad:[{es:'¡Me alegro mucho! ¿Hay algo en lo que te pueda ayudar o de lo que quieras hablar?',gl:'Alégrome moito! Hai algo no que che poida axudar ou do que queiras falar?',en:'I\'m really glad! Is there anything I can help with or anything you\'d like to talk about?'},{es:'¡Qué bien! Si tienes cualquier duda o algo te preocupa, cuéntamelo cuando quieras.',gl:'Que ben! Se tes calquera dúbida ou algo che preocupa, cóntamo cando queiras.',en:'Great! If you have any questions or anything is bothering you, just tell me whenever you like.'}],
+ thanks:[{es:'¡De nada! Para eso estoy.',gl:'De nada! Para iso estou.',en:'You\'re welcome! That\'s what I\'m here for.'},{es:'A ti por confiar en mí.',gl:'A ti por confiar en min.',en:'Thank you for trusting me.'},{es:'No hay de qué. Me alegra poder ayudarte.',gl:'Non hai de que. Alégrame poder axudarte.',en:'No problem at all. I\'m happy to help.'}],
+ anythingElse:[{es:'¿Hay algo más que te preocupe?',gl:'Hai algo máis que che preocupe?',en:'Is there anything else on your mind?'},{es:'Si te queda alguna duda, aquí sigo.',gl:'Se che queda algunha dúbida, aquí sigo.',en:'If you have any other questions, I\'m still here.'}],
+ bye:[{es:'¡Hasta pronto! Vuelve cuando quieras, aquí estaré. Y recuerda: en ANAR (900 20 20 10) te escuchan a cualquier hora.',gl:'Ata pronto! Volve cando queiras, aquí estarei. E lembra: en ANAR (900 20 20 10) escóitante a calquera hora.',en:'See you soon! Come back whenever you like, I\'ll be here. And remember: ANAR (900 20 20 10) will listen any time.'}],
+ who:[{es:'Soy Bubo, un asistente con forma de búho. No soy una persona, pero sé bastante de derechos, juicios y de cómo pedir ayuda. Y si prefieres hablar con alguien de verdad, te puedo poner en contacto con una persona especialista.',gl:'Son Bubo, un asistente con forma de moucho. Non son unha persoa, pero sei bastante de dereitos, xuízos e de como pedir axuda. E se prefires falar con alguén de verdade, podo poñerte en contacto cunha persoa especialista.',en:'I\'m Bubo, an assistant shaped like an owl. I\'m not a person, but I know quite a lot about rights, trials and how to get help. And if you\'d rather talk to a real person, I can put you in touch with a specialist.'}],
+ goOn:[{es:'Vale, cuéntame. Te leo.',gl:'Vale, cóntame. Léote.',en:'OK, tell me. I\'m listening.'},{es:'Adelante, sin prisa.',gl:'Adiante, sen présa.',en:'Go ahead, no rush.'}],
+ okNo:[{es:'Vale, sin problema. Aquí sigo por si cambias de idea.',gl:'Vale, sen problema. Aquí sigo por se cambias de idea.',en:'OK, no problem. I\'m here if you change your mind.'},{es:'Entendido. Cuando quieras, hablamos.',gl:'Entendido. Cando queiras, falamos.',en:'Got it. We can talk whenever you want.'}],
+ dunno:[{es:'No pasa nada, no hace falta tenerlo todo claro. Si quieres, cuéntame lo que te venga a la cabeza.',gl:'Non pasa nada, non fai falta telo todo claro. Se queres, cóntame o que che veña á cabeza.',en:'That\'s OK, you don\'t need to have it all figured out. If you like, just tell me whatever comes to mind.'}],
+ toldYes:[{es:'¡Has hecho muy bien! Contarlo es lo más difícil, y ya lo has hecho. ¿Te han ayudado?',gl:'Fixeches moi ben! Contalo é o máis difícil, e xa o fixeches. Axudáronte?',en:'You did the right thing! Telling someone is the hardest part, and you\'ve done it. Did they help you?'}],
+ toldNo:[{es:'Es normal que cueste. No tienes que hacerlo solo ni sola: puedo ponerte en contacto con una persona especialista que sabe mucho de esto y te escuchará. ¿Quieres?',gl:'É normal que custe. Non tes que facelo só nin soa: podo poñerte en contacto cunha persoa especialista que sabe moito disto e escoitarate. Queres?',en:'It\'s normal for it to feel hard. You don\'t have to do it alone: I can put you in touch with a specialist who knows a lot about this and will listen to you. Would you like that?'}],
+ helpedYes:[{es:'Me alegro muchísimo. Si vuelve a pasar o te sientes mal, aquí estoy.',gl:'Alégrome moitísimo. Se volve pasar ou te sentes mal, aquí estou.',en:'I\'m so glad. If it happens again or you feel bad, I\'m here.'}],
+ helpedNo:[{es:'Vaya, lo siento. Te mereces que te ayuden. Una persona especialista sí puede hacerlo. ¿Quieres que te ponga con ella?',gl:'Vaia, síntoo. Mereces que che axuden. Unha persoa especialista si pode facelo. Queres que te poña con ela?',en:'Oh, I\'m sorry. You deserve to get help. A specialist can do that. Shall I put you through to one?'}],
+ personNo:[{es:'Vale, tú decides. Podemos seguir hablando de lo que quieras.',gl:'Vale, ti decides. Podemos seguir falando do que queiras.',en:'OK, it\'s your call. We can keep talking about whatever you like.'}],
+ tellMore:[{es:'Te sigo. ¿Me cuentas un poco más? Así te puedo ayudar mejor.',gl:'Séguote. Cóntasme un pouco máis? Así podo axudarte mellor.',en:'I\'m with you. Can you tell me a bit more? That way I can help you better.'},{es:'Vale, te escucho. ¿Qué pasó después?',gl:'Vale, escóitote. Que pasou despois?',en:'OK, I\'m listening. What happened next?'}],
+ notFound:[{es:'Mmm, creo que no te he entendido bien. ¿Me lo cuentas con otras palabras?',gl:'Mmm, creo que non te entendín ben. Cóntasmo con outras palabras?',en:'Hmm, I don\'t think I understood. Could you tell me in other words?'},{es:'Perdona, no estoy seguro de haberlo pillado. ¿Me lo explicas un poco más?',gl:'Perdoa, non estou seguro de collelo. Explícasmo un pouco máis?',en:'Sorry, I\'m not sure I got that. Could you explain a bit more?'}],
+ notFound2:[{es:'Perdona, sigo sin entenderlo del todo, y prefiero no inventarme nada. Una persona especialista te entenderá mejor que yo. ¿Quieres que te ponga en contacto?',gl:'Perdoa, sigo sen entendelo de todo, e prefiro non inventar nada. Unha persoa especialista entenderate mellor ca min. Queres que te poña en contacto?',en:'Sorry, I still don\'t quite get it, and I\'d rather not make anything up. A specialist will understand you better than I can. Shall I put you in touch?'}],
+ answerLead:[{es:'Buena pregunta. Te lo explico:',gl:'Boa pregunta. Explícocho:',en:'Good question. Let me explain:'},{es:'Sobre eso, esto es lo que dice la ley:',gl:'Sobre iso, isto é o que di a lei:',en:'On that, this is what the law says:'},{es:'Te cuento:',gl:'Cóntoche:',en:'Here\'s how it works:'}],
+ already:[{es:'De eso ya te he contado lo principal. Si quieres más detalle, una persona especialista te lo puede explicar mejor. ¿Te pongo con ella?',gl:'Diso xa che contei o principal. Se queres máis detalle, unha persoa especialista pode explicarcho mellor. Póñote con ela?',en:'I\'ve already told you the main things about that. If you want more detail, a specialist can explain it better. Shall I put you through?'}],
+ doubt:[{es:'¿Te queda alguna duda?',gl:'Quédache algunha dúbida?',en:'Is anything still unclear?'},{es:'¿Tiene sentido? Pregúntame lo que quieras.',gl:'Ten sentido? Pregúntame o que queiras.',en:'Does that make sense? Ask me anything.'}],
  phonesIntro:{es:'Estos son los teléfonos de ayuda. Son gratuitos:',gl:'Estes son os teléfonos de axuda. Son de balde:',en:'These are the help numbers. They are free:'},
- listen:[
-  {es:'Gracias por contármelo. Lo que sientes es importante y tiene sentido.',gl:'Grazas por contarmo. O que sentes é importante e ten sentido.',en:'Thank you for telling me. What you feel matters and makes sense.'},
-  {es:'Te escucho. Puedes seguir contándome, sin prisa.',gl:'Escóitote. Podes seguir contándome, sen présa.',en:'I\'m listening. You can keep telling me, there\'s no rush.'},
-  {es:'Es valiente hablar de esto. No tienes que pasarlo solo ni sola.',gl:'É valente falar disto. Non tes que pasalo só nin soa.',en:'It\'s brave to talk about this. You don\'t have to go through it alone.'},
-  {es:'Estoy aquí. Si en algún momento quieres hablar con una persona, puedo ayudarte a hacerlo.',gl:'Estou aquí. Se nalgún momento queres falar cunha persoa, podo axudarte a facelo.',en:'I\'m here. If at any point you want to talk to a person, I can help you do that.'}],
- dunno:{es:'No lo sé',gl:'Non o sei',en:'I don\'t know'}
+ crisis:{es:'Lo que me cuentas es muy importante y me preocupa cómo estás. No estás solo ni sola. Puedes llamar ahora al 024 (te escuchan a cualquier hora) o al 112 si estás en peligro. También puedo ponerte con una persona especialista. Y yo sigo aquí contigo.',gl:'O que me contas é moi importante e preocúpame como estás. Non estás só nin soa. Podes chamar agora ao 024 (escóitante a calquera hora) ou ao 112 se estás en perigo. Tamén podo poñerte cunha persoa especialista. E eu sigo aquí contigo.',en:'What you are telling me is very important and I\'m worried about how you are. You are not alone. You can call 024 now (they listen at any time) or 112 if you are in danger. I can also put you through to a specialist. And I\'m still here with you.'},
+ dunnoChip:{es:'No lo sé',gl:'Non o sei',en:'I don\'t know'},
+ yesPlease:{es:'Sí, por favor',gl:'Si, por favor',en:'Yes, please'}, notNow:{es:'Ahora no',gl:'Agora non',en:'Not now'}
 };
+/* Cómo reacciona Bubo a cada tema: primero empatiza, luego informa y al final pregunta algo para seguir. */
+const TOPIC_TALK = {
+ bullying:{open:[{es:'Siento mucho que te esté pasando eso. Nadie tiene derecho a hacerte sentir así, y no es culpa tuya. Mira lo que puedes hacer:',gl:'Sinto moito que che estea pasando iso. Ninguén ten dereito a facerte sentir así, e non é culpa túa. Mira o que podes facer:',en:'I\'m so sorry that\'s happening to you. Nobody has the right to make you feel like that, and it\'s not your fault. Here\'s what you can do:'}],
+  ask:'told', q:{es:'¿Se lo has contado ya a alguien, como un profe o alguien de tu familia?',gl:'Xa llo contaches a alguén, como un profe ou alguén da túa familia?',en:'Have you told anyone yet, like a teacher or someone in your family?'}},
+ cyber:{open:[{es:'Uf, qué mal rato. Lo que pasa en internet también hace daño de verdad, y se puede parar. Te cuento:',gl:'Uf, que mal momento. O que pasa en internet tamén fai dano de verdade, e pódese parar. Cóntoche:',en:'Ugh, that sounds awful. What happens online hurts for real too, and it can be stopped. Here\'s what to know:'}],
+  ask:'told', q:{es:'¿Se lo has enseñado ya a algún adulto de confianza?',gl:'Xa llo amosaches a algún adulto de confianza?',en:'Have you shown it to a trusted adult yet?'}},
+ images:{open:[{es:'Eso tiene que ser muy duro, y quiero que tengas clara una cosa: no es culpa tuya. Hay formas de pararlo:',gl:'Iso ten que ser moi duro, e quero que teñas clara unha cousa: non é culpa túa. Hai formas de paralo:',en:'That must be really hard, and I want you to be clear on one thing: it\'s not your fault. There are ways to stop it:'}],
+  ask:'told', q:{es:'¿Lo sabe ya algún adulto en quien confíes?',gl:'Xa o sabe algún adulto en quen confíes?',en:'Does an adult you trust know about it yet?'}},
+ home:{open:[{es:'Gracias por confiar en mí para contarme algo de casa. Sé que no es nada fácil. Esto es lo que tienes que saber:',gl:'Grazas por confiar en min para contarme algo da casa. Sei que non é nada doado. Isto é o que tes que saber:',en:'Thank you for trusting me with something about home. I know it\'s not easy at all. Here\'s what you should know:'}],
+  ask:'told', q:{es:'¿Hay algún adulto de confianza con quien puedas hablarlo, como un profe o un familiar?',gl:'Hai algún adulto de confianza co que poidas falalo, como un profe ou un familiar?',en:'Is there a trusted adult you could talk to about it, like a teacher or a relative?'}},
+ harm:{open:[{es:'Siento muchísimo que alguien te haya hecho daño. Has sido muy valiente al contármelo. Quiero que sepas esto:',gl:'Sinto moitísimo que alguén che fixese dano. Fuches moi valente ao contarmo. Quero que saibas isto:',en:'I\'m so, so sorry someone hurt you. It was really brave of you to tell me. I want you to know this:'}],
+  ask:'told', q:{es:'¿Has podido contárselo a alguien?',gl:'Puideches contarllo a alguén?',en:'Have you been able to tell anyone?'}},
+ court:{open:[{es:'Es normal estar nervioso si tienes que ir a un juicio. Te cuento cómo funciona, para que no te pille por sorpresa:',gl:'É normal estar nervioso se tes que ir a un xuízo. Cóntoche como funciona, para que non te colla de sorpresa:',en:'It\'s normal to feel nervous if you have to go to a trial. Let me tell you how it works, so nothing catches you by surprise:'}],
+  ask:'what', q:{es:'¿Hay algo del juicio que te preocupe especialmente? Pregúntame lo que quieras.',gl:'Hai algo do xuízo que che preocupe especialmente? Pregúntame o que queiras.',en:'Is there anything about the trial that worries you in particular? Ask me anything.'}},
+ rights:{open:[{es:'¡Qué buena pregunta! Conocer tus derechos es superimportante. Estos son dos de los más importantes:',gl:'Que boa pregunta! Coñecer os teus dereitos é moi importante. Estes son dous dos máis importantes:',en:'Great question! Knowing your rights really matters. Here are two of the most important ones:'}],
+  ask:'what', q:{es:'¿Quieres saber algo más concreto? Pregúntame sin miedo.',gl:'Queres saber algo máis concreto? Pregúntame sen medo.',en:'Want to know something more specific? Go ahead and ask.'}},
+ other:{open:[{es:'Vale, sin problema. Te cuento algo que siempre viene bien saber:',gl:'Vale, sen problema. Cóntoche algo que sempre vén ben saber:',en:'OK, no problem. Here\'s something that\'s always good to know:'}],
+  ask:'what', q:{es:'¿Me cuentas un poco más de qué se trata? Así te ayudo mejor.',gl:'Cóntasme un pouco máis de que se trata? Así axúdote mellor.',en:'Can you tell me a bit more about what it is? That way I can help you better.'}}
+};
+/* Respuestas cuando alguien cuenta cómo se siente, sin un tema concreto todavía. */
+const FEEL = [
+ ['sad',/(triste|lloro|llorar|llorando|choro|chorar|deprim|\bsad\b|\bcry|crying)/,{es:'Vaya, siento que estés triste. Es normal sentirse así a veces, y está bien contarlo. ¿Ha pasado algo?',gl:'Vaia, sinto que esteas triste. É normal sentirse así ás veces, e está ben contalo. Pasou algo?',en:'Oh, I\'m sorry you\'re sad. It\'s normal to feel like that sometimes, and it\'s good to talk about it. Did something happen?'}],
+ ['scared',/(miedo|\bmedo\b|asustad|me asusta|scared|afraid|\bfear)/,{es:'Entiendo que tengas miedo, y has hecho bien en decírmelo. Aquí puedes hablar tranquilo. ¿Qué es lo que te da miedo?',gl:'Entendo que teñas medo, e fixeches ben en dicirmo. Aquí podes falar tranquilo. Que é o que che dá medo?',en:'I understand you\'re scared, and you did the right thing telling me. You can talk calmly here. What is it that scares you?'}],
+ ['alone',/(\bsol[oa]\b|\bsoa?\b|nadie me|ninguen me|\balone\b|lonely|nobody|no tengo amigos|sin amigos|non teño amigos)/,{es:'Siento que te sientas así. Que sepas que ahora mismo no estás solo ni sola: yo estoy aquí contigo. ¿Quieres contarme qué pasa?',gl:'Sinto que te sintas así. Que saibas que agora mesmo non estás só nin soa: eu estou aquí contigo. Queres contarme que pasa?',en:'I\'m sorry you feel that way. Right now you\'re not alone: I\'m here with you. Do you want to tell me what\'s going on?'}],
+ ['angry',/(enfad|cabrea|rabia|anoxad|angry|\bmad\b|furious|hart[oa]\b|farto|farta)/,{es:'Es normal enfadarse cuando pasan cosas que no son justas. ¿Qué ha pasado?',gl:'É normal anoxarse cando pasan cousas que non son xustas. Que pasou?',en:'It\'s normal to get angry when unfair things happen. What happened?'}],
+ ['anx',/(agobi|ansiedad|ansiedade|nervios|estres|stress|anxious|overwhelm|preocup|worried)/,{es:'Parece que tienes mucho agobio encima. Respira hondo un momento, sin prisa. ¿Qué es lo que más te preocupa?',gl:'Parece que tes moito agobio enriba. Respira fondo un momento, sen présa. Que é o que máis che preocupa?',en:'It sounds like you\'ve got a lot weighing on you. Take a deep breath, no rush. What worries you most?'}],
+ ['bad',/(estoy mal|estou mal|me siento mal|sintome mal|\bmal\b|fatal|feel bad|feel awful|odio mi vida|horrible|not good|not ok)/,{es:'Siento que lo estés pasando mal. Gracias por contármelo. ¿Quieres contarme qué ha pasado?',gl:'Sinto que o esteas pasando mal. Grazas por contarmo. Queres contarme que pasou?',en:'I\'m sorry you\'re having a hard time. Thanks for telling me. Do you want to tell me what happened?'}]
+];
+/* Pequeña charla: saludos, gracias, sí/no... (sobre el texto ya normalizado) */
+const INTENT = [
+ ['dunno',/^(no se|non sei|nose|ni idea|no lo se|non o sei|i don ?t know|dont know|dunno|idk|not sure)\b/],
+ ['bye',/\b(adios|chao|chau|hasta luego|hasta manana|hasta pronto|me voy|nos vemos|ata logo|ata pronto|deica logo|bye|goodbye|see you)\b/],
+ ['thanks',/\b(gracias|grazas|thank|thanks|thx)\b/],
+ ['who',/(quien eres|que eres|quen es|eres (un |una )?(robot|bot|persona|humano|maquina|ia|real)|es (un |unha )?(robot|persoa)|who are you|what are you|are you (a )?(robot|bot|human|real|person))/],
+ ['howru',/(que tal (estas|vas|andas|tu)|como estas|como vas|que tal\s*$|how are you|how s it going|hows it going)/],
+ ['greet',/^(hola+|holi|buenas|buenos dias|buenas tardes|buenas noches|hey|ey|hi|hello|ola|bos dias|boas)\b/],
+ ['good',/^(bien|muy bien|genial|guay|todo bien|estoy bien|ben|moi ben|estou ben|good|fine|great|im ok|i m ok|im good|i m good)\b/],
+ ['yes',/^(si|sii+|sip|vale|ok|okay|okey|claro|de acuerdo|venga|dale|bueno|yes|yeah|yep|sure)\b/],
+ ['no',/^(no|nop|nope|nah|non|para nada|todavia no|aun no|ainda non|not yet)\b/]
+];
+const SHORT = new Set(['good','yes','no','dunno','bye']);
+const pick = a => a[Math.floor(Math.random()*a.length)];
+const DT = d => ((TEEN()&&d.teen ? d.teen : d.text)[LANG]) || d.text.es;
+const P = k => L(pick(CH[k]));
+const sleep = ms => new Promise(r=>setTimeout(r,ms));
+const plain = s => norm(s).replace(/[^a-z0-9ñ ]/g,' ').replace(/\s+/g,' ').trim();
+function intentOf(n){
+  for(const [k,re] of INTENT){ if(re.test(n) && (!SHORT.has(k) || n.replace(re,'').trim().split(' ').filter(Boolean).length<=2)) return k; }
+  return null;
+}
 /* El chat NO guarda lo que se escribe: solo los mensajes en pantalla mientras está abierto,
-   y el tema elegido (para saber con qué especialista conectar). Nada se envía a ningún sitio. */
-function newChat(){ S.chat={msgs:[],chips:[],step:'danger',topic:null,listenIdx:0,view:'chat',busy:false}; addBot(L(CH.greet)); addBot(L(CH.qDanger),{expr:'listen'}); setChips('danger'); }
+   y el tema elegido (para saber con qué especialista conectar). Sin LLM, nada se envía a ningún sitio. */
+function newChat(){ S.chat={msgs:[],chips:[],ask:'danger',topic:null,shown:new Set(),miss:0,view:'chat',busy:false}; addBot(L(CH.greet)); addBot(L(CH.qDanger),{expr:'listen'}); setChips('danger'); }
 function addBot(text,o={}){ S.chat.msgs.push({who:'bot',text,...o}); if(S.autoSpeak) speak(text); }
 function addMe(text){ S.chat.msgs.push({who:'me',text}); }
 function setChips(kind){
-  const c=S.chat; c.step=kind;
-  if(kind==='danger') c.chips=[{l:t('yes'),a:'dYes',cls:'red'},{l:t('no'),a:'dNo'},{l:L(CH.dunno),a:'dDunno'}];
+  const c=S.chat;
+  if(kind==='danger') c.chips=[{l:t('yes'),a:'y',cls:'red'},{l:t('no'),a:'n'},{l:L(CH.dunnoChip),a:'d'}];
   else if(kind==='topic') c.chips=Object.keys(TOPICS).filter(k=>TEEN()||!TOPICS[k].teenOnly).map(k=>({l:L(TOPICS[k].chip),a:'t:'+k}));
-  else if(kind==='open') c.chips=[{l:t('talkPerson'),a:'person',cls:'strong'},{l:t('seePhones'),a:'phones'},{l:t('keepTalking'),a:'keep'}];
+  else if(kind==='yn') c.chips=[{l:t('yes'),a:'y'},{l:t('no'),a:'n'}];
+  else if(kind==='person') c.chips=[{l:L(CH.yesPlease),a:'y',cls:'strong'},{l:L(CH.notNow),a:'n'}];
+  else if(kind==='open') c.chips=[{l:t('talkPerson'),a:'person',cls:'strong'},{l:t('seePhones'),a:'phones'}];
   else c.chips=[];
+}
+const chatRender = () => { if(route()==='chat') render(); };
+/* Bubo escribe sus mensajes uno a uno, con una pausa como si estuviera tecleando. */
+async function say(list, chips){
+  const c=S.chat; c.busy=true; c.chips=[]; chatRender();
+  for(const [text,o] of list){
+    await sleep(Math.min(1800, 500+text.length*12));
+    if(S.chat!==c) return;
+    addBot(text,o||{}); chatRender();
+  }
+  c.busy=false; setChips(chips); chatRender();
 }
 function onChip(a){
   const c=S.chat; if(c.busy) return;
   if(a==='person'){ c.view='callask'; render(); return window.scrollTo(0,0); }
   const ch=c.chips.find(x=>x.a===a); addMe(ch?ch.l:'');
-  if(a==='dYes'){ addBot(L(CH.dangerYes),{kind:'crisis',phones:['112','900202010']}); addBot(L(CH.qTopic)); setChips('topic'); }
-  else if(a==='dNo'||a==='dDunno'){ if(a==='dNo') addBot(L(CH.dangerNo)); addBot(L(CH.qTopic),{expr:'listen'}); setChips('topic'); }
-  else if(a.startsWith('t:')){ c.topic=a.slice(2); giveTopicInfo(); }
-  else if(a==='phones'){ addBot(L(CH.phonesIntro),{phones:'all'}); setChips('open'); }
-  else if(a==='keep'){ addBot(L(CH.keep)); setChips('open'); }
-  render();
+  if(a==='y'||a==='n'||a==='d') return answerAsk({y:'yes',n:'no',d:'dunno'}[a]);
+  if(a.startsWith('t:')) return topicReply(a.slice(2));
+  if(a==='phones') return say([[L(CH.phonesIntro),{phones:'all'}]],'open');
 }
-function giveTopicInfo(){
-  const c=S.chat, tp=TOPICS[c.topic||'other'];
-  addBot(L(CH.thanks));
-  tp.docs.forEach(id=>{ const d=CORPUS.find(x=>x.id===id); addBot(L(d),{src:d.src,kind:'info',expr:'talk'}); });
-  addBot(L(CH.offer)); setChips('open');
+/* Respuesta a un sí / no / no sé, según lo último que preguntó Bubo. */
+function answerAsk(kind){
+  const c=S.chat, ask=c.ask; c.ask=null;
+  if(ask==='danger'){
+    if(kind==='yes') return say([[L(CH.dangerYes),{kind:'crisis',phones:['112','900202010']}],[P('qTopic')]],'topic');
+    return say([[P(kind==='no'?'dangerNo':'dangerDunno')],[P('qTopic'),{expr:'listen'}]],'topic');
+  }
+  if(ask==='told'){
+    if(kind==='yes'){ c.ask='helped'; return say([[P('toldYes')]],'yn'); }
+    c.ask='person'; return say([[P('toldNo'),{expr:'listen'}]],'person');
+  }
+  if(ask==='helped'){
+    if(kind==='yes') return say([[P('helpedYes')]],'open');
+    c.ask='person'; return say([[P('helpedNo'),{expr:'listen'}]],'person');
+  }
+  if(ask==='person'){
+    if(kind==='yes'){ c.view='callask'; render(); return window.scrollTo(0,0); }
+    return say([[P('personNo')]],'open');
+  }
+  if(ask==='howru' && (kind==='no'||kind==='dunno')){ c.ask='what'; return say([[L(FEEL.find(f=>f[0]==='bad')[2]),{expr:'listen'}]]); }
+  if(kind==='good'||(ask==='howru'&&kind==='yes')) return say([[P('glad')]]);
+  if(kind==='yes'){ c.ask='what'; return say([[P('goOn')]]); }
+  if(kind==='no') return say([[P('okNo')]],'open');
+  return say([[P('dunno'),{expr:'listen'}]]);
+}
+function topicReply(k){
+  const c=S.chat, tp=TOPICS[k]||TOPICS.other, tk=TOPIC_TALK[k]||TOPIC_TALK.other; c.topic=k; c.miss=0;
+  const list=[[L(pick(tk.open)),{expr:'listen'}]];
+  tp.docs.forEach(id=>{ const d=CORPUS.find(x=>x.id===id); c.shown.add(id); list.push([DT(d),{src:d.src,kind:'info',expr:'talk'}]); });
+  list.push([L(tk.q),{expr:'listen'}]); c.ask=tk.ask;
+  return say(list, tk.ask==='told'?'yn':'open');
+}
+function docReply(d){
+  const c=S.chat; c.shown.add(d.id); c.miss=0; if(!c.topic) c.topic=d.topic; c.ask='what';
+  return say([[P('answerLead')],[DT(d),{src:d.src,kind:'info',expr:'talk'}],[P('doubt'),{expr:'listen'}]],'open');
+}
+/* Bubo sin LLM: entiende saludos, emociones, sí/no y temas, y siempre contesta algo con sentido. */
+function localReply(text){
+  const c=S.chat, n=plain(text), f=FEEL.find(x=>x[1].test(n)), pre=[], keep=c.ask==='danger'?'danger':null;
+  /* si alguien cuenta cómo se siente, solo se cambia a un tema si el texto encaja claramente */
+  const hits=search(text).filter(r=>r.s>(f?3:1.2));
+  let intent=intentOf(n); if(SHORT.has(intent) && intent!=='bye' && n.split(' ').length>(c.ask?4:2) && (hits.length||f)) intent=null;
+  if(intent==='greet'){
+    const rest=n.replace(INTENT.find(x=>x[0]==='greet')[1],'').replace(/^(bubo)\b/,'').trim();
+    if(!rest || !hits.length && !f){
+      if(c.ask==='danger') return say([[P('greetBack')],[P('reDanger'),{expr:'listen'}]],'danger');
+      c.ask='howru'; return say([[P('greetBack')+' '+P('howAreYou')]]);
+    }
+    pre.push([L({es:'¡Hola!',gl:'Ola!',en:'Hi!'})]);
+  }
+  else if(intent==='howru'){ c.ask='howru'; return say([[P('imFine')]]); }
+  else if(intent==='who'){ c.ask=null; return say([[P('who')]],'open'); }
+  else if(intent==='bye'){ c.ask=null; return say([[P('bye')]],'open'); }
+  else if(intent==='thanks' && !hits.length) return say([[P('thanks')+(c.topic?' '+P('anythingElse'):'')]]);
+  else if(intent && SHORT.has(intent)) return answerAsk(intent);
+  const fresh=hits.find(r=>!c.shown.has(r.doc.id));
+  if(hits.length){
+    const top=hits[0].doc;
+    if(c.ask==='danger' || !c.topic || (top.topic!==c.topic && !c.shown.has(top.id))){ c.ask=null; return pre.length ? say(pre).then(()=>topicReply(top.topic)) : topicReply(top.topic); }
+    if(fresh) return docReply(fresh.doc);
+    c.ask='person'; return say([...pre,[P('already')]],'person');
+  }
+  if(f){ c.ask='what'; return say([...pre,[L(f[2]),{expr:'listen'}]]); }
+  if((c.ask==='what'||c.ask==='howru') && n.split(' ').length>3 && c.miss===0){ c.miss++; return say([...pre,[P('tellMore'),{expr:'listen'}]]); }
+  c.miss++;
+  if(c.miss>=2){ c.ask='person'; return say([...pre,[P('notFound2')]],'person'); }
+  return say([...pre,[P('notFound')]],keep);
+}
+/* Con LLM: se le pasan los últimos mensajes (ya sin datos personales) y los textos oficiales relevantes. */
+async function llmChat(docs){
+  if(!CONFIG.WORKER_URL) return null;
+  try{ const ctrl=new AbortController(); const to=setTimeout(()=>ctrl.abort(), CONFIG.WORKER_TIMEOUT_MS);
+    const history=S.chat.msgs.filter(m=>m.text).slice(-8).map(m=>({role:m.who==='me'?'user':'assistant',content:m.text}));
+    const r=await fetch(CONFIG.WORKER_URL,{method:'POST',headers:{'Content-Type':'application/json'},signal:ctrl.signal,
+      body:JSON.stringify({lang:LANG, age:S.age, history, context:docs.map(d=>`[${d.src}] ${DT(d)}`).join('\n\n')})});
+    clearTimeout(to); if(!r.ok) return null; const j=await r.json();
+    return (j&&typeof j.answer==='string'&&j.answer.trim())?j.answer.trim():null;
+  }catch(e){ return null; }
 }
 async function sendText(){
   const inp=document.getElementById('chatInput'); if(!inp) return;
@@ -745,16 +1011,14 @@ async function sendText(){
   const c=S.chat, {text,hit}=redact(raw);
   addMe(text);
   if(hit) addBot(t('redacted'),{kind:'crisis'});
-  if(isRisk(text)){ addBot(L(CH.crisis),{kind:'crisis',phones:['024','112']}); setChips('open'); return render(); }
-  const res=search(text), top=res[0];
-  if(top.s>1.2 && !c.topic) c.topic=top.doc.topic;
-  if((c.step==='danger'||c.step==='topic') && top.s>1.2){ c.topic=top.doc.topic; giveTopicInfo(); return render(); }
-  const isQ=/\?|¿|que es|qué es|como|cómo|puedo|podo|can i|what|how|derecho|dereito|right/i.test(text);
-  if(VENT.test(norm(text)) && !isQ){ addBot(L(CH.listen[c.listenIdx++%CH.listen.length]),{expr:'listen'}); if(c.step!=='danger'&&c.step!=='topic') setChips('open'); return render(); }
-  if(top.s<1.2){ addBot(L(CH.notFound)); setChips('open'); return render(); }
-  c.busy=true; render();
-  const ans=await llmRephrase(text, top.doc); c.busy=false;
-  addBot(ans||L(top.doc),{src:top.doc.src,kind:'info',expr:'talk'}); setChips('open'); render();
+  if(isRisk(text)){ c.ask=null; addBot(L(CH.crisis),{kind:'crisis',phones:['024','112']}); setChips('open'); return render(); }
+  if(CONFIG.WORKER_URL){
+    const docs=search(text).filter(r=>r.s>1.2).slice(0,2).map(r=>r.doc);
+    c.busy=true; c.chips=[]; render();
+    const ans=await llmChat(docs); if(S.chat!==c) return; c.busy=false;
+    if(ans){ if(docs[0]&&!c.topic) c.topic=docs[0].topic; c.ask=null; addBot(ans,docs[0]?{src:docs.map(d=>d.src).join(' · '),kind:'info',expr:'talk'}:{expr:'talk'}); setChips(docs.length?'open':null); return chatRender(); }
+  }
+  render(); localReply(text);
 }
 function msgHTML(m){
   if(m.who==='me') return `<div class="msg me">${esc(m.text)}</div>`;
@@ -806,11 +1070,11 @@ function viewGame(){
   return `<div class="crumb">${t('home')} › ${t('tGame')}</div><h1>${t('tGame')}</h1>
    <div class="hero" style="margin-bottom:14px">${bubo('happy',70)}<div style="flex:1"><p style="margin:0 0 6px">${t('gameIntro')}</p>
    <div class="note">${t('progress')}: ${S.done.size}/6</div><div class="progress"><i style="width:${pct}%"></i></div></div></div>
-   ${LEVELS.map((lv,i)=>`<button class="lvl ${S.done.has(i+1)?'done':''}" onclick="go('nivel/${i+1}')"><span class="n">${S.done.has(i+1)?'✓':i+1}</span><span style="font-size:26px" aria-hidden="true">${lv.e}</span><span style="flex:1"><span class="note">${t('lvl')} ${i+1}</span><b style="display:block;color:var(--pri)">${esc(L(lv.t))}</b></span>${ic('arrowR')}</button>`).join('')}`;
+   ${LEVELS.map((lv,i)=>`<button class="lvl ${S.done.has(i+1)?'done':''}" onclick="go('nivel/${i+1}')"><span class="n">${S.done.has(i+1)?'✓':i+1}</span><span class="lvic">${pic(lv.e)}</span><span style="flex:1"><span class="note">${t('lvl')} ${i+1}</span><b style="display:block;color:var(--pri)">${esc(L(lv.t))}</b></span>${ic('arrowR')}</button>`).join('')}`;
 }
 function levelShell(n, body){
   const lv=LEVELS[n-1];
-  return `<div class="crumb">${t('tGame')} › ${t('lvl')} ${n}</div><span class="pill">${t('lvl')} ${n} / 6</span><h1>${lv.e} ${esc(L(lv.t))}</h1>${body}
+  return `<div class="crumb">${t('tGame')} › ${t('lvl')} ${n}</div><span class="pill">${t('lvl')} ${n} / 6</span><h1 class="lvh">${pic(lv.e)} ${esc(L(lv.t))}</h1>${body}
    <div class="lvnav"><button class="btn sec" onclick="go('nivel/${n-1}')" ${n===1?'disabled':''}>${ic('arrowL')} ${t('prevL')}</button>
    <button class="btn ok" onclick="finishLevel(${n})">${ic('check')} ${t('finish')}</button>
    <button class="btn sec" onclick="go('nivel/${n+1}')" ${n===6?'disabled':''}>${t('nextL')} ${ic('arrowR')}</button></div>`;
@@ -822,7 +1086,7 @@ function finishLevel(n){
    <div class="row" style="justify-content:center;margin-top:14px">${n<6?`<button class="btn" onclick="go('nivel/${n+1}')">${t('nextL')} ${ic('arrowR')}</button>`:''}<button class="btn sec" onclick="go('juego')">${t('backMap')}</button></div></div>`;
   window.scrollTo(0,0);
 }
-const flipCards = arr => `<p class="note">${t('tap')}</p><div class="grid3">${arr.map(r=>`<div class="flip" onclick="this.classList.toggle('on')" onkeydown="if(event.key==='Enter')this.classList.toggle('on')" role="button" tabindex="0"><div class="in"><div class="f"><span class="e">${r.e}</span><b>${esc(L(r.t))}</b></div><div class="b">${esc(L(r.d))}</div></div></div>`).join('')}</div>`;
+const flipCards = arr => `<p class="note">${t('tap')}</p><div class="grid3">${arr.map(r=>`<div class="flip" onclick="this.classList.toggle('on')" onkeydown="if(event.key==='Enter')this.classList.toggle('on')" role="button" tabindex="0"><div class="in"><div class="f">${pic(r.e)}<b>${esc(L(r.t))}</b></div><div class="b">${esc(L(r.d))}</div></div></div>`).join('')}</div>`;
 
 /* Nivel 1 */
 const RIGHTS=[
@@ -931,7 +1195,7 @@ function pickEmo(i,el){ document.querySelectorAll('.emo button').forEach(b=>b.cl
 let breathT=null;
 function breathe(){ clearInterval(breathT); let n=0, inh=true; const tick=()=>{ const ball=document.getElementById('ball'), lab=document.getElementById('bLab'); if(!ball){clearInterval(breathT);return;} ball.classList.toggle('grow',inh); lab.textContent=inh?t('inhale'):t('exhale'); inh=!inh; if(++n>8){clearInterval(breathT); lab.textContent='✓';} }; tick(); breathT=setInterval(tick,4000); }
 function level4(){ const intro={es:'Todas las emociones están bien. Elige cómo te sientes y aprende una frase para decirlo.',gl:'Todas as emocións están ben. Escolle como te sentes e aprende unha frase para dicilo.',en:'All feelings are OK. Choose how you feel and learn a sentence to say it.'};
-  return levelShell(4, `<p>${esc(L(intro))}</p><div class="emo">${EMOS.map((e,i)=>`<button onclick="pickEmo(${i},this)"><span class="e">${e.e}</span>${esc(L(e.l))}</button>`).join('')}</div><div id="emoInfo" style="margin-top:12px"></div>
+  return levelShell(4, `<p>${esc(L(intro))}</p><div class="emo">${EMOS.map((e,i)=>`<button onclick="pickEmo(${i},this)">${pic(e.e)}${esc(L(e.l))}</button>`).join('')}</div><div id="emoInfo" style="margin-top:12px"></div>
    <div class="card breath"><h2 style="margin-top:0">${t('breathe')}</h2><div id="ball" class="ball"></div><b id="bLab">&nbsp;</b><button class="btn sec" onclick="breathe()">${t('start')}</button></div>`); }
 
 /* Nivel 5 */
@@ -951,7 +1215,7 @@ const QUIZ5=[
 function answerMC(i,j){ const q=QUIZ5[i], box=document.getElementById('q5'+i), b=box.querySelectorAll('.opt'); b.forEach(x=>x.classList.remove('right','wrong')); b[j].classList.add(j===q.a?'right':'wrong'); box.querySelector('.fb').textContent= j===q.a?t('right'):t('wrong')+' '+L(q.o[q.a]); }
 function level5(){ const intro={es:'Nadie te dirá qué tienes que contar: eso lo decides tú. Pero hay claves que te ayudan a hacerlo con tranquilidad.',gl:'Ninguén che dirá que tes que contar: iso decídelo ti. Pero hai claves que che axudan a facelo con tranquilidade.',en:'Nobody will tell you what to say: that\'s up to you. But there are keys that help you do it calmly.'};
   return levelShell(5, `<div class="mrow">${bubo('talk',46)}<div class="msg bot">${esc(L(intro))}</div></div>
-   <div class="grid3" style="margin-top:14px">${KEYS.map(k=>`<div class="card" style="margin:0"><div style="font-size:26px">${k.e}</div><b style="color:var(--pri)">${esc(L(k.t))}</b><p class="note" style="margin:4px 0 0">${esc(L(k.d))}</p></div>`).join('')}</div>
+   <div class="grid3" style="margin-top:14px">${KEYS.map(k=>`<div class="card" style="margin:0"><div class="kic">${pic(k.e)}</div><b style="color:var(--pri)">${esc(L(k.t))}</b><p class="note" style="margin:4px 0 0">${esc(L(k.d))}</p></div>`).join('')}</div>
    <h2>${LANG==='en'?'What would you do?':LANG==='gl'?'Que farías?':'¿Qué harías?'}</h2>
    ${QUIZ5.map((q,i)=>`<div class="card" id="q5${i}"><b>${esc(L(q.q))}</b>${q.o.map((o,j)=>`<button class="opt" onclick="answerMC(${i},${j})">${esc(L(o))}</button>`).join('')}<p class="fb note" style="margin:0"></p></div>`).join('')}`); }
 
@@ -986,7 +1250,7 @@ const WORDS=[
 ];
 function viewDict(){
   return `<div class="crumb">${t('home')} › ${t('tDict')}</div><h1>${t('tDict')}</h1><input class="search" placeholder="${t('search')}" oninput="filterDict(this.value)" aria-label="${t('search')}">
-   <div class="words" id="words">${WORDS.map(w=>`<div class="word" data-w="${esc(norm(L(w.w)+' '+L(w.d)))}"><div class="e">${w.e}</div><b>${esc(L(w.w))}</b><p>${esc(L(w.d))}</p>${spk(L(w.w)+'. '+L(w.d))}</div>`).join('')}</div>`;
+   <div class="words" id="words">${WORDS.map(w=>`<div class="word" data-w="${esc(norm(L(w.w)+' '+L(w.d)))}"><div class="wic">${pic(w.e)}</div><b>${esc(L(w.w))}</b><p>${esc(L(w.d))}</p>${spk(L(w.w)+'. '+L(w.d))}</div>`).join('')}</div>`;
 }
 function filterDict(q){ const n=norm(q); document.querySelectorAll('#words .word').forEach(el=>el.style.display=el.dataset.w.includes(n)?'':'none'); }
 
@@ -1026,7 +1290,7 @@ const AULA_QUIZ=[
  {q:{es:'¿Puedes pedir ayuda tú solo?',gl:'Podes pedir axuda ti só?',en:'Can you ask for help on your own?'},o:[{es:'Sí',gl:'Si',en:'Yes'},{es:'Solo con mis padres',gl:'Só cos meus pais',en:'Only with my parents'},{es:'No',gl:'Non',en:'No'}],a:0}
 ];
 function aulaSlides(){
-  const sl=[], cards=arr=>`<div class="grid3">${arr.map(r=>`<div class="card" style="margin:0"><span style="font-size:30px">${r.e}</span><br><b style="color:var(--pri)">${esc(L(r.t||r.l))}</b><p class="note">${esc(L(r.d||r.p))}</p></div>`).join('')}</div>`;
+  const sl=[], cards=arr=>`<div class="grid3">${arr.map(r=>`<div class="card" style="margin:0"><span class="aic">${pic(r.e)}</span><br><b style="color:var(--pri)">${esc(L(r.t||r.l))}</b><p class="note">${esc(L(r.d||r.p))}</p></div>`).join('')}</div>`;
   sl.push(`<div class="slide" style="text-align:center">${bubo('happy',170)}<h1 style="font-size:1.9em">${t('appName')}</h1><p>${TEEN()?t('helloTeenSub'):t('helloKidSub')}</p></div>`);
   sl.push(`<div class="slide"><span class="pill">${t('lvl')} 1</span><h1>${L(LEVELS[0].t)}</h1>${cards(RIGHTS)}</div>`);
   sl.push(`<div class="slide"><span class="pill">${t('lvl')} 2</span><h1>${L(LEVELS[1].t)}</h1>${cards(PROS)}</div>`);
@@ -1081,7 +1345,7 @@ function hideCamo(){ document.getElementById('camo').hidden=true; document.title
 
 /* ======================= RENDER ======================= */
 function render(){
-  document.body.classList.toggle('big',S.big); document.body.classList.toggle('contrast',S.contrast); document.body.classList.toggle('aula',route()==='aula');
+  document.body.classList.toggle('kid',S.age==='kid'); document.body.classList.toggle('big',S.big); document.body.classList.toggle('contrast',S.contrast); document.body.classList.toggle('aula',route()==='aula');
   renderChrome();
   const app=document.getElementById('app'), r=route();
   let html;
@@ -1097,7 +1361,9 @@ function render(){
   else if(r==='aula') html=viewAula();
   else if(r==='ajustes') html=viewSettings();
   else html=viewHome();
+  const prev=document.getElementById('chatInput'), draft=prev?prev.value:'', typing=prev&&document.activeElement===prev;
   app.innerHTML=html;
+  const inp=document.getElementById('chatInput'); if(inp&&draft) inp.value=draft; if(inp&&typing) inp.focus();
   if(r.startsWith('consejos/')){ const d=document.getElementById('tip'+r.split('/')[1]); if(d) d.scrollIntoView({block:'start'}); }
   if(r==='chat'&&S.age){ const m=document.getElementById('msgs'); if(m&&m.lastElementChild) m.lastElementChild.scrollIntoView({block:'end'}); }
 }
