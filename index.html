@@ -1,0 +1,1113 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mi Justicia</title>
+<meta name="theme-color" content="#23395B">
+<meta name="description" content="Mi Justicia: información y ayuda para niños, niñas y adolescentes. Prototipo DATAthon Justicia 2026.">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --pri:#23395B; --pri-d:#162741; --pri-l:#E9EEF5; --acc:#8C1C2E; --acc-l:#F7ECEE;
+  --bg:#F4F5F7; --card:#FFFFFF; --text:#1F2933; --muted:#566271; --line:#D8DCE2;
+  --ok:#2E7D5B; --ok-l:#E8F3EE; --sos:#B42318; --sos-l:#FDEDEB; --warn-l:#FFF6E6; --warn:#7A4A00;
+  --r:8px; --fs:17px; --side:264px;
+}
+body.contrast{--pri:#00213F;--pri-d:#000;--pri-l:#FFF;--bg:#FFF;--text:#000;--muted:#000;--line:#000;--acc:#5A0012}
+body.big{--fs:20px}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Source Sans 3",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:var(--fs);line-height:1.55;background:var(--bg);color:var(--text);-webkit-tap-highlight-color:transparent}
+button,input,select{font:inherit;color:inherit}
+button{cursor:pointer}
+a{color:var(--pri)}
+.ico{width:20px;height:20px;flex:0 0 auto;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+/* cabecera institucional */
+.proto{background:var(--pri-d);color:#C9D3E0;font-size:.78em;padding:4px 16px;text-align:center}
+.top{position:sticky;top:0;z-index:40;background:var(--card);border-bottom:3px solid var(--acc);display:flex;align-items:center;gap:10px;padding:8px 14px;min-height:64px}
+.brand{display:flex;align-items:center;gap:10px;background:none;border:0;padding:0;text-align:left}
+.brand .t1{font-weight:700;font-size:1.15em;color:var(--pri);line-height:1.1}
+.brand .t2{font-size:.78em;color:var(--muted);line-height:1.1}
+.top .sp{flex:1}
+.hbtn{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--card);border-radius:var(--r);height:42px;padding:0 12px;font-weight:600;color:var(--pri)}
+.hbtn:hover{background:var(--pri-l)}
+.hbtn.sos{background:var(--sos);border-color:var(--sos);color:#fff}
+.hbtn.sos:hover{background:#8F1C13}
+.hbtn.exit{border-color:var(--sos);color:var(--sos)}
+.menubtn{display:none}
+/* layout */
+.layout{display:flex;align-items:flex-start;min-height:calc(100vh - 90px)}
+.side{position:sticky;top:67px;width:var(--side);flex:0 0 var(--side);height:calc(100vh - 67px);overflow-y:auto;background:var(--card);border-right:1px solid var(--line);padding:14px 10px 30px}
+.side h4{margin:14px 10px 6px;font-size:.75em;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.nav{display:flex;align-items:center;gap:10px;width:100%;text-align:left;background:none;border:0;border-left:4px solid transparent;border-radius:0 var(--r) var(--r) 0;padding:9px 10px;font-weight:600;color:var(--text)}
+.nav:hover{background:var(--pri-l)}
+.nav.on{background:var(--pri-l);border-left-color:var(--acc);color:var(--pri)}
+.sub{margin:0 0 4px 22px;border-left:1px solid var(--line)}
+.sub .nav{font-weight:400;font-size:.92em;padding:6px 10px}
+.sub .nav .st{width:18px;height:18px;border-radius:50%;border:1.5px solid var(--line);display:inline-flex;align-items:center;justify-content:center;font-size:.7em;flex:0 0 auto}
+.sub .nav .st.done{background:var(--ok);border-color:var(--ok);color:#fff}
+main{flex:1;min-width:0;max-width:880px;margin:0 auto;padding:22px 22px 80px}
+.edge{display:none}
+.scrim{display:none}
+@media(max-width:900px){
+  .menubtn{display:inline-flex}
+  .side{position:fixed;top:0;left:0;height:100vh;z-index:60;transform:translateX(-102%);transition:transform .25s;box-shadow:4px 0 20px rgba(0,0,0,.15);padding-top:20px}
+  body.navopen .side{transform:none}
+  body.navopen .scrim{display:block;position:fixed;inset:0;background:rgba(15,25,40,.45);z-index:55}
+  .edge{display:flex;position:fixed;left:0;top:45%;z-index:35;writing-mode:vertical-rl;transform:rotate(180deg);background:var(--pri);color:#fff;border:0;border-radius:var(--r) 0 0 var(--r);padding:10px 3px;font-weight:700;font-size:.68em;letter-spacing:.08em;gap:4px;align-items:center;opacity:.92}
+  .edge .ico{width:14px;height:14px}
+  main{padding:16px 14px 80px 30px}
+  .brand .t1{font-size:1em;white-space:nowrap}
+  .hs{width:30px;height:30px;border-width:2px;font-size:.85em}
+  .brand .t2{display:none}
+  .hbtn .lbl{display:none}
+}
+footer{font-size:.8em;color:var(--muted);text-align:center;padding:18px 16px 30px;border-top:1px solid var(--line);background:var(--card)}
+/* componentes */
+h1{font-size:1.65em;line-height:1.2;margin:.1em 0 .4em;color:var(--pri)}
+h2{font-size:1.25em;margin:1em 0 .4em;color:var(--pri)}
+h3{font-size:1.05em;margin:.3em 0}
+p{margin:.4em 0 .8em}
+.muted{color:var(--muted)} .note{font-size:.86em;color:var(--muted)}
+.crumb{font-size:.85em;color:var(--muted);margin-bottom:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:18px;margin:14px 0}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+@media(max-width:620px){.grid,.grid3{grid-template-columns:1fr}}
+.tile{display:flex;gap:14px;align-items:flex-start;text-align:left;width:100%;background:var(--card);border:1px solid var(--line);border-top:4px solid var(--pri);border-radius:var(--r);padding:16px;transition:transform .15s, box-shadow .15s}
+.tile:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(35,57,91,.12)}
+.tile .ic{width:44px;height:44px;border-radius:var(--r);background:var(--pri-l);color:var(--pri);display:flex;align-items:center;justify-content:center;flex:0 0 auto}
+.tile .ic .ico{width:24px;height:24px}
+.tile b{display:block;color:var(--pri);font-size:1.05em}
+.tile span.d{color:var(--muted);font-size:.9em}
+.hero{display:flex;gap:18px;align-items:center;background:var(--card);border:1px solid var(--line);border-left:6px solid var(--acc);border-radius:var(--r);padding:18px}
+.sosbar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;background:var(--sos-l);border:1px solid #F1B8B2;border-radius:var(--r);padding:12px 16px;margin:14px 0;color:#7A1A12}
+.sosbar .btn{margin-left:auto}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:1px solid var(--pri);border-radius:var(--r);padding:10px 18px;font-weight:700;background:var(--pri);color:#fff;min-height:46px;text-decoration:none}
+.btn:hover{background:var(--pri-d)}
+.btn.sec{background:var(--card);color:var(--pri)}
+.btn.sec:hover{background:var(--pri-l)}
+.btn.sos{background:var(--sos);border-color:var(--sos)}
+.btn.ok{background:var(--ok);border-color:var(--ok)}
+.btn[disabled]{opacity:.4;cursor:default}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.pill{display:inline-block;background:var(--pri-l);color:var(--pri);border-radius:999px;padding:2px 10px;font-size:.78em;font-weight:700}
+.progress{height:8px;background:var(--pri-l);border-radius:99px;overflow:hidden;margin:8px 0 4px}
+.progress i{display:block;height:100%;background:var(--ok);transition:width .4s}
+/* edad */
+.age{max-width:620px;margin:6vh auto 0;text-align:center}
+.age .opts{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:22px 0}
+@media(max-width:520px){.age .opts{grid-template-columns:1fr}}
+.age .opt14{background:var(--card);border:2px solid var(--line);border-radius:var(--r);padding:22px 14px;font-weight:700;font-size:1.15em;color:var(--pri);transition:border-color .15s, transform .15s}
+.age .opt14:hover{border-color:var(--pri);transform:translateY(-2px)}
+.age .opt14 small{display:block;font-weight:400;color:var(--muted);font-size:.75em;margin-top:6px}
+/* chat */
+.privacy{display:flex;gap:10px;background:var(--warn-l);color:var(--warn);border:1px solid #F0D9A8;border-radius:var(--r);padding:10px 12px;font-size:.92em}
+.msgs{display:flex;flex-direction:column;gap:12px;padding:16px 0}
+.mrow{display:flex;gap:10px;align-items:flex-end}
+.msg{max-width:84%;padding:11px 14px;border-radius:12px;white-space:pre-wrap;word-wrap:break-word}
+.msg.bot{background:var(--card);border:1px solid var(--line);border-bottom-left-radius:3px}
+.msg.me{align-self:flex-end;background:var(--pri);color:#fff;border-bottom-right-radius:3px}
+.msg.info{border-left:4px solid var(--ok)}
+.msg.crisis{background:var(--sos-l);border-color:#F1B8B2}
+.msg .src{display:block;margin-top:8px;font-size:.8em;color:var(--muted);border-top:1px dashed var(--line);padding-top:6px}
+.speak{background:none;border:0;padding:4px 0 0;font-size:.82em;font-weight:700;color:var(--pri);display:inline-flex;gap:4px;align-items:center}
+.chips{display:flex;flex-wrap:wrap;gap:8px;padding:4px 0 8px}
+.chip{border:1px solid var(--pri);background:var(--card);color:var(--pri);border-radius:999px;padding:8px 14px;font-weight:600;min-height:42px}
+.chip:hover{background:var(--pri-l)}
+.chip.strong{background:var(--pri);color:#fff}
+.chip.red{border-color:var(--sos);color:var(--sos)}
+.composer{position:sticky;bottom:0;background:var(--bg);padding:8px 0 12px;display:flex;gap:8px}
+.composer input{flex:1;border:1px solid var(--line);border-radius:var(--r);padding:11px 14px;background:var(--card);min-height:48px}
+.composer input:focus{outline:2px solid var(--pri);outline-offset:0}
+.typing{display:inline-flex;gap:4px}.typing i{width:7px;height:7px;border-radius:50%;background:var(--muted);animation:bl 1s infinite}
+.typing i:nth-child(2){animation-delay:.15s}.typing i:nth-child(3){animation-delay:.3s}
+@keyframes bl{0%,100%{opacity:.25}50%{opacity:1}}
+.phone{display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:12px 14px;margin:10px 0}
+.phone .num{font-weight:700;font-size:1.15em;color:var(--pri);min-width:90px}
+.phone .btn{margin-left:auto;min-height:40px;padding:8px 14px}
+.call{text-align:center;padding:28px 12px}
+.call .timer{font-size:2em;font-weight:700;color:var(--pri)}
+.pulse{animation:pu 1.6s infinite}@keyframes pu{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+/* juego */
+.lvl{display:flex;align-items:center;gap:14px;width:100%;text-align:left;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:14px;margin-bottom:10px;transition:box-shadow .15s}
+.lvl:hover{box-shadow:0 4px 14px rgba(35,57,91,.12)}
+.lvl .n{flex:0 0 44px;height:44px;border-radius:50%;background:var(--pri-l);color:var(--pri);font-weight:700;font-size:1.15em;display:flex;align-items:center;justify-content:center}
+.lvl.done .n{background:var(--ok);color:#fff}
+.flip{perspective:900px;height:160px;cursor:pointer}
+.flip .in{position:relative;width:100%;height:100%;transition:transform .5s;transform-style:preserve-3d}
+.flip.on .in{transform:rotateY(180deg)}
+.flip .f,.flip .b{position:absolute;inset:0;backface-visibility:hidden;border-radius:var(--r);padding:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;border:1px solid var(--line)}
+.flip .f{background:var(--pri-l);color:var(--pri)} .flip .f .e{font-size:36px}
+.flip .b{background:var(--card);transform:rotateY(180deg);font-size:.95em}
+.opt{display:block;width:100%;text-align:left;border:1px solid var(--line);background:var(--card);border-radius:var(--r);padding:11px 14px;margin:8px 0;min-height:46px}
+.opt:hover{border-color:var(--pri)}
+.opt.right{border-color:var(--ok);background:var(--ok-l)} .opt.wrong{border-color:var(--sos);background:var(--sos-l)}
+.tabs{display:flex;border-bottom:2px solid var(--line);margin:10px 0 14px;gap:4px}
+.tabs button{border:0;background:none;padding:10px 14px;font-weight:700;color:var(--muted);border-bottom:3px solid transparent;margin-bottom:-2px}
+.tabs button.on{color:var(--pri);border-bottom-color:var(--acc)}
+.photo{position:relative;border-radius:var(--r);overflow:hidden;border:1px solid var(--line);background:#000}
+.photo img{display:block;width:100%;height:auto}
+.hs{position:absolute;transform:translate(-50%,-50%);width:36px;height:36px;border-radius:50%;border:3px solid #fff;background:var(--acc);color:#fff;font-weight:700;box-shadow:0 2px 8px rgba(0,0,0,.4);display:flex;align-items:center;justify-content:center;padding:0}
+.hs::after{content:"";position:absolute;inset:-6px;border-radius:50%;border:2px solid rgba(255,255,255,.8);animation:ring 2s infinite}
+.hs.on{background:var(--pri);transform:translate(-50%,-50%) scale(1.15)}
+@keyframes ring{0%{opacity:1;transform:scale(.9)}100%{opacity:0;transform:scale(1.5)}}
+.credit{font-size:.75em;color:var(--muted);margin:6px 0 0}
+.hlist{counter-reset:h;list-style:none;padding:0;margin:10px 0}
+.hlist li button{display:flex;gap:10px;width:100%;text-align:left;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:10px 12px;margin:6px 0}
+.hlist li button.on{border-color:var(--pri);background:var(--pri-l)}
+.hlist .k{flex:0 0 26px;height:26px;border-radius:50%;background:var(--acc);color:#fff;font-weight:700;display:flex;align-items:center;justify-content:center;font-size:.85em}
+.step{display:block;width:100%;text-align:left;border:1px solid var(--line);background:var(--card);border-radius:var(--r);padding:11px 14px;margin:8px 0}
+.step.placed{background:var(--ok-l);border-color:var(--ok)}
+.step.no{animation:sh .3s}@keyframes sh{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.emo{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.emo button{border:1px solid var(--line);background:var(--card);border-radius:var(--r);padding:12px 4px;font-weight:600}
+.emo button .e{font-size:34px;display:block}
+.emo button.sel{border-color:var(--pri);background:var(--pri-l)}
+.breath{display:flex;flex-direction:column;align-items:center;gap:10px}
+.ball{width:110px;height:110px;border-radius:50%;background:var(--pri-l);border:3px solid var(--pri);transition:transform 4s ease-in-out}
+.ball.grow{transform:scale(1.4)}
+.lvnav{display:flex;justify-content:space-between;gap:10px;margin-top:22px;flex-wrap:wrap}
+/* diccionario */
+.words{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px}
+.word{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:14px}
+.word .e{font-size:30px}
+.word b{display:block;color:var(--pri);margin:4px 0}
+.word p{font-size:.9em;margin:0}
+.search{width:100%;border:1px solid var(--line);border-radius:var(--r);padding:11px 14px;background:var(--card);min-height:48px;margin-bottom:14px}
+details{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--pri);border-radius:var(--r);padding:12px 16px;margin:12px 0}
+details summary{font-weight:700;color:var(--pri);cursor:pointer;list-style:none}
+details summary::-webkit-details-marker{display:none}
+details summary::after{content:"+";float:right;font-size:1.2em}
+details[open] summary::after{content:"−"}
+/* aula */
+body.aula{--fs:22px}
+.slide{min-height:58vh}
+.slidenav{position:sticky;bottom:0;display:flex;justify-content:space-between;align-items:center;gap:10px;background:var(--bg);padding:12px 0;border-top:1px solid var(--line)}
+/* ajustes */
+.set{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}
+.sw{width:52px;height:30px;border-radius:999px;border:0;background:#C3CAD3;position:relative;flex:0 0 auto}
+.sw::after{content:"";position:absolute;top:3px;left:3px;width:24px;height:24px;border-radius:50%;background:#fff;transition:left .2s}
+.sw.on{background:var(--ok)}.sw.on::after{left:25px}
+select{padding:8px 10px;border-radius:var(--r);border:1px solid var(--line);background:var(--card)}
+/* modal 112 */
+.modal{position:fixed;inset:0;z-index:90;background:rgba(15,25,40,.55);display:flex;align-items:center;justify-content:center;padding:16px}
+.modal[hidden]{display:none}
+.modal .box{background:var(--card);border-radius:var(--r);max-width:440px;width:100%;padding:22px;border-top:6px solid var(--sos);max-height:92vh;overflow:auto}
+.big112{font-size:3.4em;font-weight:700;color:var(--sos);line-height:1;text-align:center;margin:8px 0}
+/* camuflaje */
+#camo{position:fixed;inset:0;z-index:100;background:linear-gradient(#7EC3F0,#D6EEFB);display:flex;flex-direction:column;align-items:center;justify-content:center;color:#123;font-family:system-ui,sans-serif;user-select:none;-webkit-user-select:none}
+#camo[hidden]{display:none}
+#camo .temp{font-size:72px;font-weight:300}
+#camo .city{font-size:22px}
+#camo .days{display:flex;gap:18px;margin-top:30px;font-size:15px;text-align:center}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+:focus-visible{outline:3px solid #4C8BD6;outline-offset:2px}
+</style>
+</head>
+<body>
+<div class="proto" id="proto"></div>
+<header class="top" id="top"></header>
+<div class="layout">
+  <nav class="side" id="side" aria-label="Menú"></nav>
+  <div class="scrim" onclick="closeNav()"></div>
+  <main id="app" tabindex="-1"></main>
+</div>
+<button class="edge" id="edge" onclick="openNav()" aria-label="Menú"></button>
+<footer id="foot"></footer>
+<div class="modal" id="sosModal" hidden role="dialog" aria-modal="true"></div>
+<div id="camo" hidden></div>
+
+<script>
+/* ======================= CONFIGURACIÓN ======================= */
+const CONFIG = {
+  WORKER_URL: '',          // URL del Cloudflare Worker (worker.js). Vacío = respuestas oficiales preparadas, sin conexión.
+  WORKER_TIMEOUT_MS: 9000
+};
+
+/* ======================= ESTADO =======================
+   La conversación, la edad y el progreso viven SOLO en memoria.
+   Solo se guardan preferencias que no identifican a nadie (idioma, letra, contraste, camuflaje). */
+const store = {
+  get(k,d){ try{ const v=localStorage.getItem('mj_'+k); return v===null?d:JSON.parse(v);}catch(e){return d;} },
+  set(k,v){ try{ localStorage.setItem('mj_'+k, JSON.stringify(v)); }catch(e){} }
+};
+let LANG = store.get('lang','es');
+const S = { age:null, chat:null, done:new Set(), big:store.get('big',false), contrast:store.get('contrast',false), camo:store.get('camo',false), autoSpeak:false, aulaIdx:0 };
+const TEEN = () => S.age === 'teen';
+
+/* ======================= TEXTOS DE INTERFAZ ======================= */
+const T = {
+es:{appName:'Mi Justicia', appSub:'Infancia y adolescencia', proto:'Prototipo · DATAthon Justicia 2026 · No es una aplicación oficial',
+ exit:'Salir', sos:'112', sosLbl:'Emergencia', menu:'Menú', home:'Inicio', settings:'Ajustes', changeAge:'Cambiar edad',
+ secMain:'Secciones', secGame:'Mi camino por la justicia', secTips:'Consejos importantes',
+ ageTitle:'Bienvenida a Mi Justicia', ageSub:'Para adaptar las explicaciones, dinos tu edad. No la guardamos en ningún sitio.',
+ ageKid:'Tengo menos de 14 años', ageKidD:'Explicaciones con palabras muy sencillas', ageTeen:'Tengo 14 años o más', ageTeenD:'Información más completa y detallada',
+ helloKid:'¡Hola! Soy Bubo', helloKidSub:'Te acompaño para que entiendas cómo funciona la justicia y sepas dónde pedir ayuda.',
+ helloTeen:'Información y ayuda para adolescentes', helloTeenSub:'Conoce tus derechos, cómo funcionan los procedimientos judiciales y a quién acudir. Soy Bubo y te acompaño.',
+ dangerNow:'¿Estás en peligro ahora mismo?', callSos:'Llamar al 112',
+ tChat:'Habla con Bubo', dChat:'Pregunta lo que te preocupa', tGame:'Mi camino por la justicia', dGame:'Conoce el juzgado paso a paso',
+ tDict:'Diccionario', dDict:'Palabras jurídicas explicadas', tTips:'Consejos importantes', dTips:'Ciberacoso, imágenes y juicios',
+ tHelp:'Teléfonos de ayuda', dHelp:'Personas que pueden ayudarte', tAula:'Modo aula', dAula:'Para proyectar en clase',
+ noSave:'Esta aplicación no guarda nada de lo que haces ni de lo que escribes. Si alguien se acerca, pulsa «Salir».',
+ privacy:'Este chat no guarda ni envía nada de lo que escribes. No pongas tu nombre, dirección, colegio ni teléfono.',
+ placeholder:'Escribe aquí…', send:'Enviar', listen:'Escuchar', thinking:'Bubo está escribiendo',
+ redacted:'He ocultado un dato personal para protegerte. No hace falta que digas quién eres.',
+ source:'Fuente oficial', talkPerson:'Hablar con una persona', seePhones:'Ver teléfonos de ayuda', keepTalking:'Seguir hablando',
+ callTitle:'Hablar con una persona especialista', callDesc:'Te pondremos en contacto con una persona especialista en',
+ callNoData:'No le enviamos nada de lo que has escrito aquí. Tú decides qué quieres contarle.',
+ callNow:'Llamar ahora', cancel:'Volver al chat', connecting:'Conectando con una persona especialista en', connected:'Estás hablando con una persona especialista en',
+ hang:'Colgar', demoCall:'Simulación para la demo. En la aplicación real hablarías por voz con una persona del servicio de ayuda.', afterCall:'Sigo aquí. Si quieres, podemos seguir hablando.',
+ lvl:'Nivel', done:'¡Nivel completado!', finish:'Completar nivel', prevL:'Nivel anterior', nextL:'Siguiente nivel', backMap:'Ver todos los niveles',
+ gameIntro:'Seis niveles para conocer tus derechos, a los profesionales y el juzgado. Puedes hacerlos en el orden que quieras.', progress:'Progreso',
+ tap:'Toca cada tarjeta para darle la vuelta.', right:'¡Correcto!', wrong:'No exactamente:',
+ roomGesell:'Sala Gesell (sala adaptada)', roomCourt:'Sala de juicio', tapPoint:'Toca los puntos de la foto para saber qué hay en cada zona.',
+ orderTitle:'¿En qué orden pasa?', orderDesc:'Toca los pasos en el orden correcto.', orderDone:'¡Perfecto! Ya sabes cómo es el día.',
+ breathe:'Respira conmigo', inhale:'Toma aire…', exhale:'Suelta el aire…', start:'Empezar',
+ search:'Buscar palabra…', tipsKidOnly:'Esta sección es para mayores de 14 años.',
+ setLang:'Idioma', setBig:'Letra más grande', setContrast:'Alto contraste', setSpeak:'Leer en voz alta las respuestas',
+ setCamo:'Modo camuflaje', setCamoD:'La aplicación se esconde detrás de una pantalla del tiempo llamada «Nube». Para volver, mantén pulsada la nube 3 segundos. Instalada en el móvil, la aplicación aparece con el nombre «Nube» y el icono de una nube.', setCamoNow:'Esconder ahora',
+ aulaPrev:'Anterior', aulaNext:'Siguiente', aulaQR:'Escanea para abrir Mi Justicia',
+ footer:'Prototipo para el DATAthon Justicia 2026 (Reto 2: Infancia y juventud). Información resumida de normas oficiales. La llamada a especialistas es una simulación.',
+ sosTitle:'Emergencias', sosDesc:'Si estás en peligro, llama al 112. Es gratis y funciona las 24 horas.', sosPc:'Si estás usando un ordenador o una tablet sin línea, marca 112 desde cualquier teléfono o pide a alguien cercano que llame.', sosOther:'Otros teléfonos', close:'Cerrar', yes:'Sí', no:'No'},
+gl:{appName:'Mi Justicia', appSub:'Infancia e adolescencia', proto:'Prototipo · DATAthon Justicia 2026 · Non é unha aplicación oficial',
+ exit:'Saír', sos:'112', sosLbl:'Emerxencia', menu:'Menú', home:'Inicio', settings:'Axustes', changeAge:'Cambiar idade',
+ secMain:'Seccións', secGame:'O meu camiño pola xustiza', secTips:'Consellos importantes',
+ ageTitle:'Benvida a Mi Justicia', ageSub:'Para adaptar as explicacións, dinos a túa idade. Non a gardamos en ningún sitio.',
+ ageKid:'Teño menos de 14 anos', ageKidD:'Explicacións con palabras moi sinxelas', ageTeen:'Teño 14 anos ou máis', ageTeenD:'Información máis completa e detallada',
+ helloKid:'Ola! Son Bubo', helloKidSub:'Acompáñote para que entendas como funciona a xustiza e saibas onde pedir axuda.',
+ helloTeen:'Información e axuda para adolescentes', helloTeenSub:'Coñece os teus dereitos, como funcionan os procedementos xudiciais e a quen acudir. Son Bubo e acompáñote.',
+ dangerNow:'Estás en perigo agora mesmo?', callSos:'Chamar ao 112',
+ tChat:'Fala con Bubo', dChat:'Pregunta o que che preocupa', tGame:'O meu camiño pola xustiza', dGame:'Coñece o xulgado paso a paso',
+ tDict:'Dicionario', dDict:'Palabras xurídicas explicadas', tTips:'Consellos importantes', dTips:'Ciberacoso, imaxes e xuízos',
+ tHelp:'Teléfonos de axuda', dHelp:'Persoas que poden axudarte', tAula:'Modo aula', dAula:'Para proxectar na clase',
+ noSave:'Esta aplicación non garda nada do que fas nin do que escribes. Se alguén se achega, preme «Saír».',
+ privacy:'Este chat non garda nin envía nada do que escribes. Non poñas o teu nome, enderezo, colexio nin teléfono.',
+ placeholder:'Escribe aquí…', send:'Enviar', listen:'Escoitar', thinking:'Bubo está escribindo',
+ redacted:'Agochei un dato persoal para protexerte. Non fai falta que digas quen es.',
+ source:'Fonte oficial', talkPerson:'Falar cunha persoa', seePhones:'Ver teléfonos de axuda', keepTalking:'Seguir falando',
+ callTitle:'Falar cunha persoa especialista', callDesc:'Poñerémoste en contacto cunha persoa especialista en',
+ callNoData:'Non lle enviamos nada do que escribiches aquí. Ti decides que queres contarlle.',
+ callNow:'Chamar agora', cancel:'Volver ao chat', connecting:'Conectando cunha persoa especialista en', connected:'Estás falando cunha persoa especialista en',
+ hang:'Colgar', demoCall:'Simulación para a demo. Na aplicación real falarías por voz cunha persoa do servizo de axuda.', afterCall:'Sigo aquí. Se queres, podemos seguir falando.',
+ lvl:'Nivel', done:'Nivel completado!', finish:'Completar nivel', prevL:'Nivel anterior', nextL:'Seguinte nivel', backMap:'Ver todos os niveis',
+ gameIntro:'Seis niveis para coñecer os teus dereitos, os profesionais e o xulgado. Podes facelos na orde que queiras.', progress:'Progreso',
+ tap:'Toca cada tarxeta para darlle a volta.', right:'Correcto!', wrong:'Non exactamente:',
+ roomGesell:'Sala Gesell (sala adaptada)', roomCourt:'Sala de xuízo', tapPoint:'Toca os puntos da foto para saber que hai en cada zona.',
+ orderTitle:'En que orde pasa?', orderDesc:'Toca os pasos na orde correcta.', orderDone:'Perfecto! Xa sabes como é o día.',
+ breathe:'Respira comigo', inhale:'Colle aire…', exhale:'Solta o aire…', start:'Comezar',
+ search:'Buscar palabra…', tipsKidOnly:'Esta sección é para maiores de 14 anos.',
+ setLang:'Idioma', setBig:'Letra máis grande', setContrast:'Alto contraste', setSpeak:'Ler en voz alta as respostas',
+ setCamo:'Modo camuflaxe', setCamoD:'A aplicación agóchase detrás dunha pantalla do tempo chamada «Nube». Para volver, mantén premida a nube 3 segundos. Instalada no móbil, a aplicación aparece co nome «Nube» e a icona dunha nube.', setCamoNow:'Agochar agora',
+ aulaPrev:'Anterior', aulaNext:'Seguinte', aulaQR:'Escanea para abrir Mi Justicia',
+ footer:'Prototipo para o DATAthon Justicia 2026 (Reto 2: Infancia e xuventude). Información resumida de normas oficiais. A chamada a especialistas é unha simulación.',
+ sosTitle:'Emerxencias', sosDesc:'Se estás en perigo, chama ao 112. É de balde e funciona as 24 horas.', sosPc:'Se estás usando un ordenador ou unha tablet sen liña, marca 112 desde calquera teléfono ou pídelle a alguén próximo que chame.', sosOther:'Outros teléfonos', close:'Pechar', yes:'Si', no:'Non'},
+en:{appName:'Mi Justicia', appSub:'Children and teenagers', proto:'Prototype · DATAthon Justicia 2026 · Not an official app',
+ exit:'Exit', sos:'112', sosLbl:'Emergency', menu:'Menu', home:'Home', settings:'Settings', changeAge:'Change age',
+ secMain:'Sections', secGame:'My path through justice', secTips:'Important tips',
+ ageTitle:'Welcome to Mi Justicia', ageSub:'To adapt the explanations, tell us your age. We don\'t store it anywhere.',
+ ageKid:'I am under 14', ageKidD:'Explanations in very simple words', ageTeen:'I am 14 or older', ageTeenD:'More complete and detailed information',
+ helloKid:'Hi! I\'m Bubo', helloKidSub:'I\'ll help you understand how justice works and where to ask for help.',
+ helloTeen:'Information and help for teenagers', helloTeenSub:'Learn about your rights, how court proceedings work and who to turn to. I\'m Bubo and I\'m here to help.',
+ dangerNow:'Are you in danger right now?', callSos:'Call 112',
+ tChat:'Talk to Bubo', dChat:'Ask about what worries you', tGame:'My path through justice', dGame:'Get to know the court step by step',
+ tDict:'Dictionary', dDict:'Legal words explained', tTips:'Important tips', dTips:'Cyberbullying, images and trials',
+ tHelp:'Help numbers', dHelp:'People who can help you', tAula:'Classroom mode', dAula:'To project in class',
+ noSave:'This app saves nothing you do or write. If someone comes near, tap «Exit».',
+ privacy:'This chat does not save or send anything you write. Don\'t include your name, address, school or phone number.',
+ placeholder:'Write here…', send:'Send', listen:'Listen', thinking:'Bubo is typing',
+ redacted:'I hid a personal detail to protect you. You don\'t need to say who you are.',
+ source:'Official source', talkPerson:'Talk to a person', seePhones:'See help numbers', keepTalking:'Keep talking',
+ callTitle:'Talk to a specialist', callDesc:'We will put you in touch with a person who specialises in',
+ callNoData:'We don\'t send anything you wrote here. You decide what you want to tell them.',
+ callNow:'Call now', cancel:'Back to chat', connecting:'Connecting you with a specialist in', connected:'You are talking with a specialist in',
+ hang:'Hang up', demoCall:'Demo simulation. In the real app you would talk by voice with a person from the help service.', afterCall:'I\'m still here. If you want, we can keep talking.',
+ lvl:'Level', done:'Level complete!', finish:'Complete level', prevL:'Previous level', nextL:'Next level', backMap:'See all levels',
+ gameIntro:'Six levels to learn about your rights, the professionals and the court. Do them in any order you like.', progress:'Progress',
+ tap:'Tap each card to flip it.', right:'Correct!', wrong:'Not quite:',
+ roomGesell:'Gesell room (adapted room)', roomCourt:'Courtroom', tapPoint:'Tap the points on the photo to find out what is in each area.',
+ orderTitle:'In what order does it happen?', orderDesc:'Tap the steps in the right order.', orderDone:'Perfect! Now you know how the day goes.',
+ breathe:'Breathe with me', inhale:'Breathe in…', exhale:'Breathe out…', start:'Start',
+ search:'Search a word…', tipsKidOnly:'This section is for ages 14 and over.',
+ setLang:'Language', setBig:'Bigger text', setContrast:'High contrast', setSpeak:'Read answers aloud',
+ setCamo:'Camouflage mode', setCamoD:'The app hides behind a weather screen called «Nube». To come back, press and hold the cloud for 3 seconds. Installed on a phone, the app shows the name «Nube» and a cloud icon.', setCamoNow:'Hide now',
+ aulaPrev:'Previous', aulaNext:'Next', aulaQR:'Scan to open Mi Justicia',
+ footer:'Prototype for DATAthon Justicia 2026 (Challenge 2: Children and youth). Information summarised from official laws. The call to specialists is a simulation.',
+ sosTitle:'Emergencies', sosDesc:'If you are in danger, call 112. It is free and works 24 hours a day.', sosPc:'If you are on a computer or a tablet without a phone line, dial 112 from any phone or ask someone nearby to call.', sosOther:'Other numbers', close:'Close', yes:'Yes', no:'No'}
+};
+const t = k => (T[LANG]&&T[LANG][k]) || T.es[k] || k;
+/* L(): elige idioma y, si existe, la versión para mayores de 14 (campo teen) */
+const L = o => { if(!o) return ''; const src = (TEEN() && o.teen) ? o.teen : o; return src[LANG] || src.es || ''; };
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const norm = s => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');
+
+/* ======================= ICONOS ======================= */
+const IC = {
+ home:'<path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/>',
+ chat:'<path d="M4 5h16v11H9l-5 4z"/>',
+ map:'<path d="M9 4L3 6v14l6-2 6 2 6-2V4l-6 2-6-2zM9 4v14M15 6v14"/>',
+ book:'<path d="M5 4h11a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3zM5 17a3 3 0 0 1 3-3h11"/>',
+ shield:'<path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/>',
+ phone:'<path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/>',
+ school:'<path d="M3 9l9-5 9 5-9 5zM7 11v5c3 2 7 2 10 0v-5"/>',
+ settings:'<circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2"/>',
+ user:'<circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4-6 8-6s7 2 8 6"/>',
+ exit:'<path d="M10 4H5v16h5M14 8l4 4-4 4M18 12H9"/>',
+ menu:'<path d="M4 6h16M4 12h16M4 18h16"/>',
+ alert:'<path d="M12 3l10 18H2zM12 10v5M12 18v.5"/>',
+ lock:'<rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/>',
+ sound:'<path d="M4 9h4l5-4v14l-5-4H4zM17 9a4 4 0 0 1 0 6"/>',
+ arrowL:'<path d="M15 6l-6 6 6 6"/>', arrowR:'<path d="M9 6l6 6-6 6"/>', check:'<path d="M5 12l5 5 9-10"/>'
+};
+const ic = n => `<svg class="ico" viewBox="0 0 24 24" aria-hidden="true">${IC[n]||''}</svg>`;
+
+/* ======================= BUBO (búho guía) ======================= */
+function bubo(expr='happy', w=64){
+  const eyesOpen = `<circle cx="37" cy="42" r="7" fill="#1E2A3A"/><circle cx="63" cy="42" r="7" fill="#1E2A3A"/><circle cx="39.5" cy="39.5" r="2.4" fill="#fff"/><circle cx="65.5" cy="39.5" r="2.4" fill="#fff"/>`;
+  const eyesClosed = `<path d="M30 43q7-7 14 0M56 43q7-7 14 0" fill="none" stroke="#1E2A3A" stroke-width="3.2" stroke-linecap="round"/>`;
+  let eyes = expr==='happy'||expr==='party' ? eyesClosed : eyesOpen;
+  let beak = expr==='talk' ? `<path d="M45 51h10l-5 9z" fill="#E08A2E"/><path d="M47 55h6" stroke="#9A5512" stroke-width="1.5"/>` : `<path d="M45 51h10l-5 8z" fill="#E08A2E"/>`;
+  let extra = (expr==='listen'||expr==='party') ? `<ellipse cx="26" cy="54" rx="5" ry="3" fill="#F2B8B0"/><ellipse cx="74" cy="54" rx="5" ry="3" fill="#F2B8B0"/>` : '';
+  if(expr==='party') extra += `<circle cx="10" cy="14" r="3" fill="#8C1C2E"/><circle cx="90" cy="12" r="3" fill="#E08A2E"/><circle cx="86" cy="28" r="2.5" fill="#2E7D5B"/>`;
+  return `<svg width="${w}" height="${w}" viewBox="0 0 100 100" aria-hidden="true">
+   <path d="M22 26L28 8l12 14M78 26L72 8 60 22" fill="#8A6A4F"/>
+   <ellipse cx="50" cy="57" rx="35" ry="38" fill="#A9825F"/>
+   <ellipse cx="18" cy="64" rx="8" ry="20" fill="#8A6A4F" transform="rotate(12 18 64)"/><ellipse cx="82" cy="64" rx="8" ry="20" fill="#8A6A4F" transform="rotate(-12 82 64)"/>
+   <ellipse cx="50" cy="74" rx="22" ry="19" fill="#F3E6D3"/>
+   <path d="M42 70q3 3 6 0M52 70q3 3 6 0M47 78q3 3 6 0" fill="none" stroke="#D8C2A4" stroke-width="1.6" stroke-linecap="round"/>
+   <circle cx="37" cy="42" r="14" fill="#F3E6D3"/><circle cx="63" cy="42" r="14" fill="#F3E6D3"/>
+   ${extra}${eyes}${beak}
+   <path d="M40 94l-3 4M44 95v4M56 95v4M60 94l3 4" stroke="#E08A2E" stroke-width="2.4" stroke-linecap="round"/></svg>`;
+}
+
+/* ======================= BASE DE CONOCIMIENTO OFICIAL (RAG) =======================
+   Cada fragmento resume una norma oficial. "text" = menores de 14; "teen" = 14 o más. */
+const CORPUS = [
+{id:'oido', topic:'rights', src:'Convención sobre los Derechos del Niño (art. 12) · Ley Orgánica 1/1996 (art. 9)',
+ kw:'derechos escuchar opinion escuchen hablar decidir oido dereitos escoitar rights listen opinion heard',
+ text:{es:'Tienes derecho a que te escuchen. Cuando se decide algo que te afecta, tu opinión cuenta y las personas adultas deben tenerla en cuenta.',
+       gl:'Tes dereito a que te escoiten. Cando se decide algo que che afecta, a túa opinión conta e as persoas adultas deben tela en conta.',
+       en:'You have the right to be listened to. When something that affects you is being decided, your opinion counts and adults must take it into account.'},
+ teen:{es:'La Convención sobre los Derechos del Niño y la Ley Orgánica 1/1996 reconocen tu derecho a ser oído y escuchado en cualquier procedimiento que te afecte. Tu opinión debe tenerse en cuenta según tu madurez, y la ley considera que a partir de los 12 años tienes madurez suficiente.',
+       gl:'A Convención sobre os Dereitos do Neno e a Lei Orgánica 1/1996 recoñecen o teu dereito a ser oído e escoitado en calquera procedemento que che afecte. A túa opinión debe terse en conta segundo a túa madurez, e a lei considera que a partir dos 12 anos tes madurez suficiente.',
+       en:'The Convention on the Rights of the Child and Organic Law 1/1996 recognise your right to be heard in any proceeding that affects you. Your opinion must be taken into account according to your maturity, and the law considers that from age 12 you are mature enough.'}},
+{id:'informacion', topic:'rights', src:'Ley Orgánica 1/1996 (art. 5) · Ley 4/2015, Estatuto de la Víctima (arts. 4 y 5)',
+ kw:'entender explicar informacion palabras no entiendo entender explicar understand explain information',
+ text:{es:'Tienes derecho a que te expliquen lo que pasa con palabras que entiendas. Si algo no lo entiendes, puedes preguntar todas las veces que necesites.',
+       gl:'Tes dereito a que che expliquen o que pasa con palabras que entendas. Se algo non o entendes, podes preguntar todas as veces que precises.',
+       en:'You have the right to have what is happening explained in words you understand. If you don\'t understand something, you can ask as many times as you need.'},
+ teen:{es:'Desde el primer contacto con las autoridades tienes derecho a recibir información clara y adaptada sobre el procedimiento, tus derechos y los servicios de apoyo disponibles (Estatuto de la Víctima). Si algo no queda claro, puedes pedir que te lo expliquen de nuevo.',
+       gl:'Desde o primeiro contacto coas autoridades tes dereito a recibir información clara e adaptada sobre o procedemento, os teus dereitos e os servizos de apoio dispoñibles (Estatuto da Vítima). Se algo non queda claro, podes pedir que cho expliquen de novo.',
+       en:'From your first contact with the authorities you have the right to clear, adapted information about the proceedings, your rights and the support services available (Victims\' Statute). If something isn\'t clear, you can ask for it to be explained again.'}},
+{id:'comunicar', topic:'other', src:'Ley Orgánica 8/2021, LOPIVI (art. 17)',
+ kw:'contar pedir ayuda solo sola sin adultos avisar denunciar yo mismo axuda tell ask help alone without adults report myself',
+ text:{es:'Tú mismo o tú misma puedes contar que te están haciendo daño, sin necesitar a un adulto. Las administraciones deben tener formas seguras y fáciles para que niños y niñas pidan ayuda.',
+       gl:'Ti mesmo ou ti mesma podes contar que che están facendo dano, sen precisar dun adulto. As administracións deben ter formas seguras e fáciles para que nenos e nenas pidan axuda.',
+       en:'You can tell someone yourself that you are being hurt, without needing an adult. Public services must have safe and easy ways for children to ask for help.'},
+ teen:{es:'La LOPIVI reconoce que puedes comunicar por ti mismo una situación de violencia, sin necesidad de que lo haga un adulto. Las administraciones deben habilitar canales seguros, eficaces, adaptados y accesibles, también por medios electrónicos.',
+       gl:'A LOPIVI recoñece que podes comunicar por ti mesmo unha situación de violencia, sen necesidade de que o faga un adulto. As administracións deben habilitar canles seguras, eficaces, adaptadas e accesibles, tamén por medios electrónicos.',
+       en:'The LOPIVI law recognises that you can report a situation of violence yourself, without needing an adult. Public authorities must provide safe, effective, adapted and accessible channels, including electronic ones.'}},
+{id:'deber', topic:'other', src:'Ley Orgánica 8/2021, LOPIVI (arts. 15 y 16)',
+ kw:'profesor profe medico adulto obligado avisar saber guardar secreto teacher doctor adult must report secret',
+ text:{es:'Cualquier adulto que sepa que un niño o niña está sufriendo violencia tiene que avisar a quien pueda protegerle. Los profesores y los médicos tienen una obligación especial.',
+       gl:'Calquera adulto que saiba que un neno ou nena está sufrindo violencia ten que avisar a quen poida protexelo. Os profesores e os médicos teñen unha obriga especial.',
+       en:'Any adult who knows a child is suffering violence must tell someone who can protect them. Teachers and doctors have a special duty.'},
+ teen:{es:'Toda persona que tenga conocimiento de una situación de violencia contra una persona menor de edad tiene el deber de comunicarlo a la autoridad. Para profesionales como docentes, personal sanitario o de servicios sociales este deber es cualificado.',
+       gl:'Toda persoa que teña coñecemento dunha situación de violencia contra unha persoa menor de idade ten o deber de comunicalo á autoridade. Para profesionais como docentes, persoal sanitario ou de servizos sociais este deber é cualificado.',
+       en:'Anyone who becomes aware of violence against a minor has a duty to report it to the authorities. For professionals such as teachers, health workers or social services staff this duty is stronger.'}},
+{id:'coordinador', topic:'bullying', src:'Ley Orgánica 8/2021, LOPIVI (art. 35)',
+ kw:'colegio instituto coordinador bienestar proteccion cole clase colexio benestar school coordinator wellbeing',
+ text:{es:'En tu colegio hay una persona coordinadora de bienestar y protección. Su trabajo es cuidar que estés bien y ayudarte si alguien te hace daño. Puedes ir a hablar con ella.',
+       gl:'No teu colexio hai unha persoa coordinadora de benestar e protección. O seu traballo é coidar que esteas ben e axudarte se alguén che fai dano. Podes ir falar con ela.',
+       en:'Your school has a wellbeing and protection coordinator. Their job is to make sure you are OK and to help you if someone hurts you. You can go and talk to them.'},
+ teen:{es:'Todos los centros educativos deben tener una persona coordinadora de bienestar y protección. Promueve planes contra la violencia, es la persona de referencia para el alumnado y comunica los casos a las autoridades cuando es necesario.',
+       gl:'Todos os centros educativos deben ter unha persoa coordinadora de benestar e protección. Promove plans contra a violencia, é a persoa de referencia para o alumnado e comunica os casos ás autoridades cando é necesario.',
+       en:'Every school must have a wellbeing and protection coordinator. They promote anti-violence plans, are the point of contact for students and report cases to the authorities when needed.'}},
+{id:'acoso', topic:'bullying', src:'Ley Orgánica 8/2021, LOPIVI (arts. 34 y 35)',
+ kw:'acoso escolar bullying insultan pegan molestan clase companeros excluyen burlas compañeiros bullying school insult hit classmates mock exclude',
+ text:{es:'Si en el colegio te insultan, te pegan, te dejan de lado o se burlan de ti muchas veces, eso es acoso y no es culpa tuya. Los colegios tienen que actuar. Cuéntaselo a un adulto de confianza.',
+       gl:'Se no colexio te insultan, che pegan, te deixan de lado ou se burlan de ti moitas veces, iso é acoso e non é culpa túa. Os colexios teñen que actuar. Cóntallo a un adulto de confianza.',
+       en:'If at school people insult you, hit you, leave you out or make fun of you many times, that is bullying and it is not your fault. Schools must act. Tell a trusted adult.'},
+ teen:{es:'El acoso escolar son agresiones repetidas (físicas, verbales, de exclusión o por internet) en una situación de desequilibrio de poder. Los centros deben aplicar protocolos de actuación frente al acoso. Puedes comunicarlo a la persona coordinadora de bienestar, a la dirección o a un adulto de confianza.',
+       gl:'O acoso escolar son agresións repetidas (físicas, verbais, de exclusión ou por internet) nunha situación de desequilibrio de poder. Os centros deben aplicar protocolos de actuación fronte ao acoso. Podes comunicalo á persoa coordinadora de benestar, á dirección ou a un adulto de confianza.',
+       en:'School bullying means repeated aggression (physical, verbal, exclusion or online) where there is an imbalance of power. Schools must apply anti-bullying protocols. You can report it to the wellbeing coordinator, the head of school or a trusted adult.'}},
+{id:'ciber', topic:'cyber', src:'Ley Orgánica 8/2021, LOPIVI · Código Penal',
+ kw:'ciberacoso internet redes movil whatsapp instagram tiktok mensajes amenazas grupo online mobil mensaxes cyberbullying social media phone messages threats',
+ text:{es:'Si te molestan por internet o por el móvil, no estás solo ni sola. No contestes, bloquea a esa persona y enséñaselo a un adulto de confianza.',
+       gl:'Se te molestan por internet ou polo móbil, non estás só nin soa. Non contestes, bloquea a esa persoa e amósallo a un adulto de confianza.',
+       en:'If someone bothers you online or on your phone, you are not alone. Don\'t reply, block that person and show it to a trusted adult.'},
+ teen:{es:'Si sufres ciberacoso, conserva pruebas (capturas con fecha y hora, enlaces y nombre de los perfiles), bloquea y denuncia en la plataforma y pide ayuda. Las amenazas, el acoso reiterado o la suplantación de identidad pueden ser delito y denunciarse ante la policía.',
+       gl:'Se sofres ciberacoso, conserva probas (capturas con data e hora, ligazóns e nome dos perfís), bloquea e denuncia na plataforma e pide axuda. As ameazas, o acoso reiterado ou a suplantación de identidade poden ser delito e denunciarse ante a policía.',
+       en:'If you are cyberbullied, keep evidence (screenshots with date and time, links and profile names), block and report on the platform and ask for help. Threats, repeated harassment or identity theft can be crimes and can be reported to the police.'}},
+{id:'imagenes', topic:'images', src:'Código Penal (art. 197.7) · Agencia Española de Protección de Datos (Canal Prioritario)',
+ kw:'fotos foto video intimas desnudo difundido compartido reenviado sexting imagen imaxe espido photos intimate nude shared forwarded image',
+ text:{es:'Si alguien ha enseñado o enviado fotos o vídeos tuyos que no querías, no es culpa tuya y no está permitido. No reenvíes esas imágenes y cuéntaselo enseguida a un adulto de confianza: se puede pedir que se borren.',
+       gl:'Se alguén amosou ou enviou fotos ou vídeos teus que non querías, non é culpa túa e non está permitido. Non reenvíes esas imaxes e cóntallo axiña a un adulto de confianza: pódese pedir que se borren.',
+       en:'If someone has shown or sent photos or videos of you that you didn\'t want shared, it is not your fault and it is not allowed. Don\'t forward them and tell a trusted adult straight away: they can be asked to be deleted.'},
+ teen:{es:'Difundir imágenes o vídeos íntimos de una persona sin su autorización es delito, aunque se hubieran conseguido con su consentimiento, y también lo es reenviarlos. Puedes solicitar su retirada urgente a través del Canal Prioritario de la AEPD. No guardes ni reenvíes la imagen: conserva el enlace, el perfil y la fecha.',
+       gl:'Difundir imaxes ou vídeos íntimos dunha persoa sen a súa autorización é delito, aínda que se conseguisen co seu consentimento, e tamén o é reenvialos. Podes solicitar a súa retirada urxente a través da Canle Prioritaria da AEPD. Non gardes nin reenvíes a imaxe: conserva a ligazón, o perfil e a data.',
+       en:'Sharing someone\'s intimate images or videos without their permission is a crime, even if they were obtained with consent, and so is forwarding them. You can request urgent removal through the AEPD Priority Channel. Don\'t keep or forward the image: save the link, the profile and the date.'}},
+{id:'casa', topic:'home', src:'Ley Orgánica 1/1996 (arts. 17 y 18) · Ley Orgánica 8/2021, LOPIVI',
+ kw:'casa padres madre padre familia gritos pegan cuidan comida abandonado miedo volver nai pai familia berros home parents mother father family shouting care neglected',
+ text:{es:'Tienes derecho a estar protegido o protegida también en casa. Si en tu casa te hacen daño o no te cuidan, hay personas cuyo trabajo es ayudarte. Contarlo no es traicionar a nadie: es pedir que te cuiden.',
+       gl:'Tes dereito a estar protexido ou protexida tamén na casa. Se na túa casa che fan dano ou non te coidan, hai persoas cuxo traballo é axudarte. Contalo non é traizoar a ninguén: é pedir que te coiden.',
+       en:'You have the right to be protected at home too. If someone at home hurts you or doesn\'t look after you, there are people whose job is to help you. Telling someone is not betraying anyone: it is asking to be looked after.'},
+ teen:{es:'Si en tu entorno familiar no se cubren tus necesidades o sufres violencia, las administraciones deben intervenir con medidas de protección, que van desde apoyos a la familia hasta la tutela por la entidad pública en situaciones de desamparo. Tu interés superior es lo primero.',
+       gl:'Se no teu contorno familiar non se cobren as túas necesidades ou sofres violencia, as administracións deben intervir con medidas de protección, que van desde apoios á familia ata a tutela pola entidade pública en situacións de desamparo. O teu interese superior é o primeiro.',
+       en:'If your needs are not met at home or you suffer violence, the authorities must step in with protection measures, from family support to guardianship by the public child protection agency in cases of abandonment. Your best interests come first.'}},
+{id:'dano', topic:'harm', src:'Ley Orgánica 8/2021, LOPIVI · Ley 4/2015, Estatuto de la Víctima',
+ kw:'dano tocado cuerpo abuso agresion pegado herido violencia sexual obligado corpo ferido hurt touched body abuse assault injured violence forced',
+ text:{es:'Si alguien te ha hecho daño o ha tocado tu cuerpo sin que tú quieras, no es culpa tuya, aunque esa persona te diga lo contrario. Tienes derecho a que te protejan. Si estás en peligro, llama al 112.',
+       gl:'Se alguén che fixo dano ou tocou o teu corpo sen que ti quixeras, non é culpa túa, aínda que esa persoa che diga o contrario. Tes dereito a que te protexan. Se estás en perigo, chama ao 112.',
+       en:'If someone has hurt you or touched your body when you didn\'t want them to, it is not your fault, even if that person says otherwise. You have the right to be protected. If you are in danger, call 112.'},
+ teen:{es:'Si has sufrido una agresión o un abuso, tienes derecho a protección, a atención sanitaria y psicológica y a la ayuda gratuita de las Oficinas de Asistencia a las Víctimas. No es culpa tuya. Si estás en peligro, llama al 112.',
+       gl:'Se sufriches unha agresión ou un abuso, tes dereito a protección, a atención sanitaria e psicolóxica e á axuda gratuíta das Oficinas de Asistencia ás Vítimas. Non é culpa túa. Se estás en perigo, chama ao 112.',
+       en:'If you have suffered an assault or abuse, you have the right to protection, medical and psychological care and free help from the Victim Support Offices. It is not your fault. If you are in danger, call 112.'}},
+{id:'denuncia', topic:'other', src:'Ley de Enjuiciamiento Criminal (arts. 259 y ss.) · Ley Orgánica 8/2021, LOPIVI',
+ kw:'denuncia denunciar policia comisaria que es delito juzgado xulgado report complaint police station crime court',
+ text:{es:'Una denuncia es contar a la policía o al juzgado algo malo que ha pasado, para que lo investiguen. Si eres menor, hay personas cuyo trabajo es protegerte durante todo el proceso.',
+       gl:'Unha denuncia é contar á policía ou ao xulgado algo malo que pasou, para que o investiguen. Se es menor, hai persoas cuxo traballo é protexerte durante todo o proceso.',
+       en:'A report (denuncia) means telling the police or the court about something bad that happened, so they can investigate it. If you are under 18, there are people whose job is to protect you throughout.'},
+ teen:{es:'Una denuncia es comunicar a la policía, al Juzgado de Guardia o a la Fiscalía unos hechos que pueden ser delito para que se investiguen. Cuando la víctima es menor de edad interviene la Fiscalía de Menores para garantizar su protección.',
+       gl:'Unha denuncia é comunicar á policía, ao Xulgado de Garda ou á Fiscalía uns feitos que poden ser delito para que se investiguen. Cando a vítima é menor de idade intervén a Fiscalía de Menores para garantir a súa protección.',
+       en:'A report means telling the police, the duty court or the Prosecutor\'s Office about facts that may be a crime so they can be investigated. When the victim is a minor, the Juvenile Prosecutor steps in to guarantee their protection.'}},
+{id:'prueba', topic:'court', src:'Ley de Enjuiciamiento Criminal (art. 449 ter) · Ley 4/2015, Estatuto de la Víctima (arts. 25 y 26)',
+ kw:'declarar juicio testigo sala preguntas grabar psicologo una vez repetir miedo juez gesell xuizo testemuña testify trial witness room record psychologist once repeat',
+ text:{es:'Si te ha pasado algo grave, normalmente lo cuentas una sola vez, en una sala tranquila y con la ayuda de un psicólogo o psicóloga. Se graba, para que no tengas que repetirlo ni ir a la sala del juicio.',
+       gl:'Se che pasou algo grave, normalmente cóntalo unha soa vez, nunha sala tranquila e coa axuda dun psicólogo ou psicóloga. Grávase, para que non teñas que repetilo nin ir á sala do xuízo.',
+       en:'If something serious happened to you, you usually tell it only once, in a calm room with the help of a psychologist. It is recorded so you don\'t have to repeat it or go to the courtroom.'},
+ teen:{es:'Las víctimas menores de 14 años de determinados delitos declaran normalmente mediante prueba preconstituida: una sola vez, grabada y con apoyo profesional, para no repetirla en el juicio. Con 14 o más también puedes pedir medidas de protección, como declarar sin contacto visual con la persona acusada o por videoconferencia.',
+       gl:'As vítimas menores de 14 anos de determinados delitos declaran normalmente mediante proba preconstituída: unha soa vez, gravada e con apoio profesional, para non repetila no xuízo. Con 14 ou máis tamén podes pedir medidas de protección, como declarar sen contacto visual coa persoa acusada ou por videoconferencia.',
+       en:'Victims under 14 of certain crimes usually give a pre-recorded statement: once only, recorded and with professional support, so it doesn\'t have to be repeated at trial. At 14 or over you can also ask for protection measures, such as testifying without visual contact with the accused or by video link.'}},
+{id:'acompana', topic:'court', src:'Ley 4/2015, Estatuto de la Víctima del Delito (arts. 4 y 27-29)',
+ kw:'acompanado acompanar oficina asistencia victimas ir con alguien gratis acompañado vitimas accompanied company office victim support free',
+ text:{es:'No tienes que ir solo o sola. Puedes ir con una persona que elijas. Además, hay oficinas que ayudan a las víctimas y te explican todo, gratis.',
+       gl:'Non tes que ir só ou soa. Podes ir cunha persoa que elixas. Ademais, hai oficinas que axudan ás vítimas e che explican todo, de balde.',
+       en:'You don\'t have to go alone. You can go with a person you choose. There are also offices that help victims and explain everything, for free.'},
+ teen:{es:'Puedes estar acompañado por una persona de tu elección desde el primer contacto con las autoridades. Las Oficinas de Asistencia a las Víctimas te informan, orientan y acompañan de forma gratuita durante todo el proceso.',
+       gl:'Podes estar acompañado por unha persoa da túa elección desde o primeiro contacto coas autoridades. As Oficinas de Asistencia ás Vítimas infórmante, oriéntante e acompáñante de balde durante todo o proceso.',
+       en:'You can be accompanied by a person of your choice from your first contact with the authorities. Victim Support Offices inform, guide and accompany you free of charge throughout the process.'}},
+{id:'abogado', topic:'court', src:'Ley 1/1996 de Asistencia Jurídica Gratuita (art. 2) · Ley 4/2015, Estatuto de la Víctima',
+ kw:'abogado abogada pagar dinero gratis defender avogado diñeiro lawyer pay money free',
+ text:{es:'Un abogado o abogada te ayuda y defiende tus derechos. Si eres víctima de maltrato o abuso, tienes uno gratis.',
+       gl:'Un avogado ou avogada axúdache e defende os teus dereitos. Se es vítima de maltrato ou abuso, tes un de balde.',
+       en:'A lawyer helps you and defends your rights. If you are a victim of abuse, you get one for free.'},
+ teen:{es:'Las víctimas menores de edad de delitos como el maltrato o los abusos tienen derecho a asistencia jurídica gratuita con independencia de los recursos económicos de su familia. Un abogado o abogada defenderá tus intereses durante el proceso.',
+       gl:'As vítimas menores de idade de delitos como o maltrato ou os abusos teñen dereito a asistencia xurídica gratuíta con independencia dos recursos económicos da súa familia. Un avogado ou avogada defenderá os teus intereses durante o proceso.',
+       en:'Underage victims of crimes such as abuse have the right to free legal aid regardless of their family\'s financial means. A lawyer will defend your interests throughout the process.'}},
+{id:'infractor', topic:'other', src:'Ley Orgánica 5/2000, de Responsabilidad Penal del Menor',
+ kw:'hecho algo malo culpa castigo carcel menor delito detener feito carcere did something wrong punishment jail arrested',
+ text:{es:'Si un niño o niña menor de 14 años hace algo que está muy mal, no le juzgan como a un adulto: se buscan formas de ayudarle y protegerle.',
+       gl:'Se un neno ou nena menor de 14 anos fai algo que está moi mal, non o xulgan coma a un adulto: búscanse formas de axudalo e protexelo.',
+       en:'If a child under 14 does something very wrong, they are not tried like an adult: ways are found to help and protect them.'},
+ teen:{es:'Si tienes entre 14 y 17 años y cometes un delito, se aplica la Ley de Responsabilidad Penal del Menor, que prioriza medidas educativas (tareas socioeducativas, libertad vigilada…) y, en los casos más graves, el internamiento. Intervienen la Fiscalía de Menores y el Juzgado de Menores.',
+       gl:'Se tes entre 14 e 17 anos e cometes un delito, aplícase a Lei de Responsabilidade Penal do Menor, que prioriza medidas educativas (tarefas socioeducativas, liberdade vixiada…) e, nos casos máis graves, o internamento. Interveñen a Fiscalía de Menores e o Xulgado de Menores.',
+       en:'If you are 14 to 17 and commit a crime, the Juvenile Criminal Responsibility Law applies. It prioritises educational measures (socio-educational tasks, probation…) and, in the most serious cases, detention. The Juvenile Prosecutor and Juvenile Court are involved.'}},
+{id:'intimidad', topic:'images', src:'Ley Orgánica 1/1982 · Ley Orgánica 3/2018, LOPDGDD (art. 7)',
+ kw:'intimidad privacidad datos imagen honor publicar foto sin permiso intimidade privacidade privacy data image post without permission',
+ text:{es:'Tu imagen y tu intimidad están protegidas por la ley. Nadie puede publicar fotos tuyas sin permiso.',
+       gl:'A túa imaxe e a túa intimidade están protexidas pola lei. Ninguén pode publicar fotos túas sen permiso.',
+       en:'Your image and privacy are protected by law. Nobody can post photos of you without permission.'},
+ teen:{es:'Tu derecho al honor, a la intimidad y a la propia imagen está protegido por ley. Desde los 14 años puedes consentir por ti mismo el tratamiento de tus datos personales y pedir que se supriman contenidos sobre ti.',
+       gl:'O teu dereito á honra, á intimidade e á propia imaxe está protexido por lei. Desde os 14 anos podes consentir por ti mesmo o tratamento dos teus datos persoais e pedir que se supriman contidos sobre ti.',
+       en:'Your right to honour, privacy and your own image is protected by law. From age 14 you can consent to the processing of your personal data yourself and ask for content about you to be deleted.'}}
+];
+const TOPICS = {
+ bullying:{n:{es:'acoso escolar',gl:'acoso escolar',en:'school bullying'}, chip:{es:'Me molestan en el colegio o instituto',gl:'Moléstanme no colexio ou instituto',en:'I\'m bullied at school'}, docs:['acoso','coordinador']},
+ cyber:{n:{es:'ciberacoso',gl:'ciberacoso',en:'cyberbullying'}, chip:{es:'Pasa algo en internet o en el móvil',gl:'Pasa algo en internet ou no móbil',en:'Something is happening online'}, docs:['ciber']},
+ images:{n:{es:'difusión de imágenes',gl:'difusión de imaxes',en:'shared images'}, chip:{es:'Han compartido fotos o vídeos míos',gl:'Compartiron fotos ou vídeos meus',en:'Someone shared photos or videos of me'}, docs:['imagenes','intimidad'], teenOnly:true},
+ home:{n:{es:'protección en el entorno familiar',gl:'protección no contorno familiar',en:'protection at home'}, chip:{es:'Pasa algo en casa',gl:'Pasa algo na casa',en:'Something is happening at home'}, docs:['casa','comunicar']},
+ harm:{n:{es:'violencia y abuso',gl:'violencia e abuso',en:'violence and abuse'}, chip:{es:'Alguien me ha hecho daño',gl:'Alguén me fixo dano',en:'Someone has hurt me'}, docs:['dano','acompana']},
+ court:{n:{es:'juicios y declaraciones',gl:'xuízos e declaracións',en:'trials and statements'}, chip:{es:'Tengo que ir a un juicio o declarar',gl:'Teño que ir a un xuízo ou declarar',en:'I have to go to a trial or give a statement'}, docs:['prueba','acompana']},
+ rights:{n:{es:'derechos',gl:'dereitos',en:'rights'}, chip:{es:'Quiero conocer mis derechos',gl:'Quero coñecer os meus dereitos',en:'I want to know my rights'}, docs:['oido','informacion']},
+ other:{n:{es:'orientación general',gl:'orientación xeral',en:'general guidance'}, chip:{es:'Otra cosa',gl:'Outra cousa',en:'Something else'}, docs:['comunicar']}
+};
+
+/* ======================= TELÉFONOS ======================= */
+const PHONES = [
+ {n:'112', show:'112', t:{es:'Emergencias. Si estás en peligro ahora.',gl:'Emerxencias. Se estás en perigo agora.',en:'Emergencies. If you are in danger now.'}},
+ {n:'900202010', show:'900 20 20 10', t:{es:'Fundación ANAR: ayuda a niños, niñas y adolescentes. Gratis, confidencial y a cualquier hora. También 116 111.',gl:'Fundación ANAR: axuda a nenos, nenas e adolescentes. De balde, confidencial e a calquera hora. Tamén 116 111.',en:'ANAR Foundation: help for children and teenagers. Free, confidential, any time. Also 116 111.'}},
+ {n:'024', show:'024', t:{es:'Si piensas en hacerte daño o en no seguir viviendo. Te escuchan a cualquier hora.',gl:'Se pensas en facerte dano ou en non seguir vivindo. Escóitante a calquera hora.',en:'If you are thinking about hurting yourself or not wanting to live. They listen any time.'}},
+ {n:'091', show:'091', t:{es:'Policía Nacional.',gl:'Policía Nacional.',en:'National Police.'}},
+ {n:'062', show:'062', t:{es:'Guardia Civil.',gl:'Garda Civil.',en:'Civil Guard.'}},
+ {n:'016', show:'016', t:{es:'Violencia de género, también si eres adolescente y te pasa con tu pareja.',gl:'Violencia de xénero, tamén se es adolescente e che pasa coa túa parella.',en:'Gender-based violence, also if you are a teenager and it happens with your partner.'}},
+ {n:null, show:{es:'Adulto de confianza',gl:'Adulto de confianza',en:'Trusted adult'}, t:{es:'Tu familia, un profesor o profesora, un familiar o la persona coordinadora de bienestar del colegio.',gl:'A túa familia, un profesor ou profesora, un familiar ou a persoa coordinadora de benestar do colexio.',en:'Your family, a teacher, a relative or your school\'s wellbeing coordinator.'}}
+];
+function phoneRow(p){
+  const show = typeof p.show==='string' ? p.show : L(p.show);
+  const btn = p.n==='112' ? `<button class="btn sos" onclick="openSos()">${ic('phone')} ${t('callSos')}</button>` : (p.n ? `<a class="btn sec" href="tel:${p.n}">${ic('phone')}</a>` : '');
+  return `<div class="phone"><span class="num">${esc(show)}</span><span class="note" style="flex:1">${esc(L(p.t))}</span>${btn}</div>`;
+}
+const phonesHTML = (filter) => PHONES.filter(p=>!filter || filter.includes(p.n)).map(phoneRow).join('');
+
+/* ======================= MODAL 112 ======================= */
+function openSos(){
+  const m = document.getElementById('sosModal');
+  m.innerHTML = `<div class="box"><h2 style="margin-top:0;color:var(--sos)">${ic('alert')} ${t('sosTitle')}</h2>
+    <p>${t('sosDesc')}</p><div class="big112">112</div>
+    <a class="btn sos" style="width:100%;font-size:1.15em" href="tel:112">${ic('phone')} ${t('callSos')}</a>
+    <p class="note" style="margin-top:12px">${t('sosPc')}</p>
+    <h3>${t('sosOther')}</h3>${phonesHTML(['900202010','024'])}
+    <button class="btn sec" style="width:100%" onclick="closeSos()">${t('close')}</button></div>`;
+  m.hidden = false;
+  m.onclick = e => { if(e.target===m) closeSos(); };
+}
+function closeSos(){ document.getElementById('sosModal').hidden = true; }
+document.addEventListener('keydown', e => { if(e.key==='Escape'){ closeSos(); closeNav(); } });
+
+/* ======================= PRIVACIDAD ======================= */
+function redact(s){
+  let out=s, hit=false;
+  const rules=[/\b[\w.+-]+@[\w-]+\.[\w.]+\b/g, /(\+?34[\s-]?)?\b[6789]\d{2}[\s-]?\d{2,3}[\s-]?\d{2,3}[\s-]?\d{0,2}\b/g, /\b\d{8}[A-Za-z]\b/g, /\b[XYZxyz]\d{7}[A-Za-z]\b/g,
+   /\b(calle|c\/|avenida|avda\.?|plaza|paseo|r[uú]a|praza|street|road|avenue)\s+[^\s,.;]+(\s+[^\s,.;]+)?(\s*,?\s*(n[ºo°.]?\s*)?\d+)?/gi,
+   /\b(colegio|cole|instituto|ies|ceip|colexio|school)\s+([A-ZÁÉÍÓÚÑ][\wáéíóúñ]+(\s+[A-ZÁÉÍÓÚÑ][\wáéíóúñ]+)*)/g];
+  rules.forEach(r=>{ out=out.replace(r,()=>{hit=true;return '[···]';}); });
+  out = out.replace(/\b(me llamo|mi nombre es|ch[aá]mome|o meu nome [eé]|my name is|i am called|i'm called)\s+([^\s,.!?]+)/gi,(m,a)=>{hit=true;return a+' [···]';});
+  return {text:out, hit};
+}
+/* ======================= RIESGO Y DESAHOGO ======================= */
+const RISK=[/suicid/,/matarme/,/quitarme la vida/,/quitarme a vida/,/no quiero vivir/,/non quero vivir/,/quiero morir/,/quero morrer/,/hacerme dano/,/facerme dano/,/cortarme/,/autolesi/,/kill myself/,/end my life/,/want to die/,/dont want to live/,/don t want to live/,/hurt myself/,/cut myself/,/me va a matar/,/vaime matar/,/going to kill me/,/estoy en peligro/,/estou en perigo/,/i am in danger/,/im in danger/,/me esta pegando/,/estame pegando/,/is hitting me now/];
+const isRisk = s => { const n=norm(s).replace(/[^a-z0-9 ]/g,' ').replace(/\s+/g,' '); return RISK.some(r=>r.test(n)); };
+const VENT = /(triste|sol[oa]\b|\bsoa?\b|miedo|medo|lloro|choro|llorar|chorar|agobi|ansiedad|ansiedade|nadie me|ninguen me|odio mi vida|estoy mal|estou mal|me siento mal|sintome mal|sad|alone|lonely|scared|afraid|cry|anxious|nobody|feel bad|feel awful)/;
+
+/* ======================= BUSCADOR BM25 (en el móvil) ======================= */
+const STOP=new Set('que los las del por para con una uno unos unas como mas pero sus les esta este eso esa hay muy sin sobre the and for you are with this that have what dos das nos unha non mais polo pola cando ten tes tengo teño'.split(' '));
+const tok = s => norm(s).replace(/[^a-z0-9ñ ]/g,' ').split(/\s+/).filter(w=>w.length>2&&!STOP.has(w)).map(w=>w.slice(0,5));
+let INDEX=null;
+function buildIndex(){
+  const docs = CORPUS.map(d=>tok(d.text[LANG]+' '+d.teen[LANG]+' '+d.kw+' '+d.kw));
+  const df={}; docs.forEach(ts=>new Set(ts).forEach(w=>df[w]=(df[w]||0)+1));
+  INDEX={docs, df, avg:docs.reduce((a,d)=>a+d.length,0)/docs.length, N:docs.length, lang:LANG};
+}
+function search(q){
+  if(!INDEX||INDEX.lang!==LANG) buildIndex();
+  const qs=tok(q), k1=1.4, b=.75, {docs,df,avg,N}=INDEX;
+  return docs.map((d,i)=>{ let s=0; const tf={}; d.forEach(w=>tf[w]=(tf[w]||0)+1);
+    qs.forEach(w=>{ if(!tf[w]) return; const idf=Math.log(1+(N-df[w]+.5)/(df[w]+.5)); s+=idf*(tf[w]*(k1+1))/(tf[w]+k1*(1-b+b*d.length/avg)); });
+    return {doc:CORPUS[i], s}; }).sort((a,b)=>b.s-a.s);
+}
+/* ======================= LLM opcional ======================= */
+async function llmRephrase(question, doc){
+  if(!CONFIG.WORKER_URL) return null;
+  try{ const ctrl=new AbortController(); const to=setTimeout(()=>ctrl.abort(), CONFIG.WORKER_TIMEOUT_MS);
+    const r=await fetch(CONFIG.WORKER_URL,{method:'POST',headers:{'Content-Type':'application/json'},signal:ctrl.signal,
+      body:JSON.stringify({lang:LANG, age:S.age, question, context:L(doc), source:doc.src})});
+    clearTimeout(to); if(!r.ok) return null; const j=await r.json();
+    return (j&&typeof j.answer==='string'&&j.answer.trim())?j.answer.trim():null;
+  }catch(e){ return null; }
+}
+/* ======================= VOZ ======================= */
+function speak(text){ try{ if(!('speechSynthesis' in window)) return; speechSynthesis.cancel(); const u=new SpeechSynthesisUtterance(String(text).replace(/\[···\]/g,'')); u.lang={es:'es-ES',gl:'gl-ES',en:'en-GB'}[LANG]; u.rate=.95; speechSynthesis.speak(u);}catch(e){} }
+const spk = txt => `<button class="speak" onclick='speak(${JSON.stringify(txt).replace(/'/g,"&#39;")})'>${ic('sound')} ${t('listen')}</button>`;
+
+/* ======================= CABECERA, MENÚ LATERAL, PIE ======================= */
+const route = () => location.hash.slice(1) || 'inicio';
+function renderChrome(){
+  document.getElementById('proto').textContent = t('proto');
+  document.getElementById('top').innerHTML = `
+   ${S.age?`<button class="hbtn menubtn" onclick="openNav()" aria-label="${t('menu')}">${ic('menu')}</button>`:''}
+   <button class="brand" onclick="go('inicio')" aria-label="${t('home')}">${bubo('happy',44)}<span><span class="t1">${t('appName')}</span><br><span class="t2">${t('appSub')}</span></span></button>
+   <span class="sp"></span>
+   <button class="hbtn sos" onclick="openSos()" aria-label="${t('callSos')}">${ic('phone')} 112</button>
+   <button class="hbtn exit" onclick="quickExit()" aria-label="${t('exit')}">${ic('exit')} <span class="lbl">${t('exit')}</span></button>`;
+  document.getElementById('foot').textContent = t('footer');
+  const edge=document.getElementById('edge'); edge.innerHTML = `${ic('menu')} ${t('menu').toUpperCase()}`; edge.style.visibility = S.age?'visible':'hidden';
+  document.documentElement.lang = LANG;
+  renderSide();
+}
+function navBtn(r, icon, label, extra=''){
+  const cur=route(); const on = cur===r || (r==='juego' && cur==='juego');
+  return `<button class="nav ${on?'on':''}" onclick="go('${r}')">${icon?ic(icon):''}${extra}<span>${esc(label)}</span></button>`;
+}
+function renderSide(){
+  const side=document.getElementById('side');
+  if(!S.age){ side.style.display='none'; return; } side.style.display='';
+  const cur=route();
+  const lv = LEVELS.map((l,i)=>`<button class="nav ${cur==='nivel/'+(i+1)?'on':''}" onclick="go('nivel/${i+1}')"><span class="st ${S.done.has(i+1)?'done':''}">${S.done.has(i+1)?'✓':i+1}</span><span>${esc(L(l.t))}</span></button>`).join('');
+  const tips = TEEN() ? `<h4>${t('secTips')}</h4><div class="sub">${TIPS.map((x,i)=>`<button class="nav ${cur==='consejos/'+i?'on':''}" onclick="go('consejos/${i}')"><span>${esc(L(x.t))}</span></button>`).join('')}</div>` : '';
+  side.innerHTML = `<h4>${t('secMain')}</h4>
+   ${navBtn('inicio','home',t('home'))}
+   ${navBtn('chat','chat',t('tChat'))}
+   ${navBtn('juego','map',t('tGame'))}
+   <div class="sub">${lv}</div>
+   ${navBtn('diccionario','book',t('tDict'))}
+   ${TEEN()?navBtn('consejos','shield',t('tTips')):''}
+   ${tips}
+   ${navBtn('ayuda','phone',t('tHelp'))}
+   ${navBtn('aula','school',t('tAula'))}
+   <h4>${t('settings')}</h4>
+   ${navBtn('ajustes','settings',t('settings'))}
+   <button class="nav" onclick="changeAge()">${ic('user')}<span>${t('changeAge')}</span></button>`;
+}
+function openNav(){ document.body.classList.add('navopen'); }
+function closeNav(){ document.body.classList.remove('navopen'); }
+function go(r){ closeNav(); location.hash = (r==='inicio') ? '' : r; if(r==='inicio' && !location.hash) render(); }
+function changeAge(){ S.age=null; S.chat=null; closeNav(); location.hash=''; render(); }
+
+/* ======================= SALIDA RÁPIDA ======================= */
+function quickExit(){
+  S.chat=null; S.age=null; S.done=new Set();
+  try{ speechSynthesis.cancel(); }catch(e){}
+  document.getElementById('app').innerHTML='';
+  try{ history.replaceState(null,'',location.pathname); }catch(e){}
+  location.replace('https://www.google.com/search?q=el+tiempo');
+}
+
+/* ======================= PANTALLA DE EDAD ======================= */
+function viewAge(){
+  return `<div class="age">${bubo('happy',110)}
+   <h1>${t('ageTitle')}</h1><p class="muted">${t('ageSub')}</p>
+   <div class="opts">
+     <button class="opt14" onclick="setAge('kid')">${t('ageKid')}<small>${t('ageKidD')}</small></button>
+     <button class="opt14" onclick="setAge('teen')">${t('ageTeen')}<small>${t('ageTeenD')}</small></button>
+   </div>
+   <div class="row" style="justify-content:center"><label for="langSel" class="note">${t('setLang')}</label>
+   <select id="langSel" onchange="setLang(this.value)"><option value="es" ${LANG==='es'?'selected':''}>Español</option><option value="gl" ${LANG==='gl'?'selected':''}>Galego</option><option value="en" ${LANG==='en'?'selected':''}>English</option></select></div>
+   <p class="note" style="margin-top:20px">${ic('lock')} ${t('noSave')}</p></div>`;
+}
+function setAge(a){ S.age=a; S.chat=null; render(); }
+
+/* ======================= INICIO ======================= */
+function viewHome(){
+  const tile=(r,icn,a,b)=>`<button class="tile" onclick="go('${r}')"><span class="ic">${ic(icn)}</span><span><b>${a}</b><span class="d">${b}</span></span></button>`;
+  return `<section class="hero">${bubo('happy',88)}<div><h1 style="margin:0 0 .2em">${TEEN()?t('helloTeen'):t('helloKid')}</h1><p class="muted" style="margin:0">${TEEN()?t('helloTeenSub'):t('helloKidSub')}</p></div></section>
+   <div class="sosbar">${ic('alert')}<b>${t('dangerNow')}</b><button class="btn sos" onclick="openSos()">${ic('phone')} ${t('callSos')}</button></div>
+   <div class="grid">
+    ${tile('chat','chat',t('tChat'),t('dChat'))}
+    ${tile('juego','map',t('tGame'),t('dGame'))}
+    ${tile('diccionario','book',t('tDict'),t('dDict'))}
+    ${TEEN()?tile('consejos','shield',t('tTips'),t('dTips')):''}
+    ${tile('ayuda','phone',t('tHelp'),t('dHelp'))}
+    ${tile('aula','school',t('tAula'),t('dAula'))}
+   </div>
+   <p class="note" style="margin-top:18px">${ic('lock')} ${t('noSave')}</p>`;
+}
+function viewHelp(){ return `<div class="crumb">${t('home')} › ${t('tHelp')}</div><h1>${t('tHelp')}</h1>${phonesHTML()}`; }
+
+/* ======================= CHAT ======================= */
+const CH = {
+ greet:{es:'¡Hola! Soy Bubo. Puedes contarme lo que te preocupa, a tu ritmo. Te explicaré las cosas con información oficial y palabras fáciles.',gl:'Ola! Son Bubo. Podes contarme o que che preocupa, ao teu ritmo. Explicareiche as cousas con información oficial e palabras doadas.',en:'Hi! I\'m Bubo. You can tell me what is worrying you, at your own pace. I\'ll explain things using official information and easy words.',
+  teen:{es:'Hola, soy Bubo. Te doy información oficial sobre tus derechos y los procedimientos judiciales, explicada de forma clara. Puedes escribir lo que quieras o elegir un tema.',gl:'Ola, son Bubo. Dou información oficial sobre os teus dereitos e os procedementos xudiciais, explicada de forma clara. Podes escribir o que queiras ou escoller un tema.',en:'Hi, I\'m Bubo. I give you official information about your rights and court proceedings, explained clearly. You can write anything or choose a topic.'}},
+ qDanger:{es:'Antes de nada: ¿estás en peligro ahora mismo?',gl:'Antes de nada: estás en perigo agora mesmo?',en:'First of all: are you in danger right now?'},
+ dangerYes:{es:'Gracias por decírmelo. Si puedes, llama ahora al 112: es gratis y te ayudan enseguida. Si no puedes hablar, ve a un sitio con gente o con un adulto de confianza. Yo sigo aquí.',gl:'Grazas por dicirmo. Se podes, chama agora ao 112: é de balde e axúdante axiña. Se non podes falar, vai a un sitio con xente ou cun adulto de confianza. Eu sigo aquí.',en:'Thank you for telling me. If you can, call 112 now: it\'s free and they help straight away. If you can\'t talk, go somewhere with people or a trusted adult. I\'m still here.'},
+ dangerNo:{es:'Me alegra que estés a salvo ahora.',gl:'Alégrome de que esteas a salvo agora.',en:'I\'m glad you are safe right now.'},
+ qTopic:{es:'¿Sobre qué quieres hablar? Puedes tocar una opción o escribirlo con tus palabras.',gl:'Sobre que queres falar? Podes tocar unha opción ou escribilo coas túas palabras.',en:'What would you like to talk about? You can tap an option or write it in your own words.'},
+ thanks:{es:'Gracias por contármelo. Esto es lo que dice la información oficial:',gl:'Grazas por contarmo. Isto é o que di a información oficial:',en:'Thank you for telling me. This is what the official information says:'},
+ offer:{es:'Si quieres, puedo ponerte en contacto con una persona especialista. También puedes ver teléfonos de ayuda o seguir hablando conmigo. Tú decides.',gl:'Se queres, podo poñerte en contacto cunha persoa especialista. Tamén podes ver teléfonos de axuda ou seguir falando comigo. Ti decides.',en:'If you want, I can put you in touch with a specialist. You can also see help numbers or keep talking with me. It\'s up to you.'},
+ crisis:{es:'Lo que me cuentas es muy importante y me preocupa cómo estás. No estás solo ni sola. Puedes llamar ahora al 024 (te escuchan a cualquier hora) o al 112 si estás en peligro. También puedo ponerte con una persona especialista. Y yo sigo aquí contigo.',gl:'O que me contas é moi importante e preocúpame como estás. Non estás só nin soa. Podes chamar agora ao 024 (escóitante a calquera hora) ou ao 112 se estás en perigo. Tamén podo poñerte cunha persoa especialista. E eu sigo aquí contigo.',en:'What you are telling me is very important and I\'m worried about how you are. You are not alone. You can call 024 now (they listen at any time) or 112 if you are in danger. I can also put you through to a specialist. And I\'m still here with you.'},
+ notFound:{es:'No he encontrado esto en la información oficial que tengo, y prefiero no inventármelo. Una persona especialista sí podría ayudarte. Si quieres, también puedes contármelo con otras palabras.',gl:'Non atopei isto na información oficial que teño, e prefiro non inventalo. Unha persoa especialista si podería axudarte. Se queres, tamén podes contarmo con outras palabras.',en:'I couldn\'t find this in the official information I have, and I\'d rather not make it up. A specialist could help you. If you like, you can also tell me in other words.'},
+ keep:{es:'Vale. Aquí sigo. Puedes contarme lo que quieras o preguntarme lo que necesites.',gl:'Vale. Aquí sigo. Podes contarme o que queiras ou preguntarme o que precises.',en:'OK. I\'m still here. You can tell me anything or ask me whatever you need.'},
+ phonesIntro:{es:'Estos son los teléfonos de ayuda. Son gratuitos:',gl:'Estes son os teléfonos de axuda. Son de balde:',en:'These are the help numbers. They are free:'},
+ listen:[
+  {es:'Gracias por contármelo. Lo que sientes es importante y tiene sentido.',gl:'Grazas por contarmo. O que sentes é importante e ten sentido.',en:'Thank you for telling me. What you feel matters and makes sense.'},
+  {es:'Te escucho. Puedes seguir contándome, sin prisa.',gl:'Escóitote. Podes seguir contándome, sen présa.',en:'I\'m listening. You can keep telling me, there\'s no rush.'},
+  {es:'Es valiente hablar de esto. No tienes que pasarlo solo ni sola.',gl:'É valente falar disto. Non tes que pasalo só nin soa.',en:'It\'s brave to talk about this. You don\'t have to go through it alone.'},
+  {es:'Estoy aquí. Si en algún momento quieres hablar con una persona, puedo ayudarte a hacerlo.',gl:'Estou aquí. Se nalgún momento queres falar cunha persoa, podo axudarte a facelo.',en:'I\'m here. If at any point you want to talk to a person, I can help you do that.'}],
+ dunno:{es:'No lo sé',gl:'Non o sei',en:'I don\'t know'}
+};
+/* El chat NO guarda lo que se escribe: solo los mensajes en pantalla mientras está abierto,
+   y el tema elegido (para saber con qué especialista conectar). Nada se envía a ningún sitio. */
+function newChat(){ S.chat={msgs:[],chips:[],step:'danger',topic:null,listenIdx:0,view:'chat',busy:false}; addBot(L(CH.greet)); addBot(L(CH.qDanger),{expr:'listen'}); setChips('danger'); }
+function addBot(text,o={}){ S.chat.msgs.push({who:'bot',text,...o}); if(S.autoSpeak) speak(text); }
+function addMe(text){ S.chat.msgs.push({who:'me',text}); }
+function setChips(kind){
+  const c=S.chat; c.step=kind;
+  if(kind==='danger') c.chips=[{l:t('yes'),a:'dYes',cls:'red'},{l:t('no'),a:'dNo'},{l:L(CH.dunno),a:'dDunno'}];
+  else if(kind==='topic') c.chips=Object.keys(TOPICS).filter(k=>TEEN()||!TOPICS[k].teenOnly).map(k=>({l:L(TOPICS[k].chip),a:'t:'+k}));
+  else if(kind==='open') c.chips=[{l:t('talkPerson'),a:'person',cls:'strong'},{l:t('seePhones'),a:'phones'},{l:t('keepTalking'),a:'keep'}];
+  else c.chips=[];
+}
+function onChip(a){
+  const c=S.chat; if(c.busy) return;
+  if(a==='person'){ c.view='callask'; render(); return window.scrollTo(0,0); }
+  const ch=c.chips.find(x=>x.a===a); addMe(ch?ch.l:'');
+  if(a==='dYes'){ addBot(L(CH.dangerYes),{kind:'crisis',phones:['112','900202010']}); addBot(L(CH.qTopic)); setChips('topic'); }
+  else if(a==='dNo'||a==='dDunno'){ if(a==='dNo') addBot(L(CH.dangerNo)); addBot(L(CH.qTopic),{expr:'listen'}); setChips('topic'); }
+  else if(a.startsWith('t:')){ c.topic=a.slice(2); giveTopicInfo(); }
+  else if(a==='phones'){ addBot(L(CH.phonesIntro),{phones:'all'}); setChips('open'); }
+  else if(a==='keep'){ addBot(L(CH.keep)); setChips('open'); }
+  render();
+}
+function giveTopicInfo(){
+  const c=S.chat, tp=TOPICS[c.topic||'other'];
+  addBot(L(CH.thanks));
+  tp.docs.forEach(id=>{ const d=CORPUS.find(x=>x.id===id); addBot(L(d),{src:d.src,kind:'info',expr:'talk'}); });
+  addBot(L(CH.offer)); setChips('open');
+}
+async function sendText(){
+  const inp=document.getElementById('chatInput'); if(!inp) return;
+  const raw=inp.value.trim(); if(!raw||S.chat.busy) return; inp.value='';
+  const c=S.chat, {text,hit}=redact(raw);
+  addMe(text);
+  if(hit) addBot(t('redacted'),{kind:'crisis'});
+  if(isRisk(text)){ addBot(L(CH.crisis),{kind:'crisis',phones:['024','112']}); setChips('open'); return render(); }
+  const res=search(text), top=res[0];
+  if(top.s>1.2 && !c.topic) c.topic=top.doc.topic;
+  if((c.step==='danger'||c.step==='topic') && top.s>1.2){ c.topic=top.doc.topic; giveTopicInfo(); return render(); }
+  const isQ=/\?|¿|que es|qué es|como|cómo|puedo|podo|can i|what|how|derecho|dereito|right/i.test(text);
+  if(VENT.test(norm(text)) && !isQ){ addBot(L(CH.listen[c.listenIdx++%CH.listen.length]),{expr:'listen'}); if(c.step!=='danger'&&c.step!=='topic') setChips('open'); return render(); }
+  if(top.s<1.2){ addBot(L(CH.notFound)); setChips('open'); return render(); }
+  c.busy=true; render();
+  const ans=await llmRephrase(text, top.doc); c.busy=false;
+  addBot(ans||L(top.doc),{src:top.doc.src,kind:'info',expr:'talk'}); setChips('open'); render();
+}
+function msgHTML(m){
+  if(m.who==='me') return `<div class="msg me">${esc(m.text)}</div>`;
+  let ph=''; if(m.phones) ph = m.phones==='all' ? phonesHTML() : phonesHTML(m.phones);
+  return `<div class="mrow">${bubo(m.expr||'happy',40)}<div class="msg bot ${m.kind||''}">${esc(m.text)}${m.src?`<span class="src">${t('source')}: ${esc(m.src)}</span>`:''}${ph}<br>${spk(m.text)}</div></div>`;
+}
+function viewChat(){
+  if(!S.chat) newChat(); const c=S.chat;
+  if(c.view==='callask') return viewCallAsk();
+  if(c.view==='call') return viewCall();
+  return `<div class="crumb">${t('home')} › ${t('tChat')}</div><h1>${t('tChat')}</h1>
+   <div class="privacy">${ic('lock')}<span>${t('privacy')}</span></div>
+   <div class="msgs" id="msgs" aria-live="polite">${c.msgs.map(msgHTML).join('')}
+   ${c.busy?`<div class="mrow">${bubo('listen',40)}<div class="msg bot"><span class="sr">${t('thinking')}</span><span class="typing"><i></i><i></i><i></i></span></div></div>`:''}</div>
+   <div class="chips">${c.chips.map(x=>`<button class="chip ${x.cls||''}" onclick="onChip('${x.a}')">${esc(x.l)}</button>`).join('')}</div>
+   <form class="composer" onsubmit="event.preventDefault();sendText()"><input id="chatInput" autocomplete="off" placeholder="${t('placeholder')}" aria-label="${t('placeholder')}" maxlength="500"><button class="btn" type="submit">${t('send')}</button></form>`;
+}
+const topicName = () => L(TOPICS[(S.chat&&S.chat.topic)||'other'].n);
+function viewCallAsk(){
+  return `<div class="card" style="text-align:center">${bubo('listen',90)}<h2>${t('callTitle')}</h2>
+   <p>${t('callDesc')} <b>${esc(topicName())}</b>.</p>
+   <p class="privacy" style="text-align:left">${ic('lock')}<span>${t('callNoData')}</span></p>
+   <div class="row" style="justify-content:center;margin-top:14px"><button class="btn ok" onclick="startCall()">${ic('phone')} ${t('callNow')}</button><button class="btn sec" onclick="S.chat.view='chat';render()">${t('cancel')}</button></div></div>`;
+}
+let callTimer=null;
+const fmt=s=>String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0');
+function startCall(){ const c=S.chat; c.view='call'; c.callState='connecting'; c.callSecs=0; render(); window.scrollTo(0,0); clearInterval(callTimer);
+  setTimeout(()=>{ if(c.view!=='call') return; c.callState='on'; render(); callTimer=setInterval(()=>{ c.callSecs++; const el=document.getElementById('callT'); if(el) el.textContent=fmt(c.callSecs); else clearInterval(callTimer); },1000); },2800); }
+function viewCall(){
+  const c=S.chat, on=c.callState==='on';
+  return `<div class="card call"><div class="${on?'':'pulse'}" style="display:inline-block">${bubo(on?'happy':'listen',120)}</div>
+   <h2>${on?t('connected'):t('connecting')} <span style="color:var(--acc)">${esc(topicName())}</span>${on?'':'…'}</h2>
+   ${on?`<div class="timer" id="callT">${fmt(c.callSecs)}</div>`:`<span class="typing"><i></i><i></i><i></i></span>`}
+   <p class="note" style="margin-top:16px">${t('demoCall')}</p><button class="btn sos" onclick="endCall()">${t('hang')}</button></div>`;
+}
+function endCall(){ clearInterval(callTimer); const c=S.chat; c.view='chat'; addBot(t('afterCall')); setChips('open'); render(); }
+
+/* ======================= JUEGO ======================= */
+const LEVELS=[
+ {e:'📜',t:{es:'Conozco mis derechos',gl:'Coñezo os meus dereitos',en:'I know my rights'}},
+ {e:'👩‍⚖️',t:{es:'Descubro a los profesionales',gl:'Descubro os profesionais',en:'I meet the professionals'}},
+ {e:'🏛️',t:{es:'Exploro el juzgado',gl:'Exploro o xulgado',en:'I explore the court'}},
+ {e:'💭',t:{es:'Expreso cómo me siento',gl:'Expreso como me sinto',en:'I say how I feel'}},
+ {e:'🗝️',t:{es:'Claves para declarar',gl:'Claves para declarar',en:'Keys to giving a statement'}},
+ {e:'🤝',t:{es:'¿A quién pido ayuda?',gl:'A quen lle pido axuda?',en:'Who can I ask for help?'}}
+];
+function viewGame(){
+  const pct=Math.round(S.done.size/6*100);
+  return `<div class="crumb">${t('home')} › ${t('tGame')}</div><h1>${t('tGame')}</h1>
+   <div class="hero" style="margin-bottom:14px">${bubo('happy',70)}<div style="flex:1"><p style="margin:0 0 6px">${t('gameIntro')}</p>
+   <div class="note">${t('progress')}: ${S.done.size}/6</div><div class="progress"><i style="width:${pct}%"></i></div></div></div>
+   ${LEVELS.map((lv,i)=>`<button class="lvl ${S.done.has(i+1)?'done':''}" onclick="go('nivel/${i+1}')"><span class="n">${S.done.has(i+1)?'✓':i+1}</span><span style="font-size:26px" aria-hidden="true">${lv.e}</span><span style="flex:1"><span class="note">${t('lvl')} ${i+1}</span><b style="display:block;color:var(--pri)">${esc(L(lv.t))}</b></span>${ic('arrowR')}</button>`).join('')}`;
+}
+function levelShell(n, body){
+  const lv=LEVELS[n-1];
+  return `<div class="crumb">${t('tGame')} › ${t('lvl')} ${n}</div><span class="pill">${t('lvl')} ${n} / 6</span><h1>${lv.e} ${esc(L(lv.t))}</h1>${body}
+   <div class="lvnav"><button class="btn sec" onclick="go('nivel/${n-1}')" ${n===1?'disabled':''}>${ic('arrowL')} ${t('prevL')}</button>
+   <button class="btn ok" onclick="finishLevel(${n})">${ic('check')} ${t('finish')}</button>
+   <button class="btn sec" onclick="go('nivel/${n+1}')" ${n===6?'disabled':''}>${t('nextL')} ${ic('arrowR')}</button></div>`;
+}
+function finishLevel(n){
+  S.done.add(n); renderSide();
+  document.getElementById('app').innerHTML=`<div class="card" style="text-align:center">${bubo('party',130)}<h1>${t('done')}</h1><p>${esc(L(LEVELS[n-1].t))}</p>
+   <div class="progress" style="max-width:300px;margin:10px auto"><i style="width:${Math.round(S.done.size/6*100)}%"></i></div>
+   <div class="row" style="justify-content:center;margin-top:14px">${n<6?`<button class="btn" onclick="go('nivel/${n+1}')">${t('nextL')} ${ic('arrowR')}</button>`:''}<button class="btn sec" onclick="go('juego')">${t('backMap')}</button></div></div>`;
+  window.scrollTo(0,0);
+}
+const flipCards = arr => `<p class="note">${t('tap')}</p><div class="grid3">${arr.map(r=>`<div class="flip" onclick="this.classList.toggle('on')" onkeydown="if(event.key==='Enter')this.classList.toggle('on')" role="button" tabindex="0"><div class="in"><div class="f"><span class="e">${r.e}</span><b>${esc(L(r.t))}</b></div><div class="b">${esc(L(r.d))}</div></div></div>`).join('')}</div>`;
+
+/* Nivel 1 */
+const RIGHTS=[
+ {e:'👂',t:{es:'A ser escuchado',gl:'A ser escoitado',en:'To be heard'},d:{es:'Tu opinión cuenta en lo que te afecta.',gl:'A túa opinión conta no que che afecta.',en:'Your opinion counts in what affects you.',teen:{es:'Derecho a ser oído en todo procedimiento que te afecte (LO 1/1996, art. 9).',gl:'Dereito a ser oído en todo procedemento que che afecte (LO 1/1996, art. 9).',en:'Right to be heard in any proceeding affecting you (LO 1/1996, art. 9).'}}},
+ {e:'💡',t:{es:'A entender',gl:'A entender',en:'To understand'},d:{es:'Te deben explicar todo con palabras que entiendas.',gl:'Débenche explicar todo con palabras que entendas.',en:'Everything must be explained in words you understand.',teen:{es:'Derecho a entender y ser entendido (Estatuto de la Víctima, art. 4).',gl:'Dereito a entender e ser entendido (Estatuto da Vítima, art. 4).',en:'Right to understand and be understood (Victims\' Statute, art. 4).'}}},
+ {e:'🛡️',t:{es:'A estar protegido',gl:'A estar protexido',en:'To be protected'},d:{es:'Nadie puede hacerte daño, tampoco en casa.',gl:'Ninguén pode facerche dano, tampouco na casa.',en:'Nobody can hurt you, at home either.',teen:{es:'Derecho a una vida libre de violencia (LOPIVI).',gl:'Dereito a unha vida libre de violencia (LOPIVI).',en:'Right to a life free from violence (LOPIVI).'}}},
+ {e:'🤝',t:{es:'A ir acompañado',gl:'A ir acompañado',en:'To have someone with you'},d:{es:'Puedes ir con una persona que elijas.',gl:'Podes ir cunha persoa que elixas.',en:'You can go with a person you choose.'}},
+ {e:'🔒',t:{es:'A tu intimidad',gl:'Á túa intimidade',en:'To privacy'},d:{es:'Tu imagen y tus datos están protegidos.',gl:'A túa imaxe e os teus datos están protexidos.',en:'Your image and data are protected.'}},
+ {e:'⚖️',t:{es:'A un abogado gratis',gl:'A un avogado de balde',en:'To a free lawyer'},d:{es:'Si eres víctima de maltrato o abuso.',gl:'Se es vítima de maltrato ou abuso.',en:'If you are a victim of abuse.'}}
+];
+const QUIZ1=[
+ {q:{es:'Si no entiendo algo en el juzgado, tengo que quedarme callado.',gl:'Se non entendo algo no xulgado, teño que quedar calado.',en:'If I don\'t understand something in court, I have to stay quiet.'},a:false,x:{es:'Puedes preguntar todas las veces que necesites.',gl:'Podes preguntar todas as veces que precises.',en:'You can ask as many times as you need.'}},
+ {q:{es:'Puedo pedir ayuda yo solo, aunque no esté un adulto conmigo.',gl:'Podo pedir axuda eu só, aínda que non estea un adulto comigo.',en:'I can ask for help on my own, even without an adult.'},a:true,x:{es:'La ley te permite contarlo tú mismo.',gl:'A lei permíteche contalo ti mesmo.',en:'The law lets you report it yourself.'}},
+ {q:{es:'Si alguien me hace daño, es culpa mía.',gl:'Se alguén me fai dano, é culpa miña.',en:'If someone hurts me, it is my fault.'},a:false,x:{es:'Nunca es culpa tuya.',gl:'Nunca é culpa túa.',en:'It is never your fault.'}},
+ {q:{es:'Nadie puede publicar fotos mías sin permiso.',gl:'Ninguén pode publicar fotos miñas sen permiso.',en:'Nobody can post photos of me without permission.'},a:true,x:{es:'Tu imagen está protegida por la ley.',gl:'A túa imaxe está protexida pola lei.',en:'Your image is protected by law.'}}
+];
+const TF={es:['Verdadero','Falso'],gl:['Verdadeiro','Falso'],en:['True','False']};
+function answerTF(i,v){ const q=QUIZ1[i], box=document.getElementById('q1'+i), b=box.querySelectorAll('.opt'); b.forEach(x=>x.classList.remove('right','wrong')); b[v?0:1].classList.add(v===q.a?'right':'wrong'); box.querySelector('.fb').textContent=(v===q.a?t('right'):t('wrong'))+' '+L(q.x); }
+function level1(){ return levelShell(1, flipCards(RIGHTS)+`<h2>${LANG==='en'?'True or false?':LANG==='gl'?'Verdadeiro ou falso?':'¿Verdadero o falso?'}</h2>`+QUIZ1.map((q,i)=>`<div class="card" id="q1${i}"><b>${esc(L(q.q))}</b><div class="grid" style="margin-top:8px"><button class="opt" onclick="answerTF(${i},true)">${TF[LANG][0]}</button><button class="opt" onclick="answerTF(${i},false)">${TF[LANG][1]}</button></div><p class="fb note" style="margin:0"></p></div>`).join('')); }
+
+/* Nivel 2 */
+const PROS=[
+ {e:'👩‍⚖️',t:{es:'Juez o jueza',gl:'Xuíz ou xuíza',en:'Judge'},d:{es:'Escucha a todas las personas y decide de forma justa.',gl:'Escoita a todas as persoas e decide de forma xusta.',en:'Listens to everyone and decides fairly.',teen:{es:'Dirige el proceso, valora las pruebas y dicta la sentencia de forma independiente.',gl:'Dirixe o proceso, valora as probas e dita a sentenza de forma independente.',en:'Leads the proceedings, weighs the evidence and gives the ruling independently.'}}},
+ {e:'🧑‍💼',t:{es:'Fiscal',gl:'Fiscal',en:'Prosecutor'},d:{es:'Defiende la ley y a los niños y niñas.',gl:'Defende a lei e os nenos e nenas.',en:'Defends the law and children.',teen:{es:'Defiende la legalidad y el interés superior del menor. La Fiscalía de Menores vela por tu protección.',gl:'Defende a legalidade e o interese superior do menor. A Fiscalía de Menores vela pola túa protección.',en:'Upholds the law and the best interests of the child. The Juvenile Prosecutor watches over your protection.'}}},
+ {e:'👨‍💼',t:{es:'Abogado o abogada',gl:'Avogado ou avogada',en:'Lawyer'},d:{es:'Ayuda a una de las partes. Puede haber uno para ti.',gl:'Axuda a unha das partes. Pode haber un para ti.',en:'Helps one side. There may be one for you.'}},
+ {e:'📝',t:{es:'Letrado/a de la Admón. de Justicia',gl:'Letrado/a da Admón. de Xustiza',en:'Court clerk'},d:{es:'Se asegura de que todo se haga bien y quede registrado.',gl:'Asegúrase de que todo se faga ben e quede rexistrado.',en:'Makes sure everything is done properly and recorded.'}},
+ {e:'🧠',t:{es:'Psicólogo o psicóloga',gl:'Psicólogo ou psicóloga',en:'Psychologist'},d:{es:'Te acompaña y te pregunta con calma.',gl:'Acompáñate e pregúntache con calma.',en:'Stays with you and asks questions calmly.'}},
+ {e:'💙',t:{es:'Oficina de Asistencia a las Víctimas',gl:'Oficina de Asistencia ás Vítimas',en:'Victim Support Office'},d:{es:'Te explican todo y te acompañan, gratis.',gl:'Explícanche todo e acompáñante, de balde.',en:'They explain everything and stay with you, for free.'}}
+];
+function level2(){ return levelShell(2, flipCards(PROS)); }
+
+/* Nivel 3: fotos reales con puntos interactivos */
+const PHOTOS={
+ gesell:{img:'img/sala-gesell.jpg', credit:{es:'Imagen de referencia de una sala con espejo unidireccional.',gl:'Imaxe de referencia dunha sala con espello unidireccional.',en:'Reference image of a room with a one-way mirror.'},
+  intro:{es:'Muchas veces, los niños y niñas no declaran en la sala de juicio, sino en una sala como esta, llamada sala Gesell. Así solo tienes que contarlo una vez y no ves a nadie que te dé miedo.',gl:'Moitas veces, os nenos e nenas non declaran na sala de xuízo, senón nunha sala coma esta, chamada sala Gesell. Así só tes que contalo unha vez e non ves a ninguén que che dea medo.',en:'Children often don\'t testify in the courtroom, but in a room like this, called a Gesell room. That way you only tell it once and don\'t see anyone who scares you.',
+   teen:{es:'La sala Gesell permite tomar declaración de forma protegida. Se usa sobre todo para la prueba preconstituida de menores de 14 años, pero con 14 o más también puedes pedir declarar sin contacto visual con la persona acusada.',gl:'A sala Gesell permite tomar declaración de forma protexida. Úsase sobre todo para a proba preconstituída de menores de 14 anos, pero con 14 ou máis tamén podes pedir declarar sen contacto visual coa persoa acusada.',en:'The Gesell room allows statements to be taken in a protected way. It is mainly used for pre-recorded statements from children under 14, but at 14 or over you can also ask to testify without visual contact with the accused.'}},
+  pts:[
+   {x:35,y:24,l:{es:'Espejo especial',gl:'Espello especial',en:'Special mirror'},d:{es:'Desde aquí parece un espejo, pero al otro lado hay otra sala donde el juez, el fiscal y los abogados ven y escuchan. No están contigo.',gl:'Desde aquí parece un espello, pero ao outro lado hai outra sala onde o xuíz, o fiscal e os avogados ven e escoitan. Non están contigo.',en:'From here it looks like a mirror, but on the other side there is a room where the judge, prosecutor and lawyers watch and listen. They are not with you.'}},
+   {x:17,y:62,l:{es:'Tu sitio',gl:'O teu sitio',en:'Your seat'},d:{es:'Te sientas aquí. Puedes pedir agua o un descanso cuando lo necesites.',gl:'Séntaste aquí. Podes pedir auga ou un descanso cando o precises.',en:'You sit here. You can ask for water or a break whenever you need.'}},
+   {x:64,y:52,l:{es:'Psicólogo/a',gl:'Psicólogo/a',en:'Psychologist'},d:{es:'Una persona experta habla contigo con calma. Es la única persona en la sala contigo. Si los demás tienen preguntas, se las pasan a ella.',gl:'Unha persoa experta fala contigo con calma. É a única persoa na sala contigo. Se os demais teñen preguntas, pásanllas a ela.',en:'An expert talks with you calmly. They are the only person in the room with you. If the others have questions, they pass them on to them.'}},
+   {x:40,y:43,l:{es:'Grabación',gl:'Gravación',en:'Recording'},d:{es:'La conversación se graba con cámaras y micrófonos. Así normalmente solo tienes que contarlo una vez.',gl:'A conversa grávase con cámaras e micrófonos. Así normalmente só tes que contalo unha vez.',en:'The conversation is recorded with cameras and microphones, so you usually only have to tell it once.'}}
+  ], note:{es:'Muchas salas preparadas para menores tienen colores, cojines y juguetes para que estés más cómodo.',gl:'Moitas salas preparadas para menores teñen cores, almofadas e xoguetes para que esteas máis cómodo.',en:'Many rooms prepared for children have colours, cushions and toys so you feel more comfortable.'}},
+ court:{img:'img/sala-juicio.jpg', credit:{es:'Fotografía real de una sala de vistas (caras difuminadas). Fuente: 20minutos.',gl:'Fotografía real dunha sala de vistas (caras difuminadas). Fonte: 20minutos.',en:'Real photograph of a courtroom (faces blurred). Source: 20minutos.'},
+  intro:{es:'Esta es una sala de juicio de verdad. Toca los puntos para saber quién se sienta en cada sitio.',gl:'Esta é unha sala de xuízo de verdade. Toca os puntos para saber quen se senta en cada sitio.',en:'This is a real courtroom. Tap the points to find out who sits where.'},
+  pts:[
+   {x:52,y:24,l:{es:'Tribunal',gl:'Tribunal',en:'Bench'},d:{es:'Aquí se sientan el juez o los jueces. Dirigen el juicio, escuchan a todos y deciden. Están un poco más altos para que todo el mundo les vea y les oiga. Cerca suele estar el letrado o letrada de la Administración de Justicia.',gl:'Aquí séntanse o xuíz ou os xuíces. Dirixen o xuízo, escoitan a todos e deciden. Están un pouco máis altos para que todo o mundo os vexa e os oia. Preto adoita estar o letrado ou letrada da Administración de Xustiza.',en:'The judge or judges sit here. They lead the trial, listen to everyone and decide. They sit a little higher so everyone can see and hear them. The court clerk usually sits nearby.'}},
+   {x:22,y:40,l:{es:'Acusación',gl:'Acusación',en:'Prosecution'},d:{es:'En uno de los lados suele sentarse el o la fiscal y, si la hay, la abogada o abogado de la víctima. El sitio exacto puede cambiar en cada sala.',gl:'Nun dos lados adoita sentarse o ou a fiscal e, se a hai, a avogada ou avogado da vítima. O sitio exacto pode cambiar en cada sala.',en:'On one side usually sit the prosecutor and, if there is one, the victim\'s lawyer. The exact place can vary in each room.'}},
+   {x:86,y:46,l:{es:'Defensa',gl:'Defensa',en:'Defence'},d:{es:'En el otro lado se sienta la abogada o el abogado de la persona acusada.',gl:'No outro lado séntase a avogada ou o avogado da persoa acusada.',en:'On the other side sits the lawyer of the accused person.'}},
+   {x:54,y:63,l:{es:'Lugar de declaración',gl:'Lugar de declaración',en:'Witness stand'},d:{es:'La persona que declara se sienta en el centro, con un micrófono. Si eres menor, se pueden tomar medidas para que no tengas que sentarte aquí o para que no veas a la persona acusada.',gl:'A persoa que declara séntase no centro, cun micrófono. Se es menor, pódense tomar medidas para que non teñas que sentarte aquí ou para que non vexas á persoa acusada.',en:'The person giving a statement sits in the middle, with a microphone. If you are a minor, measures can be taken so you don\'t have to sit here or don\'t see the accused.'}},
+   {x:14,y:11,l:{es:'Pantallas',gl:'Pantallas',en:'Screens'},d:{es:'Permiten que alguien declare por videoconferencia desde otra sala, sin entrar aquí.',gl:'Permiten que alguén declare por videoconferencia desde outra sala, sen entrar aquí.',en:'They let someone testify by video link from another room, without coming in here.'}},
+   {x:46,y:90,l:{es:'Público',gl:'Público',en:'Public'},d:{es:'Aquí se sienta el público. Cuando hay menores, muchas veces el juicio se hace a puerta cerrada, sin público, para proteger tu intimidad.',gl:'Aquí séntase o público. Cando hai menores, moitas veces o xuízo faise a porta pechada, sen público, para protexer a túa intimidade.',en:'The public sits here. When minors are involved, trials are often held behind closed doors, without the public, to protect your privacy.'}}
+  ]}
+};
+const ORDER=[
+ {es:'Llegas con una persona de confianza.',gl:'Chegas cunha persoa de confianza.',en:'You arrive with someone you trust.'},
+ {es:'Esperas en una sala tranquila, lejos de la persona acusada.',gl:'Agardas nunha sala tranquila, lonxe da persoa acusada.',en:'You wait in a calm room, away from the accused.'},
+ {es:'Alguien te explica qué va a pasar.',gl:'Alguén che explica que vai pasar.',en:'Someone explains what is going to happen.'},
+ {es:'Te hacen preguntas con calma.',gl:'Fanche preguntas con calma.',en:'They ask you questions calmly.'},
+ {es:'Si lo necesitas, pides un descanso.',gl:'Se o precisas, pides un descanso.',en:'If you need it, you ask for a break.'},
+ {es:'Terminas y te vas acompañado.',gl:'Remata e vaste acompañado.',en:'You finish and leave with someone.'}
+];
+let roomMode='gesell', orderState={next:0,shuffled:[]};
+function photoBlock(mode, idPrefix='p'){
+  const P=PHOTOS[mode];
+  return `<div class="photo"><img src="${P.img}" alt="${esc(mode==='court'?t('roomCourt'):t('roomGesell'))}">
+    ${P.pts.map((p,i)=>`<button class="hs" style="left:${p.x}%;top:${p.y}%" data-i="${i}" onclick="pickPoint('${mode}',${i},'${idPrefix}')" aria-label="${esc(L(p.l))}">${i+1}</button>`).join('')}</div>
+   <p class="credit">${esc(L(P.credit))}</p>
+   <div id="${idPrefix}Info"></div>
+   <ol class="hlist">${P.pts.map((p,i)=>`<li><button data-i="${i}" onclick="pickPoint('${mode}',${i},'${idPrefix}')"><span class="k">${i+1}</span><b>${esc(L(p.l))}</b></button></li>`).join('')}</ol>`;
+}
+function pickPoint(mode,i,pre){
+  const p=PHOTOS[mode].pts[i];
+  document.querySelectorAll('.hs,.hlist button').forEach(b=>b.classList.toggle('on', +b.dataset.i===i));
+  const box=document.getElementById(pre+'Info');
+  if(box){ box.innerHTML=`<div class="mrow" style="margin-top:12px">${bubo('talk',46)}<div class="msg bot"><b>${i+1}. ${esc(L(p.l))}</b><br>${esc(L(p.d))}<br>${spk(L(p.d))}</div></div>`; }
+  if(S.autoSpeak) speak(L(p.d));
+}
+function setRoom(m){ roomMode=m; document.getElementById('roomBox').innerHTML=roomBlock(); }
+function roomBlock(){
+  const P=PHOTOS[roomMode];
+  return `<div class="tabs" role="tablist"><button role="tab" class="${roomMode==='gesell'?'on':''}" onclick="setRoom('gesell')">${t('roomGesell')}</button><button role="tab" class="${roomMode==='court'?'on':''}" onclick="setRoom('court')">${t('roomCourt')}</button></div>
+   <div class="mrow">${bubo('talk',46)}<div class="msg bot">${esc(L(P.intro))}</div></div>
+   <p class="note">${t('tapPoint')}</p>${photoBlock(roomMode)}${P.note?`<p class="note">${esc(L(P.note))}</p>`:''}`;
+}
+function shuffleOrder(){ const idx=ORDER.map((_,i)=>i); for(let i=idx.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[idx[i],idx[j]]=[idx[j],idx[i]];} orderState={next:0,shuffled:idx}; }
+function orderBlock(){
+  return `<h2 style="margin-top:0">${t('orderTitle')}</h2><p class="note">${t('orderDesc')}</p>
+   ${orderState.shuffled.map(i=>`<button class="step ${i<orderState.next?'placed':''}" onclick="tapStep(${i},this)">${i<orderState.next?`<b>${i+1}.</b> `:''}${esc(L(ORDER[i]))}</button>`).join('')}
+   ${orderState.next>=ORDER.length?`<div class="mrow">${bubo('party',46)}<div class="msg bot info">${t('orderDone')}</div></div>`:''}`;
+}
+function tapStep(i,el){ if(i<orderState.next) return; if(i===orderState.next){ orderState.next++; document.getElementById('orderBox').innerHTML=orderBlock(); } else { el.classList.remove('no'); void el.offsetWidth; el.classList.add('no'); } }
+function level3(){ shuffleOrder(); roomMode='gesell'; return levelShell(3, `<div id="roomBox">${roomBlock()}</div><div id="orderBox" class="card">${orderBlock()}</div>`); }
+
+/* Nivel 4 */
+const EMOS=[
+ {e:'😊',l:{es:'Tranquilo',gl:'Tranquilo',en:'Calm'},p:{es:'«Estoy bien, podemos seguir.»',gl:'«Estou ben, podemos seguir.»',en:'"I\'m OK, we can carry on."'}},
+ {e:'😰',l:{es:'Nervioso',gl:'Nervioso',en:'Nervous'},p:{es:'«Estoy nervioso. ¿Me das un momento?»',gl:'«Estou nervioso. Dásme un momento?»',en:'"I\'m nervous. Can I have a moment?"'}},
+ {e:'😢',l:{es:'Triste',gl:'Triste',en:'Sad'},p:{es:'«Esto me pone triste. Necesito parar un poco.»',gl:'«Isto ponme triste. Preciso parar un pouco.»',en:'"This makes me sad. I need to stop for a bit."'}},
+ {e:'😠',l:{es:'Enfadado',gl:'Anoxado',en:'Angry'},p:{es:'«Estoy enfadado. ¿Puedo respirar antes de seguir?»',gl:'«Estou anoxado. Podo respirar antes de seguir?»',en:'"I\'m angry. Can I breathe before carrying on?"'}},
+ {e:'😨',l:{es:'Con miedo',gl:'Con medo',en:'Scared'},p:{es:'«Tengo miedo. ¿Puede estar conmigo alguien de confianza?»',gl:'«Teño medo. Pode estar comigo alguén de confianza?»',en:'"I\'m scared. Can someone I trust be with me?"'}},
+ {e:'😕',l:{es:'Confundido',gl:'Confuso',en:'Confused'},p:{es:'«No he entendido la pregunta. ¿Me la explicas otra vez?»',gl:'«Non entendín a pregunta. Explícasma outra vez?»',en:'"I didn\'t understand the question. Can you explain it again?"'}}
+];
+function pickEmo(i,el){ document.querySelectorAll('.emo button').forEach(b=>b.classList.remove('sel')); el.classList.add('sel'); const e=EMOS[i];
+  const lead={es:'Si te sientes así, puedes decir:',gl:'Se te sentes así, podes dicir:',en:'If you feel like this, you can say:'};
+  document.getElementById('emoInfo').innerHTML=`<div class="mrow">${bubo('listen',46)}<div class="msg bot">${esc(L(lead))}<br><b>${esc(L(e.p))}</b><br>${spk(L(e.p))}</div></div>`; }
+let breathT=null;
+function breathe(){ clearInterval(breathT); let n=0, inh=true; const tick=()=>{ const ball=document.getElementById('ball'), lab=document.getElementById('bLab'); if(!ball){clearInterval(breathT);return;} ball.classList.toggle('grow',inh); lab.textContent=inh?t('inhale'):t('exhale'); inh=!inh; if(++n>8){clearInterval(breathT); lab.textContent='✓';} }; tick(); breathT=setInterval(tick,4000); }
+function level4(){ const intro={es:'Todas las emociones están bien. Elige cómo te sientes y aprende una frase para decirlo.',gl:'Todas as emocións están ben. Escolle como te sentes e aprende unha frase para dicilo.',en:'All feelings are OK. Choose how you feel and learn a sentence to say it.'};
+  return levelShell(4, `<p>${esc(L(intro))}</p><div class="emo">${EMOS.map((e,i)=>`<button onclick="pickEmo(${i},this)"><span class="e">${e.e}</span>${esc(L(e.l))}</button>`).join('')}</div><div id="emoInfo" style="margin-top:12px"></div>
+   <div class="card breath"><h2 style="margin-top:0">${t('breathe')}</h2><div id="ball" class="ball"></div><b id="bLab">&nbsp;</b><button class="btn sec" onclick="breathe()">${t('start')}</button></div>`); }
+
+/* Nivel 5 */
+const KEYS=[
+ {e:'✅',t:{es:'Di siempre la verdad',gl:'Di sempre a verdade',en:'Always tell the truth'},d:{es:'Cuenta solo lo que recuerdas, con tus palabras.',gl:'Conta só o que lembras, coas túas palabras.',en:'Only say what you remember, in your own words.'}},
+ {e:'🤷',t:{es:'Puedes decir «no lo sé»',gl:'Podes dicir «non o sei»',en:'You can say "I don\'t know"'},d:{es:'O «no me acuerdo». Es mejor que inventar.',gl:'Ou «non me lembro». É mellor que inventar.',en:'Or "I don\'t remember". It\'s better than guessing.'}},
+ {e:'🔁',t:{es:'Puedes pedir que repitan',gl:'Podes pedir que repitan',en:'You can ask them to repeat'},d:{es:'Si no entiendes una pregunta, dilo.',gl:'Se non entendes unha pregunta, dio.',en:'If you don\'t understand a question, say so.'}},
+ {e:'⏸️',t:{es:'Puedes pedir un descanso',gl:'Podes pedir un descanso',en:'You can ask for a break'},d:{es:'Agua, ir al baño o parar un momento.',gl:'Auga, ir ao baño ou parar un momento.',en:'Water, the toilet or a short pause.'}},
+ {e:'🙅',t:{es:'No tienes que adivinar',gl:'Non tes que adiviñar',en:'You don\'t have to guess'},d:{es:'Ni decir lo que crees que quieren oír.',gl:'Nin dicir o que cres que queren oír.',en:'Or say what you think they want to hear.'}},
+ {e:'💙',t:{es:'Nadie te va a regañar',gl:'Ninguén te vai rifar',en:'Nobody will tell you off'},d:{es:'Lo estás haciendo bien, cuentes como lo cuentes.',gl:'Estalo facendo ben, contes como o contes.',en:'You are doing well, however you tell it.'}}
+];
+const QUIZ5=[
+ {q:{es:'Te hacen una pregunta y no te acuerdas. ¿Qué haces?',gl:'Fante unha pregunta e non te lembras. Que fas?',en:'You are asked a question and you don\'t remember. What do you do?'},o:[{es:'Me invento algo',gl:'Invento algo',en:'Make something up'},{es:'Digo «no me acuerdo»',gl:'Digo «non me lembro»',en:'Say "I don\'t remember"'}],a:1},
+ {q:{es:'Estás muy cansado y nervioso.',gl:'Estás moi canso e nervioso.',en:'You are very tired and nervous.'},o:[{es:'Pido un descanso',gl:'Pido un descanso',en:'Ask for a break'},{es:'Aguanto hasta el final',gl:'Aguanto ata o final',en:'Hold on until the end'}],a:0},
+ {q:{es:'No entiendes una palabra de la pregunta.',gl:'Non entendes unha palabra da pregunta.',en:'You don\'t understand a word in the question.'},o:[{es:'Contesto lo que sea',gl:'Contesto o que sexa',en:'Answer anything'},{es:'Pido que me la expliquen',gl:'Pido que ma expliquen',en:'Ask them to explain it'}],a:1}
+];
+function answerMC(i,j){ const q=QUIZ5[i], box=document.getElementById('q5'+i), b=box.querySelectorAll('.opt'); b.forEach(x=>x.classList.remove('right','wrong')); b[j].classList.add(j===q.a?'right':'wrong'); box.querySelector('.fb').textContent= j===q.a?t('right'):t('wrong')+' '+L(q.o[q.a]); }
+function level5(){ const intro={es:'Nadie te dirá qué tienes que contar: eso lo decides tú. Pero hay claves que te ayudan a hacerlo con tranquilidad.',gl:'Ninguén che dirá que tes que contar: iso decídelo ti. Pero hai claves que che axudan a facelo con tranquilidade.',en:'Nobody will tell you what to say: that\'s up to you. But there are keys that help you do it calmly.'};
+  return levelShell(5, `<div class="mrow">${bubo('talk',46)}<div class="msg bot">${esc(L(intro))}</div></div>
+   <div class="grid3" style="margin-top:14px">${KEYS.map(k=>`<div class="card" style="margin:0"><div style="font-size:26px">${k.e}</div><b style="color:var(--pri)">${esc(L(k.t))}</b><p class="note" style="margin:4px 0 0">${esc(L(k.d))}</p></div>`).join('')}</div>
+   <h2>${LANG==='en'?'What would you do?':LANG==='gl'?'Que farías?':'¿Qué harías?'}</h2>
+   ${QUIZ5.map((q,i)=>`<div class="card" id="q5${i}"><b>${esc(L(q.q))}</b>${q.o.map((o,j)=>`<button class="opt" onclick="answerMC(${i},${j})">${esc(L(o))}</button>`).join('')}<p class="fb note" style="margin:0"></p></div>`).join('')}`); }
+
+/* Nivel 6 */
+function level6(){ const intro={es:'Pedir ayuda es de valientes. Estas personas y teléfonos están para ti.',gl:'Pedir axuda é de valentes. Estas persoas e teléfonos están para ti.',en:'Asking for help is brave. These people and numbers are there for you.'};
+  return levelShell(6, `<div class="mrow">${bubo('happy',46)}<div class="msg bot">${esc(L(intro))}</div></div>${phonesHTML()}<div class="card"><b>${t('tChat')}</b><p class="note">${t('dChat')}</p><button class="btn" onclick="go('chat')">${ic('chat')} ${t('tChat')}</button></div>`); }
+const LEVEL_VIEWS=[level1,level2,level3,level4,level5,level6];
+
+/* ======================= DICCIONARIO ======================= */
+const W=(e,w,d,teen)=>({e,w,d:teen?Object.assign({},d,{teen}):d});
+const WORDS=[
+ W('⚖️',{es:'Justicia',gl:'Xustiza',en:'Justice'},{es:'Lo que se hace para que se respeten los derechos de todas las personas.',gl:'O que se fai para que se respecten os dereitos de todas as persoas.',en:'What is done so everyone\'s rights are respected.'},{es:'Poder del Estado que resuelve conflictos aplicando la ley, a través de jueces y tribunales independientes.',gl:'Poder do Estado que resolve conflitos aplicando a lei, a través de xuíces e tribunais independentes.',en:'State power that resolves disputes by applying the law, through independent judges and courts.'}),
+ W('🏛️',{es:'Juzgado',gl:'Xulgado',en:'Court'},{es:'El edificio donde trabajan los jueces y se hacen los juicios.',gl:'O edificio onde traballan os xuíces e se fan os xuízos.',en:'The building where judges work and trials take place.'}),
+ W('👩‍⚖️',{es:'Juez / jueza',gl:'Xuíz / xuíza',en:'Judge'},{es:'Persona que escucha a todos y decide de forma justa.',gl:'Persoa que escoita a todos e decide de forma xusta.',en:'Person who listens to everyone and decides fairly.'},{es:'Profesional que dirige el procedimiento y dicta resoluciones de forma independiente e imparcial.',gl:'Profesional que dirixe o procedemento e dita resolucións de forma independente e imparcial.',en:'Professional who leads proceedings and issues decisions independently and impartially.'}),
+ W('🧑‍💼',{es:'Fiscal',gl:'Fiscal',en:'Prosecutor'},{es:'Persona que defiende la ley y protege a los menores.',gl:'Persoa que defende a lei e protexe os menores.',en:'Person who defends the law and protects minors.'},{es:'Miembro del Ministerio Fiscal: promueve la acción de la justicia y defiende la legalidad y el interés del menor.',gl:'Membro do Ministerio Fiscal: promove a acción da xustiza e defende a legalidade e o interese do menor.',en:'Member of the Public Prosecutor\'s Office: brings cases to justice and defends the law and the child\'s interests.'}),
+ W('👨‍💼',{es:'Abogado / abogada',gl:'Avogado / avogada',en:'Lawyer'},{es:'Persona que te ayuda y defiende tus derechos.',gl:'Persoa que che axuda e defende os teus dereitos.',en:'Person who helps you and defends your rights.'}),
+ W('📣',{es:'Denuncia',gl:'Denuncia',en:'Report'},{es:'Contar a la policía o al juzgado algo malo que ha pasado.',gl:'Contar á policía ou ao xulgado algo malo que pasou.',en:'Telling the police or court about something bad that happened.'},{es:'Comunicación a la policía, Fiscalía o juzgado de hechos que pueden ser delito, para que se investiguen.',gl:'Comunicación á policía, Fiscalía ou xulgado de feitos que poden ser delito, para que se investiguen.',en:'Notifying the police, prosecutor or court of facts that may be a crime, so they are investigated.'}),
+ W('🚫',{es:'Delito',gl:'Delito',en:'Crime'},{es:'Algo que la ley prohíbe porque hace daño a otras personas.',gl:'Algo que a lei prohibe porque fai dano a outras persoas.',en:'Something the law forbids because it hurts other people.'},{es:'Conducta prevista y castigada en el Código Penal.',gl:'Conduta prevista e castigada no Código Penal.',en:'Conduct defined and punished in the Criminal Code.'}),
+ W('🗣️',{es:'Declarar',gl:'Declarar',en:'Give a statement'},{es:'Contar lo que sabes o lo que te ha pasado.',gl:'Contar o que sabes ou o que che pasou.',en:'Telling what you know or what happened to you.'}),
+ W('👀',{es:'Testigo',gl:'Testemuña',en:'Witness'},{es:'Persona que vio u oyó algo y lo cuenta.',gl:'Persoa que viu ou oíu algo e o conta.',en:'Person who saw or heard something and tells about it.'}),
+ W('💙',{es:'Víctima',gl:'Vítima',en:'Victim'},{es:'Persona a la que alguien ha hecho daño. Nunca es culpa suya.',gl:'Persoa á que alguén lle fixo dano. Nunca é culpa súa.',en:'Person someone has hurt. It is never their fault.'},{es:'Persona que ha sufrido un daño por un delito. Tiene los derechos del Estatuto de la Víctima (Ley 4/2015).',gl:'Persoa que sufriu un dano por un delito. Ten os dereitos do Estatuto da Vítima (Lei 4/2015).',en:'Person harmed by a crime. They have the rights in the Victims\' Statute (Law 4/2015).'}),
+ W('🧑‍⚖️',{es:'Juicio',gl:'Xuízo',en:'Trial'},{es:'Reunión en el juzgado para escuchar a todos y decidir.',gl:'Reunión no xulgado para escoitar a todos e decidir.',en:'Meeting in court to hear everyone and decide.'},{es:'Fase del proceso en la que se practican las pruebas ante el tribunal, que después dicta sentencia.',gl:'Fase do proceso na que se practican as probas ante o tribunal, que despois dita sentenza.',en:'Stage of the proceedings where evidence is presented to the court, which then gives its ruling.'}),
+ W('📄',{es:'Sentencia',gl:'Sentenza',en:'Ruling'},{es:'La decisión final del juez, por escrito.',gl:'A decisión final do xuíz, por escrito.',en:'The judge\'s final decision, in writing.'}),
+ W('🎥',{es:'Prueba preconstituida',gl:'Proba preconstituída',en:'Pre-recorded statement'},{es:'Grabar lo que cuentas una vez para no tener que repetirlo.',gl:'Gravar o que contas unha vez para non ter que repetilo.',en:'Recording what you say once so you don\'t have to repeat it.'},{es:'Declaración grabada antes del juicio, con todas las garantías, que sustituye a declarar en el juicio (LECrim, art. 449 ter).',gl:'Declaración gravada antes do xuízo, con todas as garantías, que substitúe a declarar no xuízo (LECrim, art. 449 ter).',en:'Statement recorded before trial with full guarantees, replacing testimony at trial (LECrim, art. 449 ter).'}),
+ W('🪞',{es:'Sala Gesell',gl:'Sala Gesell',en:'Gesell room'},{es:'Sala con un espejo especial donde puedes contarlo tranquilo, sin ver al resto.',gl:'Sala cun espello especial onde podes contalo tranquilo, sen ver ao resto.',en:'Room with a special mirror where you can talk calmly without seeing the others.'}),
+ W('🛡️',{es:'Orden de protección',gl:'Orde de protección',en:'Protection order'},{es:'Decisión del juez para que alguien no se acerque a ti.',gl:'Decisión do xuíz para que alguén non se achegue a ti.',en:'A judge\'s decision so someone can\'t come near you.'}),
+ W('📝',{es:'Letrado/a de la Admón. de Justicia',gl:'Letrado/a da Admón. de Xustiza',en:'Court clerk'},{es:'Persona que vigila que todo se haga bien y quede registrado.',gl:'Persoa que vixía que todo se faga ben e quede rexistrado.',en:'Person who checks everything is done properly and recorded.'}),
+ W('🧠',{es:'Psicólogo / psicóloga',gl:'Psicólogo / psicóloga',en:'Psychologist'},{es:'Persona que cuida de cómo te sientes.',gl:'Persoa que coida de como te sentes.',en:'Person who looks after how you feel.'}),
+ W('🔒',{es:'Confidencial',gl:'Confidencial',en:'Confidential'},{es:'Que se guarda en secreto para protegerte.',gl:'Que se garda en segredo para protexerte.',en:'Kept private to protect you.'}),
+ W('📱',{es:'Ciberacoso',gl:'Ciberacoso',en:'Cyberbullying'},{es:'Molestar, insultar o amenazar a alguien por internet.',gl:'Molestar, insultar ou ameazar a alguén por internet.',en:'Bothering, insulting or threatening someone online.'}),
+ W('🏫',{es:'Coordinador/a de bienestar',gl:'Coordinador/a de benestar',en:'Wellbeing coordinator'},{es:'Persona del colegio que cuida de que estés bien.',gl:'Persoa do colexio que coida de que esteas ben.',en:'Person at school who makes sure you are OK.'})
+];
+function viewDict(){
+  return `<div class="crumb">${t('home')} › ${t('tDict')}</div><h1>${t('tDict')}</h1><input class="search" placeholder="${t('search')}" oninput="filterDict(this.value)" aria-label="${t('search')}">
+   <div class="words" id="words">${WORDS.map(w=>`<div class="word" data-w="${esc(norm(L(w.w)+' '+L(w.d)))}"><div class="e">${w.e}</div><b>${esc(L(w.w))}</b><p>${esc(L(w.d))}</p>${spk(L(w.w)+'. '+L(w.d))}</div>`).join('')}</div>`;
+}
+function filterDict(q){ const n=norm(q); document.querySelectorAll('#words .word').forEach(el=>el.style.display=el.dataset.w.includes(n)?'':'none'); }
+
+/* ======================= CONSEJOS (14+) ======================= */
+const TIPS=[
+ {t:{es:'Ciberacoso',gl:'Ciberacoso',en:'Cyberbullying'},b:{
+  es:['Si te insultan, amenazan o excluyen por internet de forma repetida, es ciberacoso. No es culpa tuya.','Guarda pruebas: capturas de pantalla con fecha y hora, nombre del perfil y enlaces.','Bloquea a la persona y denúncialo en la propia plataforma.','No respondas con insultos: puede volverse en tu contra.','Cuéntaselo a un adulto de confianza o a la persona coordinadora de bienestar. Las amenazas, el acoso reiterado o la suplantación de identidad pueden ser delito y denunciarse ante la policía.'],
+  gl:['Se te insultan, ameazan ou exclúen por internet de forma repetida, é ciberacoso. Non é culpa túa.','Garda probas: capturas de pantalla con data e hora, nome do perfil e ligazóns.','Bloquea a persoa e denúnciao na propia plataforma.','Non respondas con insultos: pode volverse na túa contra.','Cóntallo a un adulto de confianza ou á persoa coordinadora de benestar. As ameazas, o acoso reiterado ou a suplantación de identidade poden ser delito e denunciarse ante a policía.'],
+  en:['If someone repeatedly insults, threatens or excludes you online, that is cyberbullying. It\'s not your fault.','Keep evidence: screenshots with date and time, profile names and links.','Block the person and report them on the platform.','Don\'t reply with insults: it could backfire.','Tell a trusted adult or the wellbeing coordinator. Threats, repeated harassment or identity theft can be crimes and can be reported to the police.']}},
+ {t:{es:'Difusión de imágenes íntimas',gl:'Difusión de imaxes íntimas',en:'Sharing intimate images'},b:{
+  es:['Difundir fotos o vídeos íntimos de alguien sin su permiso es delito (Código Penal, art. 197.7), aunque se hubieran enviado voluntariamente. Reenviarlos también.','Si te ha pasado a ti, no es culpa tuya.','Puedes pedir la retirada urgente del contenido a través del Canal Prioritario de la Agencia Española de Protección de Datos (aepd.es).','Muy importante: no guardes ni reenvíes la imagen, ni siquiera como prueba. Guarda el enlace, el nombre del perfil y la fecha.','Si te llega una imagen así de otra persona: no la reenvíes, bórrala y avisa a un adulto.'],
+  gl:['Difundir fotos ou vídeos íntimos de alguén sen o seu permiso é delito (Código Penal, art. 197.7), aínda que se enviasen voluntariamente. Reenvialos tamén.','Se che pasou a ti, non é culpa túa.','Podes pedir a retirada urxente do contido a través da Canle Prioritaria da Axencia Española de Protección de Datos (aepd.es).','Moi importante: non gardes nin reenvíes a imaxe, nin sequera como proba. Garda a ligazón, o nome do perfil e a data.','Se che chega unha imaxe así doutra persoa: non a reenvíes, bórraa e avisa a un adulto.'],
+  en:['Sharing someone\'s intimate photos or videos without permission is a crime (Criminal Code, art. 197.7), even if they were sent voluntarily. So is forwarding them.','If it happened to you, it\'s not your fault.','You can request urgent removal through the Spanish Data Protection Agency\'s Priority Channel (aepd.es).','Very important: don\'t keep or forward the image, not even as evidence. Save the link, profile name and date.','If you receive an image like this of someone else: don\'t forward it, delete it and tell an adult.']}},
+ {t:{es:'Si te piden fotos o te presionan',gl:'Se che piden fotos ou te presionan',en:'If someone asks for photos or pressures you'},b:{
+  es:['Señales de alarma: alguien a quien no conoces en persona te hace muchos regalos o cumplidos, te pide secretos o fotos, o quiere hablar contigo por otra aplicación.','Si te amenazan con publicar algo si no envías más, no envíes nada más. No es culpa tuya.','Guarda las pruebas de la conversación, bloquea y cuéntaselo a un adulto o llama a ANAR (900 20 20 10).','Es un delito y se puede denunciar.'],
+  gl:['Sinais de alarma: alguén a quen non coñeces en persoa faiche moitos agasallos ou eloxios, pídeche segredos ou fotos, ou quere falar contigo por outra aplicación.','Se te ameazan con publicar algo se non envías máis, non envíes nada máis. Non é culpa túa.','Garda as probas da conversa, bloquea e cóntallo a un adulto ou chama a ANAR (900 20 20 10).','É un delito e pódese denunciar.'],
+  en:['Warning signs: someone you don\'t know in person gives you lots of gifts or compliments, asks for secrets or photos, or wants to move to another app.','If they threaten to post something unless you send more, don\'t send anything else. It\'s not your fault.','Keep evidence of the conversation, block them and tell an adult or call ANAR (900 20 20 10).','It is a crime and can be reported.']}},
+ {t:{es:'Prepararme para el juicio',gl:'Prepararme para o xuízo',en:'Getting ready for the trial'},b:{
+  es:['Tienes derecho a que te expliquen todo de forma comprensible (Ley 4/2015, Estatuto de la Víctima).','Puedes ir acompañado de una persona que elijas y pedir apoyo a la Oficina de Asistencia a las Víctimas.','Debe evitarse que coincidas con la persona acusada: puedes esperar en otra sala y, a veces, declarar por videoconferencia o sin contacto visual.','Si eres víctima de maltrato o abuso, tienes derecho a asistencia jurídica gratuita.','Di la verdad; puedes decir «no lo sé», pedir que repitan la pregunta y pedir descansos.','Si eres tú la persona investigada y tienes entre 14 y 17 años, se aplica la Ley de Responsabilidad Penal del Menor (LO 5/2000), que prioriza medidas educativas.'],
+  gl:['Tes dereito a que che expliquen todo de forma comprensible (Lei 4/2015, Estatuto da Vítima).','Podes ir acompañado dunha persoa que elixas e pedir apoio á Oficina de Asistencia ás Vítimas.','Debe evitarse que coincidas coa persoa acusada: podes agardar noutra sala e, ás veces, declarar por videoconferencia ou sen contacto visual.','Se es vítima de maltrato ou abuso, tes dereito a asistencia xurídica gratuíta.','Di a verdade; podes dicir «non o sei», pedir que repitan a pregunta e pedir descansos.','Se es ti a persoa investigada e tes entre 14 e 17 anos, aplícase a Lei de Responsabilidade Penal do Menor (LO 5/2000), que prioriza medidas educativas.'],
+  en:['You have the right to have everything explained clearly (Law 4/2015, Victims\' Statute).','You can be accompanied by someone you choose and ask the Victim Support Office for help.','Contact with the accused should be avoided: you can wait in another room and sometimes testify by video link or without visual contact.','If you are a victim of abuse, you have the right to free legal aid.','Tell the truth; you can say "I don\'t know", ask for the question to be repeated and ask for breaks.','If you are the person under investigation and you are 14 to 17, the Juvenile Criminal Responsibility Law (LO 5/2000) applies, which prioritises educational measures.']}}
+];
+function viewTips(open){
+  if(!TEEN()) return `<div class="card">${t('tipsKidOnly')}</div>`;
+  return `<div class="crumb">${t('home')} › ${t('tTips')}</div><h1>${t('tTips')}</h1>
+   ${TIPS.map((x,i)=>`<details id="tip${i}" ${open===i?'open':''}><summary>${esc(L(x.t))}</summary><ul>${x.b[LANG].map(li=>`<li style="margin:6px 0">${esc(li)}</li>`).join('')}</ul></details>`).join('')}
+   <div class="card"><b>${t('tHelp')}</b><p class="note">ANAR 900 20 20 10 · 112 · 024</p><button class="btn sec" onclick="go('ayuda')">${t('seePhones')}</button></div>`;
+}
+
+/* ======================= MODO AULA ======================= */
+const AULA_QUIZ=[
+ {q:{es:'¿Quién decide en un juicio?',gl:'Quen decide nun xuízo?',en:'Who decides in a trial?'},o:[{es:'El juez o jueza',gl:'O xuíz ou xuíza',en:'The judge'},{es:'El público',gl:'O público',en:'The public'},{es:'La policía',gl:'A policía',en:'The police'}],a:0},
+ {q:{es:'Si no entiendes una pregunta…',gl:'Se non entendes unha pregunta…',en:'If you don\'t understand a question…'},o:[{es:'Te callas',gl:'Calas',en:'Stay quiet'},{es:'Pides que te la expliquen',gl:'Pides que cha expliquen',en:'Ask for it to be explained'},{es:'Contestas cualquier cosa',gl:'Contestas calquera cousa',en:'Answer anything'}],a:1},
+ {q:{es:'¿A qué número llamas si estás en peligro?',gl:'A que número chamas se estás en perigo?',en:'Which number do you call if you are in danger?'},o:[{es:'112',gl:'112',en:'112'},{es:'010',gl:'010',en:'010'},{es:'123',gl:'123',en:'123'}],a:0},
+ {q:{es:'¿Para qué sirve la sala Gesell?',gl:'Para que serve a sala Gesell?',en:'What is the Gesell room for?'},o:[{es:'Para declarar con tranquilidad y una sola vez',gl:'Para declarar con tranquilidade e unha soa vez',en:'To testify calmly and only once'},{es:'Para castigar',gl:'Para castigar',en:'To punish'},{es:'Para esperar',gl:'Para agardar',en:'To wait'}],a:0},
+ {q:{es:'¿Quién cuida de tu bienestar en el colegio?',gl:'Quen coida do teu benestar no colexio?',en:'Who looks after your wellbeing at school?'},o:[{es:'La persona coordinadora de bienestar',gl:'A persoa coordinadora de benestar',en:'The wellbeing coordinator'},{es:'Nadie',gl:'Ninguén',en:'Nobody'},{es:'El conserje',gl:'O conserxe',en:'The caretaker'}],a:0},
+ {q:{es:'¿Puedes pedir ayuda tú solo?',gl:'Podes pedir axuda ti só?',en:'Can you ask for help on your own?'},o:[{es:'Sí',gl:'Si',en:'Yes'},{es:'Solo con mis padres',gl:'Só cos meus pais',en:'Only with my parents'},{es:'No',gl:'Non',en:'No'}],a:0}
+];
+function aulaSlides(){
+  const sl=[], cards=arr=>`<div class="grid3">${arr.map(r=>`<div class="card" style="margin:0"><span style="font-size:30px">${r.e}</span><br><b style="color:var(--pri)">${esc(L(r.t||r.l))}</b><p class="note">${esc(L(r.d||r.p))}</p></div>`).join('')}</div>`;
+  sl.push(`<div class="slide" style="text-align:center">${bubo('happy',170)}<h1 style="font-size:1.9em">${t('appName')}</h1><p>${TEEN()?t('helloTeenSub'):t('helloKidSub')}</p></div>`);
+  sl.push(`<div class="slide"><span class="pill">${t('lvl')} 1</span><h1>${L(LEVELS[0].t)}</h1>${cards(RIGHTS)}</div>`);
+  sl.push(`<div class="slide"><span class="pill">${t('lvl')} 2</span><h1>${L(LEVELS[1].t)}</h1>${cards(PROS)}</div>`);
+  sl.push(`<div class="slide"><span class="pill">${t('lvl')} 3</span><h1>${t('roomGesell')}</h1>${photoBlock('gesell','ag')}</div>`);
+  sl.push(`<div class="slide"><span class="pill">${t('lvl')} 3</span><h1>${t('roomCourt')}</h1>${photoBlock('court','ac')}</div>`);
+  sl.push(`<div class="slide"><span class="pill">${t('lvl')} 4</span><h1>${L(LEVELS[3].t)}</h1>${cards(EMOS)}</div>`);
+  sl.push(`<div class="slide"><span class="pill">${t('lvl')} 5</span><h1>${L(LEVELS[4].t)}</h1>${cards(KEYS)}</div>`);
+  sl.push(`<div class="slide"><span class="pill">${t('lvl')} 6</span><h1>${L(LEVELS[5].t)}</h1>${phonesHTML()}</div>`);
+  const demo={es:[['me','Hola, en el grupo de clase se ríen de mí todos los días.'],['bot','Gracias por contármelo. Eso es acoso y no es culpa tuya. En tu colegio hay una persona coordinadora de bienestar que puede ayudarte.'],['bot','Si quieres, puedo ponerte en contacto con una persona especialista. Tú decides.']],
+   gl:[['me','Ola, no grupo da clase rinse de min todos os días.'],['bot','Grazas por contarmo. Iso é acoso e non é culpa túa. No teu colexio hai unha persoa coordinadora de benestar que pode axudarte.'],['bot','Se queres, podo poñerte en contacto cunha persoa especialista. Ti decides.']],
+   en:[['me','Hi, in the class group chat they laugh at me every day.'],['bot','Thank you for telling me. That is bullying and it is not your fault. Your school has a wellbeing coordinator who can help you.'],['bot','If you want, I can put you in touch with a specialist. It\'s up to you.']]}[LANG];
+  sl.push(`<div class="slide"><h1>${t('tChat')}</h1><p class="note">${LANG==='en'?'Example with a made-up case':LANG==='gl'?'Exemplo cun caso inventado':'Ejemplo con un caso inventado'}</p><div class="msgs">${demo.map(([w,x])=>msgHTML({who:w,text:x,expr:'talk'})).join('')}</div></div>`);
+  AULA_QUIZ.forEach((q,i)=>sl.push(`<div class="slide" id="aq${i}"><span class="pill">Quiz ${i+1}/${AULA_QUIZ.length}</span><h1>${esc(L(q.q))}</h1>${q.o.map((o,j)=>`<button class="opt" onclick="aulaAns(${i},${j})">${String.fromCharCode(65+j)}. ${esc(L(o))}</button>`).join('')}</div>`));
+  sl.push(`<div class="slide" style="text-align:center"><h1>${t('aulaQR')}</h1><div id="qr" style="display:inline-block;background:#fff;padding:16px;border:1px solid var(--line);border-radius:var(--r)"></div><p class="note">${esc(location.href.split('#')[0])}</p></div>`);
+  return sl;
+}
+function aulaAns(i,j){ const q=AULA_QUIZ[i], b=document.querySelectorAll('#aq'+i+' .opt'); b.forEach(x=>x.classList.remove('right','wrong')); b[j].classList.add(j===q.a?'right':'wrong'); if(j!==q.a) b[q.a].classList.add('right'); }
+function viewAula(){
+  const sl=aulaSlides(); S.aulaIdx=Math.max(0,Math.min(S.aulaIdx,sl.length-1));
+  setTimeout(()=>{ const q=document.getElementById('qr'); if(q){ if(window.QRCode) new QRCode(q,{text:location.href.split('#')[0],width:220,height:220}); else q.textContent=location.href.split('#')[0]; } },60);
+  return `${sl[S.aulaIdx]}<div class="slidenav"><button class="btn sec" onclick="aulaGo(-1)" ${S.aulaIdx===0?'disabled':''}>${ic('arrowL')} ${t('aulaPrev')}</button><span class="note">${S.aulaIdx+1} / ${sl.length}</span><button class="btn" onclick="aulaGo(1)" ${S.aulaIdx===sl.length-1?'disabled':''}>${t('aulaNext')} ${ic('arrowR')}</button></div>`;
+}
+function aulaGo(d){ S.aulaIdx+=d; render(); window.scrollTo(0,0); }
+document.addEventListener('keydown',e=>{ if(route()!=='aula') return; if(e.key==='ArrowRight') aulaGo(1); if(e.key==='ArrowLeft') aulaGo(-1); });
+
+/* ======================= AJUSTES ======================= */
+function viewSettings(){
+  const sw=(on,fn)=>`<button class="sw ${on?'on':''}" role="switch" aria-checked="${on}" onclick="${fn}"></button>`;
+  return `<div class="crumb">${t('home')} › ${t('settings')}</div><h1>${t('settings')}</h1><div class="card">
+   <div class="set"><b>${t('setLang')}</b><select onchange="setLang(this.value)"><option value="es" ${LANG==='es'?'selected':''}>Español</option><option value="gl" ${LANG==='gl'?'selected':''}>Galego</option><option value="en" ${LANG==='en'?'selected':''}>English</option></select></div>
+   <div class="set"><span>${t('setBig')}</span>${sw(S.big,"toggleSet('big')")}</div>
+   <div class="set"><span>${t('setContrast')}</span>${sw(S.contrast,"toggleSet('contrast')")}</div>
+   <div class="set"><span>${t('setSpeak')}</span>${sw(S.autoSpeak,"S.autoSpeak=!S.autoSpeak;render()")}</div>
+   <div class="set"><b>${t('changeAge')}</b><button class="btn sec" onclick="changeAge()">${ic('user')} ${t('changeAge')}</button></div>
+   <div class="set" style="border:0"><span><b>${t('setCamo')}</b><br><span class="note">${t('setCamoD')}</span></span>${sw(S.camo,"toggleSet('camo')")}</div>
+   <button class="btn sec" onclick="showCamo()">${t('setCamoNow')}</button></div>
+   <p class="note">${ic('lock')} ${t('noSave')}</p>`;
+}
+function setLang(l){ LANG=l; store.set('lang',l); INDEX=null; if(S.chat&&S.chat.msgs.length<=2) S.chat=null; render(); }
+function toggleSet(k){ S[k]=!S[k]; store.set(k,S[k]); render(); }
+
+/* ======================= CAMUFLAJE ======================= */
+function showCamo(){
+  const c=document.getElementById('camo');
+  const days=['L','M','X','J','V'].map((d,i)=>`<div>${d}<br>${['☁️','⛅','🌧️','☁️','⛅'][i]}<br>${[16,18,15,17,19][i]}°</div>`).join('');
+  c.innerHTML=`<div id="camoCloud"><svg width="170" height="136" viewBox="0 0 100 80" aria-hidden="true"><g fill="#fff"><ellipse cx="50" cy="54" rx="44" ry="21"/><circle cx="25" cy="45" r="18"/><circle cx="52" cy="31" r="25"/><circle cx="77" cy="47" r="15"/></g></svg></div><div class="temp">17°</div><div class="city">Nube · Nublado</div><div class="days">${days}</div>`;
+  c.hidden=false; document.title='Nube'; document.getElementById('app').innerHTML=''; closeNav(); closeSos();
+  let timer=null; const cl=document.getElementById('camoCloud');
+  cl.addEventListener('pointerdown',e=>{e.preventDefault();timer=setTimeout(hideCamo,3000);}); ['pointerup','pointerleave'].forEach(ev=>cl.addEventListener(ev,()=>clearTimeout(timer))); cl.addEventListener('contextmenu',e=>e.preventDefault());
+}
+function hideCamo(){ document.getElementById('camo').hidden=true; document.title=t('appName'); render(); }
+
+/* ======================= RENDER ======================= */
+function render(){
+  document.body.classList.toggle('big',S.big); document.body.classList.toggle('contrast',S.contrast); document.body.classList.toggle('aula',route()==='aula');
+  renderChrome();
+  const app=document.getElementById('app'), r=route();
+  let html;
+  if(!S.age) html=viewAge();
+  else if(r==='inicio') html=viewHome();
+  else if(r==='chat') html=viewChat();
+  else if(r==='juego') html=viewGame();
+  else if(r.startsWith('nivel/')){ const n=+r.split('/')[1]; html=(LEVEL_VIEWS[n-1]||viewGame)(); }
+  else if(r==='diccionario') html=viewDict();
+  else if(r==='consejos') html=viewTips();
+  else if(r.startsWith('consejos/')) html=viewTips(+r.split('/')[1]);
+  else if(r==='ayuda') html=viewHelp();
+  else if(r==='aula') html=viewAula();
+  else if(r==='ajustes') html=viewSettings();
+  else html=viewHome();
+  app.innerHTML=html;
+  if(r.startsWith('consejos/')){ const d=document.getElementById('tip'+r.split('/')[1]); if(d) d.scrollIntoView({block:'start'}); }
+  if(r==='chat'&&S.age){ const m=document.getElementById('msgs'); if(m&&m.lastElementChild) m.lastElementChild.scrollIntoView({block:'end'}); }
+}
+let lastRoute=null;
+window.addEventListener('hashchange',()=>{ const r=route(); if(r!==lastRoute){ window.scrollTo(0,0); lastRoute=r; } render(); });
+document.addEventListener('visibilitychange',()=>{ if(document.hidden&&S.camo){ S.chat=null; showCamo(); } });
+if(location.hash) history.replaceState(null,'',location.pathname);
+if(S.camo) showCamo(); else render();
+if('serviceWorker' in navigator && location.protocol==='https:') navigator.serviceWorker.register('sw.js').catch(()=>{});
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" defer></script>
+</body>
+</html>
