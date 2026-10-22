@@ -29,6 +29,7 @@ Sin esto la app funciona igual: Bubo entiende saludos, emociones, respuestas de 
 
 ## Qué es simulado en la demo
 - La llamada a la persona especialista.
+- La llamada al 112 por internet (para móviles sin SIM, tablets u ordenadores). Para hacerla real hace falta un acuerdo con el servicio 112.
 - La preinstalación en todos los móviles (requiere acuerdo del Ministerio).
 
 ## Antes de un uso real
