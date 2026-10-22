@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Mi Justicia</title>
+<title>Bubo</title>
 <meta name="theme-color" content="#23395B">
-<meta name="description" content="Mi Justicia: información y ayuda para niños, niñas y adolescentes. Prototipo DATAthon Justicia 2026.">
+<meta name="description" content="Bubo: información y ayuda para niños, niñas y adolescentes. Prototipo DATAthon Justicia 2026.">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="icon.svg">
@@ -295,6 +295,146 @@ body.kid.contrast .tile,body.kid.contrast .word,body.kid.contrast .flip .f,body.
 .age .opt14.k{font-family:"Baloo 2","Nunito",sans-serif;background:#FFF1C9;border-color:#FFD166;color:#7A4A00;border-radius:24px;font-size:1.3em;box-shadow:0 5px 0 #FFD166}
 .age .opt14.k small{font-family:"Nunito",sans-serif;color:#7A5A20}
 .age .opt14.k:hover{border-color:#FFB020}
+/* ===== el cuento de Bubo: viñetas ===== */
+.cuento{margin:12px 0 22px}
+.cuento-head{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+.cuento-head h2{margin:0}
+.vigs{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;counter-reset:v}
+.vig{position:relative;margin:0;background:var(--card);border:2px solid var(--line);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column;animation:vigIn .45s both;transition:border-color .2s,box-shadow .2s}
+.vig:nth-child(2){animation-delay:.12s}.vig:nth-child(3){animation-delay:.24s}
+@keyframes vigIn{from{transform:translateY(12px)}to{transform:none}}
+@media(prefers-reduced-motion:reduce){.vig,.vmark{animation:none}}
+.vig.on{border-color:var(--acc);box-shadow:0 0 0 4px var(--acc-l)}
+.vscene{position:relative;aspect-ratio:16/10;background-color:#E8E2D8;background-repeat:no-repeat}
+.vnum{position:absolute;top:8px;left:8px;width:32px;height:32px;border-radius:50%;background:var(--pri);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 6px rgba(0,0,0,.25)}
+.vbubo{position:absolute;left:6px;bottom:-16px;line-height:0;filter:drop-shadow(0 3px 4px rgba(0,0,0,.25))}
+.vbubble{position:relative;margin:24px 10px 12px;padding:10px 12px;background:var(--pri-l);border-radius:14px;font-size:.93em;line-height:1.45}
+.vbubble::before{content:"";position:absolute;top:-10px;left:30px;border:10px solid transparent;border-top:0;border-bottom-color:var(--pri-l)}
+.vcast{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.vcast span{display:inline-flex;align-items:center;gap:4px;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:2px 9px;font-size:.8em;font-weight:700;line-height:1.5}
+.vcast .ico{width:14px;height:14px}
+.vig-pt{flex-direction:row;margin-top:12px;animation:vigIn .3s both}
+.vig-pt .vscene{flex:0 0 46%;align-self:flex-start}
+.vig-pt .vtalk{flex:1;display:flex;flex-direction:column;justify-content:center;gap:8px;padding:12px}
+.vig-pt .vline{display:flex;gap:8px;align-items:flex-end}
+.vig-pt .vline svg{flex:0 0 auto}
+.vig-pt .vbubble{margin:0}
+.vig-pt .vbubble::before{top:auto;bottom:12px;left:-10px;border:10px solid transparent;border-left:0;border-right-color:var(--pri-l)}
+.vmark{position:absolute;transform:translate(-50%,-50%);width:40px;height:40px;border-radius:50%;background:var(--acc);color:#fff;border:3px solid #fff;font-weight:800;display:flex;align-items:center;justify-content:center;animation:vm 1.6s infinite}
+@keyframes vm{0%,100%{box-shadow:0 0 0 4px rgba(255,255,255,.55)}50%{box-shadow:0 0 0 13px rgba(255,255,255,.12)}}
+.vptnav{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.vptnav .btn{min-height:40px;padding:6px 14px}
+@media(max-width:620px){.vig-pt{flex-direction:column}.vig-pt .vscene{flex:none;width:100%}}
+.ptchips{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.ptchips button{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--card);border-radius:999px;padding:5px 12px 5px 5px;font-weight:700;font-size:.9em}
+.ptchips button .k{width:24px;height:24px;border-radius:50%;background:var(--acc);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:.85em}
+.ptchips button.on{border-color:var(--pri);background:var(--pri-l)}
+body.kid .vig{border-width:3px;border-radius:24px;box-shadow:0 5px 0 rgba(0,0,0,.06)}
+body.kid .vigs .vig:nth-child(1){border-color:#FFB3C7}body.kid .vigs .vig:nth-child(2){border-color:#A8D8FF}body.kid .vigs .vig:nth-child(3){border-color:#B9E7C9}
+body.kid .vig.on{border-color:#FF8A3D}
+body.kid .vbubble{background:#FFF9E6;border:2px solid #F6DFA4;border-radius:20px;font-size:1em}
+body.kid .vbubble::before{border-bottom-color:#F6DFA4}
+body.kid .vig-pt .vbubble::before{border-bottom-color:transparent;border-right-color:#F6DFA4}
+body.kid .vnum{background:#FF8A3D;font-family:"Baloo 2","Nunito",sans-serif}
+body.kid .ptchips button{border-width:2px;font-family:"Baloo 2","Nunito",sans-serif}
+body.contrast .vbubble{background:#FFF;border:2px solid #000}
+/* ===== el cuento de Bubo en cómic ===== */
+.comic{margin:12px 0 22px;outline:none}
+.comic:focus-visible{outline:3px solid #4C8BD6;outline-offset:4px;border-radius:var(--r)}
+.comic-head{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:8px}
+.comic-head h2{margin:0}
+.cview{position:relative;overflow:hidden;touch-action:pan-y;border-radius:var(--r);background:radial-gradient(circle,rgba(47,42,64,.08) 1.2px,transparent 1.5px) 0 0/14px 14px,var(--pri-l);user-select:none;-webkit-user-select:none}
+.ctrack{position:absolute;top:12px;left:0;transition:transform .7s cubic-bezier(.45,0,.3,1);will-change:transform}
+.cpanel{position:absolute;top:0;border:2px solid #2F2A40;border-radius:10px;overflow:hidden;background:#FFFFFF;cursor:pointer;opacity:.45;transform:scale(.92);transition:opacity .5s,transform .5s;box-shadow:0 5px 0 rgba(47,42,64,.12)}
+.cpanel.on{opacity:1;transform:none;cursor:default}
+.cbg{position:absolute;inset:0;background-repeat:no-repeat;background-color:#EDE6DC}
+.cbg svg{display:block;width:100%;height:100%}
+.cnum{position:absolute;top:8px;right:8px;width:30px;height:30px;border-radius:50%;background:#2F2A40;color:#FFFFFF;font-weight:800;font-size:.9em;display:flex;align-items:center;justify-content:center;z-index:2}
+.ctag{position:absolute;bottom:10px;right:10px;background:#FFFFFF;color:#2F2A40;border:2px solid #2F2A40;border-radius:8px;padding:1px 10px;font-weight:800;font-size:.88em;z-index:2}
+.cbubble{position:absolute;top:10px;left:10px;right:46px;background:#FFFFFF;color:#2F2A40;border:2px solid #2F2A40;border-radius:16px;padding:8px 12px;font-weight:600;font-size:.95em;line-height:1.38;z-index:3;opacity:0;transform:translateY(8px) scale(.9);transform-origin:15% 100%;transition:opacity .25s,transform .25s}
+.cbubble::before{content:"";position:absolute;left:26px;bottom:-16px;border:9px solid transparent;border-top:16px solid #2F2A40;border-bottom:0}
+.cbubble::after{content:"";position:absolute;left:29px;bottom:-11px;border:6px solid transparent;border-top:12px solid #FFFFFF;border-bottom:0}
+.cpanel.on .cbubble{opacity:1;transform:none;transition-delay:.5s}
+.cowl{position:absolute;top:0;left:0;z-index:5;pointer-events:none;transition:transform .7s cubic-bezier(.45,0,.3,1)}
+.chop{transform-origin:50% 100%}
+.chop svg{display:block;width:var(--os,80px);height:var(--os,80px);filter:drop-shadow(0 4px 4px rgba(0,0,0,.25))}
+.chop.hopR{animation:hopR .7s ease-in-out}.chop.hopL{animation:hopL .7s ease-in-out}
+@keyframes hopR{0%{transform:none}12%{transform:translateY(6px) scale(1.12,.86)}45%{transform:translateY(-80px) rotate(-12deg) scale(.95,1.06)}80%{transform:translateY(0) scale(1.12,.88)}100%{transform:none}}
+@keyframes hopL{0%{transform:none}12%{transform:translateY(6px) scale(1.12,.86)}45%{transform:translateY(-80px) rotate(12deg) scale(.95,1.06)}80%{transform:translateY(0) scale(1.12,.88)}100%{transform:none}}
+.cnav{display:flex;align-items:center;justify-content:center;gap:14px;margin-top:12px}
+.carrow{width:52px;height:52px;flex:0 0 auto;border-radius:50%;border:2px solid #2F2A40;background:#FFFFFF;color:#2F2A40;display:inline-flex;align-items:center;justify-content:center;box-shadow:0 4px 0 rgba(47,42,64,.18);padding:0}
+.carrow .ico{width:26px;height:26px;stroke-width:2.6}
+.carrow.next{background:var(--pri);border-color:var(--pri);color:#FFFFFF}
+.carrow:active{transform:translateY(3px);box-shadow:0 1px 0 rgba(47,42,64,.18)}
+.carrow[disabled]{opacity:.3;cursor:default;box-shadow:none}
+.cdots{display:flex;gap:7px;flex-wrap:wrap;justify-content:center;max-width:60%}
+.cdot{width:12px;height:12px;border-radius:999px;border:2px solid #2F2A40;background:#FFFFFF;padding:0;transition:width .3s}
+.cdot.on{background:#2F2A40;width:26px}
+@media(max-width:620px){.cbubble{font-size:.9em;right:42px;padding:7px 10px}.carrow{width:46px;height:46px}}
+@media(prefers-reduced-motion:reduce){.ctrack,.cowl,.cpanel,.cbubble{transition:none!important}.chop{animation:none!important}}
+body.kid .cview{background:radial-gradient(circle,rgba(255,138,61,.16) 1.4px,transparent 1.7px) 0 0/16px 16px,#FFF3D6}
+body.kid .cpanel{border-width:3px;border-radius:18px}
+body.kid .cbubble{border-width:3px;border-radius:22px;font-weight:700;font-size:1.05em}
+body.kid .cbubble::before{border-top-color:#2F2A40}
+body.kid .ctag{background:#FFE066;border-width:3px;transform:rotate(-3deg);font-family:"Baloo 2","Nunito",sans-serif}
+body.kid .cnum{background:#FF8A3D;font-family:"Baloo 2","Nunito",sans-serif}
+body.kid .carrow{border-width:3px}
+body.kid .carrow.next{background:#FFE066;border-color:#2F2A40;color:#2F2A40}
+@media(max-width:620px){body.kid .cbubble{font-size:.95em}}
+/* ===== realidad virtual ===== */
+.vrhead{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.vrhead h1{margin-bottom:0}
+.vrhead .row{gap:8px}
+.vrhead .btn{min-height:40px;padding:7px 13px;font-size:.88em}
+@media(max-width:400px){.top{gap:5px;padding:8px 8px}.brand{gap:6px;min-width:0}.brand svg{width:34px;height:34px}.brand .t1,body.kid .brand .t1{font-size:.95em}.hbtn{padding:0 9px;height:40px}}
+@media(max-width:620px){.vrhead .btn{font-size:.8em;padding:6px 11px}.vrwrap{height:58vh}}
+.vrwrap{position:relative;height:min(64vh,560px);min-height:340px;border-radius:var(--r);overflow:hidden;border:1px solid var(--line);background:linear-gradient(#CFE8FF,#FFE6F0 60%,#FFF3E0);margin:14px 0}
+.vrwrap a-scene{width:100%;height:100%}
+.vrtools{position:absolute;top:10px;right:10px;z-index:5;display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.vrtb{display:inline-flex;align-items:center;gap:6px;min-height:40px;border:2px solid #FFFFFF;background:rgba(255,253,248,.94);color:#3E2F5B;border-radius:999px;padding:6px 13px;font-weight:800;font-size:.85em;box-shadow:0 3px 10px rgba(62,47,91,.18)}
+.vrtb .ico{width:18px;height:18px}
+.vrtb.sos{background:var(--sos);border-color:var(--sos);color:#FFFFFF}
+.vrfsonly{display:none;gap:8px}
+.vrfull .vrfsonly{display:inline-flex}
+.vrwrap.vrfull{position:fixed;inset:0;z-index:150;width:100%;height:100%;min-height:0;margin:0;border:0;border-radius:0}
+.vrwrap:fullscreen{width:100%;height:100%;border-radius:0}
+body.vrlock{overflow:hidden}
+.vrwrap.novr .a-enter-vr{display:none}
+@media(max-width:620px){.vrfsonly .vrtb span{display:none}}
+.vrload{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;height:100%;color:#3E2F5B;font-weight:700;text-align:center;padding:20px}
+.vrhowto{margin-top:14px}
+.vrhowto li{margin:6px 0}
+.found{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.locks{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.lockpill{display:inline-flex;align-items:center;gap:6px;border:2px solid var(--lc);color:var(--text);border-radius:999px;padding:6px 12px;font-weight:700;font-size:.9em;background:var(--card)}
+.lockpill.on{background:var(--ok-l);border-color:var(--ok)}
+.lockpill .ico{width:18px;height:18px}
+.keycard{display:flex;gap:16px;align-items:center;background:linear-gradient(135deg,#FFF4CF,#FFE29A);border:2px solid #E7B94A;border-radius:var(--r);padding:16px 18px;margin:14px 0;color:#4A3500}
+.keycard ul{margin:6px 0;padding-left:20px}
+.keyic{font-size:46px;line-height:1;flex:0 0 auto;width:64px;height:64px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;color:#7A5A00}
+.keyic .ico{width:34px;height:34px}
+.breathbar{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px}
+.breathbar .progress{flex:1 1 100%}
+.envpick{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
+@media(max-width:560px){.envpick{grid-template-columns:1fr}}
+.envcard{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:var(--r);padding:0;overflow:hidden;text-align:left;background:var(--card);transition:transform .15s,box-shadow .15s}
+.envcard:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(35,57,91,.15)}
+.envcard .art{display:block;height:150px;position:relative}
+.envcard.beach .art{background:radial-gradient(circle at 70% 38%,#FFE08A 0 22px,transparent 23px),linear-gradient(#5FB6F2 0 48%,#2F9BD3 48% 70%,#F3D9A6 70%)}
+.envcard.forest .art{background:radial-gradient(ellipse 28px 60px at 20% 70%,#2F7D44 98%,transparent),radial-gradient(ellipse 34px 75px at 45% 66%,#3A9150 98%,transparent),radial-gradient(ellipse 26px 55px at 72% 72%,#46A35C 98%,transparent),radial-gradient(ellipse 30px 64px at 90% 68%,#2F7D44 98%,transparent),linear-gradient(#9FD4F7 0 60%,#7FBF6A 60%)}
+.envcard .tx{display:flex;flex-direction:column;padding:12px 16px 16px}
+.envcard b{font-size:1.2em;color:var(--pri)}
+.doorgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+@media(max-width:620px){.doorgrid{grid-template-columns:1fr 1fr}}
+.doorbtn{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;min-height:104px;border:0;border-radius:var(--r) var(--r) 6px 6px;padding:14px 10px;background:var(--dc);color:var(--dt,#3E2F5B);font-weight:700;text-align:center;box-shadow:inset 0 -6px 0 rgba(62,47,91,.12),0 4px 10px rgba(62,47,91,.08);transition:transform .15s}
+.doorbtn:hover{transform:translateY(-3px)}
+.doorbtn .dk{font-size:30px;line-height:1}
+.doorbtn .dk .ico{width:30px;height:30px}
+.doorinfo{border-left:6px solid var(--dc)}
+body.kid .doorbtn{border-radius:26px 26px 10px 10px;font-family:"Baloo 2","Nunito",sans-serif;font-size:1.08em}
+body.kid .envcard{border:0;border-radius:26px;box-shadow:0 6px 0 rgba(0,0,0,.07)}
+body.kid .envcard b{font-family:"Baloo 2","Nunito",sans-serif;color:var(--pri-d)}
+body.kid .keycard{border-radius:26px;box-shadow:0 5px 0 #E7B94A}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 :focus-visible{outline:3px solid #4C8BD6;outline-offset:2px}
 </style>
@@ -332,17 +472,17 @@ const TEEN = () => S.age === 'teen';
 
 /* ======================= TEXTOS DE INTERFAZ ======================= */
 const T = {
-es:{appName:'Mi Justicia', appSub:'Infancia y adolescencia', proto:'Prototipo · DATAthon Justicia 2026 · No es una aplicación oficial',
+es:{appName:'Bubo', appSub:'Infancia y adolescencia', proto:'Prototipo · DATAthon Justicia 2026 · No es una aplicación oficial',
  exit:'Salir', sos:'112', sosLbl:'Emergencia', menu:'Menú', home:'Inicio', settings:'Ajustes', changeAge:'Cambiar edad',
  secMain:'Secciones', secGame:'Mi camino por la justicia', secTips:'Consejos importantes',
- ageTitle:'Bienvenida a Mi Justicia', ageSub:'Para adaptar las explicaciones, dinos tu edad. No la guardamos en ningún sitio.',
+ ageTitle:'Bienvenida a Bubo', ageSub:'Para adaptar las explicaciones, dinos tu edad. No la guardamos en ningún sitio.',
  ageKid:'Tengo menos de 14 años', ageKidD:'Explicaciones con palabras muy sencillas', ageTeen:'Tengo 14 años o más', ageTeenD:'Información más completa y detallada',
  helloKid:'¡Hola! Soy Bubo', helloKidSub:'Te acompaño para que entiendas cómo funciona la justicia y sepas dónde pedir ayuda.',
  helloTeen:'Información y ayuda para adolescentes', helloTeenSub:'Conoce tus derechos, cómo funcionan los procedimientos judiciales y a quién acudir. Soy Bubo y te acompaño.',
  dangerNow:'¿Estás en peligro ahora mismo?', callSos:'Llamar al 112',
- tChat:'Habla con Bubo', dChat:'Pregunta lo que te preocupa', tGame:'Mi camino por la justicia', dGame:'Conoce el juzgado paso a paso',
+ tChat:'Habla con Bubo', dChat:'Pregunta lo que te preocupa', tGame:'Mi camino por la justicia', dGame:'Conoce la plaza judicial con los cuentos de Bubo',
  tDict:'Diccionario', dDict:'Palabras jurídicas explicadas', tTips:'Consejos importantes', dTips:'Ciberacoso, imágenes y juicios',
- tHelp:'Teléfonos de ayuda', dHelp:'Personas que pueden ayudarte', tAula:'Modo aula', dAula:'Para proyectar en clase',
+ tHelp:'Teléfonos de ayuda', dHelp:'Personas que pueden ayudarte', tAula:'Modo aula', dAula:'Para proyectar en clase', tRV:'Realidad virtual', dRV:'Globos, escape room, sala de espera y puertas',
  noSave:'Esta aplicación no guarda nada de lo que haces ni de lo que escribes. Si alguien se acerca, pulsa «Salir».',
  privacy:'Este chat no guarda ni envía nada de lo que escribes. No pongas tu nombre, dirección, colegio ni teléfono.',
  placeholder:'Escribe aquí…', send:'Enviar', listen:'Escuchar', thinking:'Bubo está escribiendo',
@@ -352,29 +492,29 @@ es:{appName:'Mi Justicia', appSub:'Infancia y adolescencia', proto:'Prototipo ·
  callNoData:'No le enviamos nada de lo que has escrito aquí. Tú decides qué quieres contarle.',
  callNow:'Llamar ahora', cancel:'Volver al chat', connecting:'Conectando con una persona especialista en', connected:'Estás hablando con una persona especialista en',
  hang:'Colgar', demoCall:'Simulación para la demo. En la aplicación real hablarías por voz con una persona del servicio de ayuda.', afterCall:'Sigo aquí. Si quieres, podemos seguir hablando.',
- lvl:'Nivel', done:'¡Nivel completado!', finish:'Completar nivel', prevL:'Nivel anterior', nextL:'Siguiente nivel', backMap:'Ver todos los niveles',
- gameIntro:'Seis niveles para conocer tus derechos, a los profesionales y el juzgado. Puedes hacerlos en el orden que quieras.', progress:'Progreso',
+ lvl:'Nivel', done:'¡Sala completada!', finish:'Terminar esta sala', prevL:'Sala anterior', nextL:'Siguiente sala', backMap:'Volver a mi camino',
+ gameIntro:'Explora la plaza judicial con Bubo: dos salas, dos cuentos y fotos con números para descubrir quién se sienta en cada sitio.', progress:'Progreso',
  tap:'Toca cada tarjeta para darle la vuelta.', right:'¡Correcto!', wrong:'No exactamente:',
- roomGesell:'Sala Gesell (sala adaptada)', roomCourt:'Sala de juicio', tapPoint:'Toca los puntos de la foto para saber qué hay en cada zona.',
+ roomPoli:'Sala polivalente', roomCourt:'Sala de juicio', tapPoint:'Toca los números de la foto y Bubo te enseña cada parte de la sala.', section:'Exploro la plaza judicial', storyTitle:'El cuento de Bubo', storyPlay:'Escuchar el cuento', storyStop:'Parar', explore:'Explora la sala', seatNote:'El sitio exacto de cada persona puede cambiar en cada sala.',
  orderTitle:'¿En qué orden pasa?', orderDesc:'Toca los pasos en el orden correcto.', orderDone:'¡Perfecto! Ya sabes cómo es el día.',
  breathe:'Respira conmigo', inhale:'Toma aire…', exhale:'Suelta el aire…', start:'Empezar',
  search:'Buscar palabra…', tipsKidOnly:'Esta sección es para mayores de 14 años.',
  setLang:'Idioma', setBig:'Letra más grande', setContrast:'Alto contraste', setSpeak:'Leer en voz alta las respuestas',
  setCamo:'Modo camuflaje', setCamoD:'La aplicación se esconde detrás de una pantalla del tiempo llamada «Nube». Para volver, mantén pulsada la nube 3 segundos. Instalada en el móvil, la aplicación aparece con el nombre «Nube» y el icono de una nube.', setCamoNow:'Esconder ahora',
- aulaPrev:'Anterior', aulaNext:'Siguiente', aulaQR:'Escanea para abrir Mi Justicia',
+ aulaPrev:'Anterior', aulaNext:'Siguiente', aulaQR:'Escanea para abrir Bubo',
  footer:'Prototipo para el DATAthon Justicia 2026 (Reto 2: Infancia y juventud). Información resumida de normas oficiales. La llamada a especialistas es una simulación.',
  sosTitle:'Emergencias', sosDesc:'Si estás en peligro, llama al 112. Es gratis y funciona las 24 horas.', sosPc:'Si estás usando un ordenador o una tablet sin línea, marca 112 desde cualquier teléfono o pide a alguien cercano que llame.', sosOther:'Otros teléfonos', sosNet:'Llamar al 112 por internet', sosNetD:'¿Tu móvil no tiene tarjeta SIM? Prueba igualmente el botón rojo: muchos móviles pueden llamar al 112 sin SIM. Si no funciona, o usas una tablet o un ordenador, llama por internet con wifi o datos.', sosNetConn:'Conectando con el 112 por internet', sosNetOn:'Estás hablando con el 112', sosNetDemo:'Simulación para la demo. En la aplicación real, la llamada iría por internet a la central del 112 (requiere acuerdo con el servicio 112) y enviaría tu ubicación para que puedan encontrarte.', close:'Cerrar', yes:'Sí', no:'No'},
-gl:{appName:'Mi Justicia', appSub:'Infancia e adolescencia', proto:'Prototipo · DATAthon Justicia 2026 · Non é unha aplicación oficial',
+gl:{appName:'Bubo', appSub:'Infancia e adolescencia', proto:'Prototipo · DATAthon Justicia 2026 · Non é unha aplicación oficial',
  exit:'Saír', sos:'112', sosLbl:'Emerxencia', menu:'Menú', home:'Inicio', settings:'Axustes', changeAge:'Cambiar idade',
  secMain:'Seccións', secGame:'O meu camiño pola xustiza', secTips:'Consellos importantes',
- ageTitle:'Benvida a Mi Justicia', ageSub:'Para adaptar as explicacións, dinos a túa idade. Non a gardamos en ningún sitio.',
+ ageTitle:'Benvida a Bubo', ageSub:'Para adaptar as explicacións, dinos a túa idade. Non a gardamos en ningún sitio.',
  ageKid:'Teño menos de 14 anos', ageKidD:'Explicacións con palabras moi sinxelas', ageTeen:'Teño 14 anos ou máis', ageTeenD:'Información máis completa e detallada',
  helloKid:'Ola! Son Bubo', helloKidSub:'Acompáñote para que entendas como funciona a xustiza e saibas onde pedir axuda.',
  helloTeen:'Información e axuda para adolescentes', helloTeenSub:'Coñece os teus dereitos, como funcionan os procedementos xudiciais e a quen acudir. Son Bubo e acompáñote.',
  dangerNow:'Estás en perigo agora mesmo?', callSos:'Chamar ao 112',
- tChat:'Fala con Bubo', dChat:'Pregunta o que che preocupa', tGame:'O meu camiño pola xustiza', dGame:'Coñece o xulgado paso a paso',
+ tChat:'Fala con Bubo', dChat:'Pregunta o que che preocupa', tGame:'O meu camiño pola xustiza', dGame:'Coñece a praza xudicial cos contos de Bubo',
  tDict:'Dicionario', dDict:'Palabras xurídicas explicadas', tTips:'Consellos importantes', dTips:'Ciberacoso, imaxes e xuízos',
- tHelp:'Teléfonos de axuda', dHelp:'Persoas que poden axudarte', tAula:'Modo aula', dAula:'Para proxectar na clase',
+ tHelp:'Teléfonos de axuda', dHelp:'Persoas que poden axudarte', tAula:'Modo aula', dAula:'Para proxectar na clase', tRV:'Realidade virtual', dRV:'Globos, escape room, sala de espera e portas',
  noSave:'Esta aplicación non garda nada do que fas nin do que escribes. Se alguén se achega, preme «Saír».',
  privacy:'Este chat non garda nin envía nada do que escribes. Non poñas o teu nome, enderezo, colexio nin teléfono.',
  placeholder:'Escribe aquí…', send:'Enviar', listen:'Escoitar', thinking:'Bubo está escribindo',
@@ -384,29 +524,29 @@ gl:{appName:'Mi Justicia', appSub:'Infancia e adolescencia', proto:'Prototipo ·
  callNoData:'Non lle enviamos nada do que escribiches aquí. Ti decides que queres contarlle.',
  callNow:'Chamar agora', cancel:'Volver ao chat', connecting:'Conectando cunha persoa especialista en', connected:'Estás falando cunha persoa especialista en',
  hang:'Colgar', demoCall:'Simulación para a demo. Na aplicación real falarías por voz cunha persoa do servizo de axuda.', afterCall:'Sigo aquí. Se queres, podemos seguir falando.',
- lvl:'Nivel', done:'Nivel completado!', finish:'Completar nivel', prevL:'Nivel anterior', nextL:'Seguinte nivel', backMap:'Ver todos os niveis',
- gameIntro:'Seis niveis para coñecer os teus dereitos, os profesionais e o xulgado. Podes facelos na orde que queiras.', progress:'Progreso',
+ lvl:'Nivel', done:'Sala completada!', finish:'Rematar esta sala', prevL:'Sala anterior', nextL:'Seguinte sala', backMap:'Volver ao meu camiño',
+ gameIntro:'Explora a praza xudicial con Bubo: dúas salas, dous contos e fotos con números para descubrir quen se senta en cada sitio.', progress:'Progreso',
  tap:'Toca cada tarxeta para darlle a volta.', right:'Correcto!', wrong:'Non exactamente:',
- roomGesell:'Sala Gesell (sala adaptada)', roomCourt:'Sala de xuízo', tapPoint:'Toca os puntos da foto para saber que hai en cada zona.',
+ roomPoli:'Sala polivalente', roomCourt:'Sala de xuízo', tapPoint:'Toca os números da foto e Bubo ensínache cada parte da sala.', section:'Exploro a praza xudicial', storyTitle:'O conto de Bubo', storyPlay:'Escoitar o conto', storyStop:'Parar', explore:'Explora a sala', seatNote:'O sitio exacto de cada persoa pode cambiar en cada sala.',
  orderTitle:'En que orde pasa?', orderDesc:'Toca os pasos na orde correcta.', orderDone:'Perfecto! Xa sabes como é o día.',
  breathe:'Respira comigo', inhale:'Colle aire…', exhale:'Solta o aire…', start:'Comezar',
  search:'Buscar palabra…', tipsKidOnly:'Esta sección é para maiores de 14 anos.',
  setLang:'Idioma', setBig:'Letra máis grande', setContrast:'Alto contraste', setSpeak:'Ler en voz alta as respostas',
  setCamo:'Modo camuflaxe', setCamoD:'A aplicación agóchase detrás dunha pantalla do tempo chamada «Nube». Para volver, mantén premida a nube 3 segundos. Instalada no móbil, a aplicación aparece co nome «Nube» e a icona dunha nube.', setCamoNow:'Agochar agora',
- aulaPrev:'Anterior', aulaNext:'Seguinte', aulaQR:'Escanea para abrir Mi Justicia',
+ aulaPrev:'Anterior', aulaNext:'Seguinte', aulaQR:'Escanea para abrir Bubo',
  footer:'Prototipo para o DATAthon Justicia 2026 (Reto 2: Infancia e xuventude). Información resumida de normas oficiais. A chamada a especialistas é unha simulación.',
  sosTitle:'Emerxencias', sosDesc:'Se estás en perigo, chama ao 112. É de balde e funciona as 24 horas.', sosPc:'Se estás usando un ordenador ou unha tablet sen liña, marca 112 desde calquera teléfono ou pídelle a alguén próximo que chame.', sosOther:'Outros teléfonos', sosNet:'Chamar ao 112 por internet', sosNetD:'O teu móbil non ten tarxeta SIM? Proba igualmente o botón vermello: moitos móbiles poden chamar ao 112 sen SIM. Se non funciona, ou usas unha tablet ou un ordenador, chama por internet con wifi ou datos.', sosNetConn:'Conectando co 112 por internet', sosNetOn:'Estás falando co 112', sosNetDemo:'Simulación para a demo. Na aplicación real, a chamada iría por internet á central do 112 (require acordo co servizo 112) e enviaría a túa localización para que poidan atoparte.', close:'Pechar', yes:'Si', no:'Non'},
-en:{appName:'Mi Justicia', appSub:'Children and teenagers', proto:'Prototype · DATAthon Justicia 2026 · Not an official app',
+en:{appName:'Bubo', appSub:'Children and teenagers', proto:'Prototype · DATAthon Justicia 2026 · Not an official app',
  exit:'Exit', sos:'112', sosLbl:'Emergency', menu:'Menu', home:'Home', settings:'Settings', changeAge:'Change age',
  secMain:'Sections', secGame:'My path through justice', secTips:'Important tips',
- ageTitle:'Welcome to Mi Justicia', ageSub:'To adapt the explanations, tell us your age. We don\'t store it anywhere.',
+ ageTitle:'Welcome to Bubo', ageSub:'To adapt the explanations, tell us your age. We don\'t store it anywhere.',
  ageKid:'I am under 14', ageKidD:'Explanations in very simple words', ageTeen:'I am 14 or older', ageTeenD:'More complete and detailed information',
  helloKid:'Hi! I\'m Bubo', helloKidSub:'I\'ll help you understand how justice works and where to ask for help.',
  helloTeen:'Information and help for teenagers', helloTeenSub:'Learn about your rights, how court proceedings work and who to turn to. I\'m Bubo and I\'m here to help.',
  dangerNow:'Are you in danger right now?', callSos:'Call 112',
- tChat:'Talk to Bubo', dChat:'Ask about what worries you', tGame:'My path through justice', dGame:'Get to know the court step by step',
+ tChat:'Talk to Bubo', dChat:'Ask about what worries you', tGame:'My path through justice', dGame:'Get to know the court with Bubo’s stories',
  tDict:'Dictionary', dDict:'Legal words explained', tTips:'Important tips', dTips:'Cyberbullying, images and trials',
- tHelp:'Help numbers', dHelp:'People who can help you', tAula:'Classroom mode', dAula:'To project in class',
+ tHelp:'Help numbers', dHelp:'People who can help you', tAula:'Classroom mode', dAula:'To project in class', tRV:'Virtual reality', dRV:'Balloons, escape room, waiting room and doors',
  noSave:'This app saves nothing you do or write. If someone comes near, tap «Exit».',
  privacy:'This chat does not save or send anything you write. Don\'t include your name, address, school or phone number.',
  placeholder:'Write here…', send:'Send', listen:'Listen', thinking:'Bubo is typing',
@@ -416,16 +556,16 @@ en:{appName:'Mi Justicia', appSub:'Children and teenagers', proto:'Prototype · 
  callNoData:'We don\'t send anything you wrote here. You decide what you want to tell them.',
  callNow:'Call now', cancel:'Back to chat', connecting:'Connecting you with a specialist in', connected:'You are talking with a specialist in',
  hang:'Hang up', demoCall:'Demo simulation. In the real app you would talk by voice with a person from the help service.', afterCall:'I\'m still here. If you want, we can keep talking.',
- lvl:'Level', done:'Level complete!', finish:'Complete level', prevL:'Previous level', nextL:'Next level', backMap:'See all levels',
- gameIntro:'Six levels to learn about your rights, the professionals and the court. Do them in any order you like.', progress:'Progress',
+ lvl:'Level', done:'Room complete!', finish:'Finish this room', prevL:'Previous room', nextL:'Next room', backMap:'Back to my path',
+ gameIntro:'Explore the court (plaza judicial) with Bubo: two rooms, two stories and numbered photos to find out who sits where.', progress:'Progress',
  tap:'Tap each card to flip it.', right:'Correct!', wrong:'Not quite:',
- roomGesell:'Gesell room (adapted room)', roomCourt:'Courtroom', tapPoint:'Tap the points on the photo to find out what is in each area.',
+ roomPoli:'Multi-purpose room', roomCourt:'Courtroom', tapPoint:'Tap the numbers on the photo and Bubo shows you each part of the room.', section:'I explore the court (plaza judicial)', storyTitle:'Bubo’s story', storyPlay:'Listen to the story', storyStop:'Stop', explore:'Explore the room', seatNote:'Where each person sits can vary from room to room.',
  orderTitle:'In what order does it happen?', orderDesc:'Tap the steps in the right order.', orderDone:'Perfect! Now you know how the day goes.',
  breathe:'Breathe with me', inhale:'Breathe in…', exhale:'Breathe out…', start:'Start',
  search:'Search a word…', tipsKidOnly:'This section is for ages 14 and over.',
  setLang:'Language', setBig:'Bigger text', setContrast:'High contrast', setSpeak:'Read answers aloud',
  setCamo:'Camouflage mode', setCamoD:'The app hides behind a weather screen called «Nube». To come back, press and hold the cloud for 3 seconds. Installed on a phone, the app shows the name «Nube» and a cloud icon.', setCamoNow:'Hide now',
- aulaPrev:'Previous', aulaNext:'Next', aulaQR:'Scan to open Mi Justicia',
+ aulaPrev:'Previous', aulaNext:'Next', aulaQR:'Scan to open Bubo',
  footer:'Prototype for DATAthon Justicia 2026 (Challenge 2: Children and youth). Information summarised from official laws. The call to specialists is a simulation.',
  sosTitle:'Emergencies', sosDesc:'If you are in danger, call 112. It is free and works 24 hours a day.', sosPc:'If you are on a computer or a tablet without a phone line, dial 112 from any phone or ask someone nearby to call.', sosOther:'Other numbers', sosNet:'Call 112 over the internet', sosNetD:'No SIM card in your phone? Try the red button anyway: many phones can call 112 without a SIM. If it doesn\'t work, or you are on a tablet or computer, call over the internet using wifi or data.', sosNetConn:'Connecting to 112 over the internet', sosNetOn:'You are talking to 112', sosNetDemo:'Demo simulation. In the real app, the call would go over the internet to the 112 centre (requires an agreement with the 112 service) and would send your location so they can find you.', close:'Close', yes:'Yes', no:'No'}
 };
@@ -489,7 +629,7 @@ const ic = n => `<svg class="ico" viewBox="0 0 24 24" aria-hidden="true">${IC[n]
 /* Emojis para menores de 14; iconos de línea en negro para 14+. */
 const EMO_IC = {'📜':'doc','👩‍⚖️':'gavel','🏛️':'court','💭':'bubble','🗝️':'key','🤝':'users','👂':'ear','💡':'bulb','🛡️':'shield','🔒':'lock','⚖️':'scale',
  '🧑‍💼':'brief','👨‍💼':'brief','📝':'pen','🧠':'care','💙':'heart','😊':'fCalm','😰':'fNervous','😢':'fSad','😠':'fAngry','😨':'fScared','😕':'fConfused',
- '✅':'okc','🤷':'qmark','🔁':'repeat','⏸️':'pause','🙅':'ban','📣':'mega','🚫':'ban','🗣️':'speech','👀':'eye','🧑‍⚖️':'gavel','📄':'doc','🎥':'video','🪞':'mirror','📱':'mobile','🏫':'school'};
+ '✅':'okc','🤷':'qmark','🔁':'repeat','⏸️':'pause','🙅':'ban','📣':'mega','🚫':'ban','🗣️':'speech','👀':'eye','🧑‍⚖️':'gavel','📄':'doc','🎥':'video','🪞':'mirror','📱':'mobile','🏫':'school','🏢':'court','🙋':'user','🤐':'ban','👨‍👩‍👧':'users','👪':'users','🧸':'heart'};
 const pic = e => TEEN() && EMO_IC[e] ? `<span class="gly" aria-hidden="true">${ic(EMO_IC[e])}</span>` : `<span class="e" aria-hidden="true">${e}</span>`;
 
 /* ======================= BUBO (búho guía) ======================= */
@@ -596,14 +736,14 @@ const CORPUS = [
        en:'If you have suffered an assault or abuse, you have the right to protection, medical and psychological care and free help from the Victim Support Offices. It is not your fault. If you are in danger, call 112.'}},
 {id:'denuncia', topic:'other', src:'Ley de Enjuiciamiento Criminal (arts. 259 y ss.) · Ley Orgánica 8/2021, LOPIVI',
  kw:'denuncia denunciar policia comisaria que es delito juzgado xulgado report complaint police station crime court',
- text:{es:'Una denuncia es contar a la policía o al juzgado algo malo que ha pasado, para que lo investiguen. Si eres menor, hay personas cuyo trabajo es protegerte durante todo el proceso.',
-       gl:'Unha denuncia é contar á policía ou ao xulgado algo malo que pasou, para que o investiguen. Se es menor, hai persoas cuxo traballo é protexerte durante todo o proceso.',
+ text:{es:'Una denuncia es contar a la policía o en la plaza judicial algo malo que ha pasado, para que lo investiguen. Si eres menor, hay personas cuyo trabajo es protegerte durante todo el proceso.',
+       gl:'Unha denuncia é contar á policía ou na praza xudicial algo malo que pasou, para que o investiguen. Se es menor, hai persoas cuxo traballo é protexerte durante todo o proceso.',
        en:'A report (denuncia) means telling the police or the court about something bad that happened, so they can investigate it. If you are under 18, there are people whose job is to protect you throughout.'},
- teen:{es:'Una denuncia es comunicar a la policía, al Juzgado de Guardia o a la Fiscalía unos hechos que pueden ser delito para que se investiguen. Cuando la víctima es menor de edad interviene la Fiscalía de Menores para garantizar su protección.',
-       gl:'Unha denuncia é comunicar á policía, ao Xulgado de Garda ou á Fiscalía uns feitos que poden ser delito para que se investiguen. Cando a vítima é menor de idade intervén a Fiscalía de Menores para garantir a súa protección.',
+ teen:{es:'Una denuncia es comunicar a la policía, al servicio de guardia de la plaza judicial o a la Fiscalía unos hechos que pueden ser delito para que se investiguen. Cuando la víctima es menor de edad interviene la Fiscalía de Menores para garantizar su protección.',
+       gl:'Unha denuncia é comunicar á policía, ao servizo de garda da praza xudicial ou á Fiscalía uns feitos que poden ser delito para que se investiguen. Cando a vítima é menor de idade intervén a Fiscalía de Menores para garantir a súa protección.',
        en:'A report means telling the police, the duty court or the Prosecutor\'s Office about facts that may be a crime so they can be investigated. When the victim is a minor, the Juvenile Prosecutor steps in to guarantee their protection.'}},
 {id:'prueba', topic:'court', src:'Ley de Enjuiciamiento Criminal (art. 449 ter) · Ley 4/2015, Estatuto de la Víctima (arts. 25 y 26)',
- kw:'declarar juicio testigo sala preguntas grabar psicologo una vez repetir miedo juez gesell xuizo testemuña testify trial witness room record psychologist once repeat',
+ kw:'declarar juicio testigo sala preguntas grabar psicologo una vez repetir miedo juez xuizo testemuña testify trial witness room record psychologist once repeat',
  text:{es:'Si te ha pasado algo grave, normalmente lo cuentas una sola vez, en una sala tranquila y con la ayuda de un psicólogo o psicóloga. Se graba, para que no tengas que repetirlo ni ir a la sala del juicio.',
        gl:'Se che pasou algo grave, normalmente cóntalo unha soa vez, nunha sala tranquila e coa axuda dun psicólogo ou psicóloga. Grávase, para que non teñas que repetilo nin ir á sala do xuízo.',
        en:'If something serious happened to you, you usually tell it only once, in a calm room with the help of a psychologist. It is recorded so you don\'t have to repeat it or go to the courtroom.'},
@@ -631,8 +771,8 @@ const CORPUS = [
  text:{es:'Si un niño o niña menor de 14 años hace algo que está muy mal, no le juzgan como a un adulto: se buscan formas de ayudarle y protegerle.',
        gl:'Se un neno ou nena menor de 14 anos fai algo que está moi mal, non o xulgan coma a un adulto: búscanse formas de axudalo e protexelo.',
        en:'If a child under 14 does something very wrong, they are not tried like an adult: ways are found to help and protect them.'},
- teen:{es:'Si tienes entre 14 y 17 años y cometes un delito, se aplica la Ley de Responsabilidad Penal del Menor, que prioriza medidas educativas (tareas socioeducativas, libertad vigilada…) y, en los casos más graves, el internamiento. Intervienen la Fiscalía de Menores y el Juzgado de Menores.',
-       gl:'Se tes entre 14 e 17 anos e cometes un delito, aplícase a Lei de Responsabilidade Penal do Menor, que prioriza medidas educativas (tarefas socioeducativas, liberdade vixiada…) e, nos casos máis graves, o internamento. Interveñen a Fiscalía de Menores e o Xulgado de Menores.',
+ teen:{es:'Si tienes entre 14 y 17 años y cometes un delito, se aplica la Ley de Responsabilidad Penal del Menor, que prioriza medidas educativas (tareas socioeducativas, libertad vigilada…) y, en los casos más graves, el internamiento. Intervienen la Fiscalía de Menores y la plaza judicial de menores.',
+       gl:'Se tes entre 14 e 17 anos e cometes un delito, aplícase a Lei de Responsabilidade Penal do Menor, que prioriza medidas educativas (tarefas socioeducativas, liberdade vixiada…) e, nos casos máis graves, o internamento. Interveñen a Fiscalía de Menores e a praza xudicial de menores.',
        en:'If you are 14 to 17 and commit a crime, the Juvenile Criminal Responsibility Law applies. It prioritises educational measures (socio-educational tasks, probation…) and, in the most serious cases, detention. The Juvenile Prosecutor and Juvenile Court are involved.'}},
 {id:'intimidad', topic:'images', src:'Ley Orgánica 1/1982 · Ley Orgánica 3/2018, LOPDGDD (art. 7)',
  kw:'intimidad privacidad datos imagen honor publicar foto sin permiso intimidade privacidade privacy data image post without permission',
@@ -769,6 +909,7 @@ function renderSide(){
    ${TEEN()?navBtn('consejos','shield',t('tTips')):''}
    ${tips}
    ${navBtn('ayuda','phone',t('tHelp'))}
+   ${typeof VR_EXP!=='undefined'?navBtn('rv','vr',t('tRV'))+`<div class="sub">${VR_EXP.map(x=>`<button class="nav ${cur==='rv/'+x[0]?'on':''}" onclick="go('rv/${x[0]}')"><span>${esc(vt(x[2]))}</span></button>`).join('')}</div>`:''}
    ${navBtn('aula','school',t('tAula'))}
    <h4>${t('settings')}</h4>
    ${navBtn('ajustes','settings',t('settings'))}
@@ -813,6 +954,7 @@ function viewHome(){
     ${tile('diccionario','book',t('tDict'),t('dDict'))}
     ${TEEN()?tile('consejos','shield',t('tTips'),t('dTips')):''}
     ${tile('ayuda','phone',t('tHelp'),t('dHelp'))}
+    ${tile('rv','vr',t('tRV'),t('dRV'))}
     ${tile('aula','school',t('tAula'),t('dAula'))}
    </div>
    <p class="note" style="margin-top:18px">${ic('lock')} ${t('noSave')}</p>`;
@@ -1101,39 +1243,320 @@ function viewCall(){
 }
 function endCall(){ clearInterval(callTimer); const c=S.chat; c.view='chat'; addBot(t('afterCall')); setChips('open'); render(); }
 
-/* ======================= JUEGO ======================= */
+/* ======================= MI CAMINO POR LA JUSTICIA: EXPLORO LA PLAZA JUDICIAL =======================
+   Dos salas. En cada una, Bubo cuenta un cuento en cómic (una idea por viñeta; con las flechas salta de una a otra) y después se explora una foto real:
+   al tocar un número aparece una viñeta con esa parte de la sala ampliada y Bubo la explica.
+   Todos los textos tienen versión para menores de 14 y para 14+ (campo teen). */
 const LEVELS=[
- {e:'📜',t:{es:'Conozco mis derechos',gl:'Coñezo os meus dereitos',en:'I know my rights'}},
- {e:'👩‍⚖️',t:{es:'Descubro a los profesionales',gl:'Descubro os profesionais',en:'I meet the professionals'}},
- {e:'🏛️',t:{es:'Exploro el juzgado',gl:'Exploro o xulgado',en:'I explore the court'}},
- {e:'💭',t:{es:'Expreso cómo me siento',gl:'Expreso como me sinto',en:'I say how I feel'}},
- {e:'🗝️',t:{es:'Claves para declarar',gl:'Claves para declarar',en:'Keys to giving a statement'}},
- {e:'🤝',t:{es:'¿A quién pido ayuda?',gl:'A quen lle pido axuda?',en:'Who can I ask for help?'}}
+ {e:'🏛️',key:'poli',t:{es:'Sala polivalente',gl:'Sala polivalente',en:'Multi-purpose room'}},
+ {e:'⚖️',key:'juicio',t:{es:'Sala de juicio',gl:'Sala de xuízo',en:'Courtroom'}}
 ];
+const ROOMS={
+ poli:{img:'img/sala-polivalente.png', ar:678/452, name:{es:'Sala polivalente',gl:'Sala polivalente',en:'Multi-purpose room'},
+  credit:{es:'Imagen de referencia de una sala polivalente.',gl:'Imaxe de referencia dunha sala polivalente.',en:'Reference image of a multi-purpose room.'},
+  comic:[
+   {x:50,y:50,z:1,expr:'happy',
+    t:{es:'¡Hola! Esta es la sala polivalente. Aquí la justicia escucha a quien tiene algo que contar.',gl:'Ola! Esta é a sala polivalente. Aquí a xustiza escoita a quen ten algo que contar.',en:'Hi! This is the multi-purpose room. Here, justice listens to people who have something to tell.',
+     teen:{es:'Esta es la sala polivalente de la plaza judicial penal. Aquí se toman declaraciones mientras se investiga un caso.',gl:'Esta é a sala polivalente da praza xudicial penal. Aquí tómanse declaracións mentres se investiga un caso.',en:'This is the multi-purpose room of the criminal court. Statements are taken here while a case is being investigated.'}}},
+   {x:46,y:40,z:2.2,expr:'talk',tag:{es:'LAJ',gl:'LAJ',en:'LAJ'},
+    t:{es:'En el centro está el LAJ. Cuida de que todo se haga bien y quede guardado.',gl:'No centro está o LAJ. Coida de que todo se faga ben e quede gardado.',en:'In the middle is the LAJ, the court clerk. They make sure everything is done right and kept.',
+     teen:{es:'En el estrado, el o la LAJ (letrado/a de la Administración de Justicia) da fe de lo que ocurre y lo deja grabado.',gl:'No estrado, o ou a LAJ (letrado/a da Administración de Xustiza) dá fe do que ocorre e déixao gravado.',en:'At the bench, the LAJ (court clerk) certifies what happens and makes sure it is recorded.'}}},
+   {x:16,y:56,z:2.2,expr:'talk',tag:{es:'Fiscal',gl:'Fiscal',en:'Prosecutor'},
+    t:{es:'Aquí está el o la fiscal. Defiende la ley y protege a los niños y niñas.',gl:'Aquí está o ou a fiscal. Defende a lei e protexe os nenos e nenas.',en:'Here is the prosecutor. They defend the law and protect children.',
+     teen:{es:'El Ministerio Fiscal defiende la legalidad y tu interés como menor.',gl:'O Ministerio Fiscal defende a legalidade e o teu interese como menor.',en:'The Public Prosecutor upholds the law and your interests as a minor.'}}},
+   {x:84,y:56,z:2.2,expr:'talk',tag:{es:'Defensa',gl:'Defensa',en:'Defence'},
+    t:{es:'Y aquí, la defensa: el abogado o la abogada de la persona acusada.',gl:'E aquí, a defensa: o avogado ou a avogada da persoa acusada.',en:'And here, the defence: the lawyer of the accused person.',
+     teen:{es:'La defensa asiste a la persona investigada. También puede hacerte preguntas, siempre con respeto.',gl:'A defensa asiste á persoa investigada. Tamén pode facerche preguntas, sempre con respecto.',en:'The defence assists the person under investigation. They may also ask you questions, always respectfully.'}}},
+   {x:52,y:84,z:1.9,expr:'happy',tag:{es:'Tu sitio',gl:'O teu sitio',en:'Your seat'},
+    t:{es:'Tú te sientas aquí. Si quieres, tu padre, tu madre o alguien de confianza pueden estar contigo.',gl:'Ti séntaste aquí. Se queres, o teu pai, a túa nai ou alguén de confianza poden estar contigo.',en:'You sit here. If you want, your dad, your mum or someone you trust can be with you.',
+     teen:{es:'Tú te sientas aquí. Si lo prefieres, pueden acompañarte tus padres o alguien de confianza, salvo que el juez decida otra cosa.',gl:'Ti séntaste aquí. Se o prefires, poden acompañarte os teus pais ou alguén de confianza, agás que o xuíz decida outra cousa.',en:'You sit here. If you prefer, your parents or someone you trust can come with you, unless the judge decides otherwise.'}}},
+   {x:40,y:29,z:2,expr:'listen',tag:{es:'Preguntas',gl:'Preguntas',en:'Questions'},
+    t:{es:'Te harán preguntas. Contesta con calma. Puedes decir «no lo sé» o «no lo entiendo».',gl:'Faranche preguntas. Contesta con calma. Podes dicir «non o sei» ou «non o entendo».',en:'They’ll ask you questions. Answer calmly. You can say “I don’t know” or “I don’t understand”.',
+     teen:{es:'Te preguntarán por los hechos. Responde con tus palabras; «no lo sé» o «no lo recuerdo» son respuestas válidas.',gl:'Preguntaranche polos feitos. Responde coas túas palabras; «non o sei» ou «non o lembro» son respostas válidas.',en:'They’ll ask you about the facts. Answer in your own words; “I don’t know” or “I don’t remember” are valid answers.'}}},
+   {x:50,y:50,z:1.25,expr:'talk',tag:{es:'La verdad',gl:'A verdade',en:'The truth'},
+    t:{es:'Di siempre la verdad. Pero si la persona acusada es de tu familia cercana, puedes no declarar.',gl:'Di sempre a verdade. Pero se a persoa acusada é da túa familia próxima, podes non declarar.',en:'Always tell the truth. But if the accused person is close family, you can choose not to testify.',
+     teen:{es:'Debes decir la verdad. Si la persona investigada es un familiar directo, puedes no declarar (art. 416 LECrim).',gl:'Debes dicir a verdade. Se a persoa investigada é un familiar directo, podes non declarar (art. 416 LECrim).',en:'You must tell the truth. If the person under investigation is a close relative, you may choose not to testify (art. 416 LECrim).'}}},
+   {x:50,y:50,z:1,expr:'party',
+    t:{es:'¡Ya conoces la sala! Ahora toca los números de la foto de abajo para verla de cerca.',gl:'Xa coñeces a sala! Agora toca os números da foto de abaixo para vela de preto.',en:'Now you know the room! Tap the numbers on the photo below to see it up close.',
+     teen:{es:'Ya sabes cómo funciona. Abajo puedes explorar la sala tocando los números.',gl:'Xa sabes como funciona. Abaixo podes explorar a sala tocando os números.',en:'Now you know how it works. Below you can explore the room by tapping the numbers.'}}}
+  ],
+  pts:[
+   {x:46,y:40,l:{es:'Mesa central',gl:'Mesa central',en:'Middle desk',teen:{es:'Estrado',gl:'Estrado',en:'Bench'}},
+    d:{es:'En la mesa del centro se sienta el LAJ, el letrado o la letrada de la Administración de Justicia. Es como el guardián de la sala: se asegura de que todo se haga bien y de que lo que cuentas quede guardado.',
+       gl:'Na mesa do centro séntase o LAJ, o letrado ou a letrada da Administración de Xustiza. É coma o gardián da sala: asegúrase de que todo se faga ben e de que o que contas quede gardado.',
+       en:'At the middle desk sits the LAJ, the court clerk. They’re like the guardian of the room: they make sure everything is done properly and that what you say is kept.',
+       teen:{es:'Estrado. Aquí se sitúa el o la LAJ, que da fe de lo que ocurre y garantiza que quede grabado y documentado. Si interviene el juez o la jueza, también se sienta en esta mesa.',
+             gl:'Estrado. Aquí sitúase o ou a LAJ, que dá fe do que ocorre e garante que quede gravado e documentado. Se intervén o xuíz ou a xuíza, tamén se senta nesta mesa.',
+             en:'Bench. The LAJ (court clerk) sits here, certifying what happens and making sure it’s recorded and documented. If the judge takes part, they also sit at this desk.'}}},
+   {x:60,y:38,l:{es:'Pantalla',gl:'Pantalla',en:'Screen',teen:{es:'Grabación',gl:'Gravación',en:'Recording'}},
+    d:{es:'En esta pantalla se graba lo que se dice, para que quede guardado tal y como lo cuentas. ¡Es como una cámara que escucha con mucha atención!',
+       gl:'Nesta pantalla grávase o que se di, para que quede gardado tal e como o contas. É coma unha cámara que escoita con moita atención!',
+       en:'This screen records what is said, so it’s kept exactly as you tell it. It’s like a camera that listens very carefully!',
+       teen:{es:'Equipo de grabación. Las declaraciones se graban en vídeo y audio para que quede constancia exacta de lo que dices.',
+             gl:'Equipo de gravación. As declaracións grávanse en vídeo e audio para que quede constancia exacta do que dis.',
+             en:'Recording equipment. Statements are recorded on video and audio so there’s an exact record of what you say.'}}},
+   {x:16,y:56,l:{es:'Fiscal',gl:'Fiscal',en:'Prosecutor'},
+    d:{es:'Aquí se sienta el o la fiscal. Defiende la ley y cuida de que los niños y niñas estén protegidos. Te hará preguntas con respeto.',
+       gl:'Aquí séntase o ou a fiscal. Defende a lei e coida de que os nenos e nenas estean protexidos. Farache preguntas con respecto.',
+       en:'The prosecutor sits here. They defend the law and make sure children are protected. They’ll ask you questions respectfully.',
+       teen:{es:'Ministerio Fiscal. Defiende la legalidad y el interés superior del menor, y puede hacerte preguntas para aclarar los hechos.',
+             gl:'Ministerio Fiscal. Defende a legalidade e o interese superior do menor, e pode facerche preguntas para aclarar os feitos.',
+             en:'Public Prosecutor. Upholds the law and the best interests of the child, and may ask you questions to clarify the facts.'}}},
+   {x:84,y:56,l:{es:'Defensa',gl:'Defensa',en:'Defence'},
+    d:{es:'Aquí se sienta la defensa: el abogado o la abogada de la persona acusada. También puede hacerte preguntas. Si alguna no la entiendes, ¡dilo sin miedo!',
+       gl:'Aquí séntase a defensa: o avogado ou a avogada da persoa acusada. Tamén pode facerche preguntas. Se algunha non a entendes, dio sen medo!',
+       en:'The defence sits here: the lawyer of the accused person. They may also ask you questions. If you don’t understand one, say so — don’t be afraid!',
+       teen:{es:'Defensa. Es el abogado o la abogada de la persona investigada. Puede hacerte preguntas, y el juez o la jueza puede impedir las que no sean adecuadas.',
+             gl:'Defensa. É o avogado ou a avogada da persoa investigada. Pode facerche preguntas, e o xuíz ou a xuíza pode impedir as que non sexan axeitadas.',
+             en:'Defence. The lawyer of the person under investigation. They may ask you questions, and the judge can stop any that aren’t appropriate.'}}},
+   {x:40,y:29,l:{es:'Micrófono',gl:'Micrófono',en:'Microphone'},
+    d:{es:'El micrófono sirve para que todo el mundo te oiga bien. ¡No hace falta gritar: habla normal, como cuando hablas conmigo!',
+       gl:'O micrófono serve para que todo o mundo te oia ben. Non fai falta berrar: fala normal, como cando falas comigo!',
+       en:'The microphone helps everyone hear you clearly. No need to shout: just talk normally, like when you talk to me!',
+       teen:{es:'Micrófono. Recoge tu voz para la grabación. Habla con calma y a tu ritmo; no hace falta acercarse mucho.',
+             gl:'Micrófono. Recolle a túa voz para a gravación. Fala con calma e ao teu ritmo; non fai falta achegarse moito.',
+             en:'Microphone. Picks up your voice for the recording. Speak calmly and at your own pace; no need to get very close.'}}},
+   {x:52,y:84,l:{es:'Tu sitio',gl:'O teu sitio',en:'Your seat',teen:{es:'Lugar de quien declara',gl:'Lugar de quen declara',en:'Witness seat'}},
+    d:{es:'Este es tu sitio. Te sientas aquí para hablar. Si lo prefieres, tu padre, tu madre o una persona de confianza pueden estar cerca de ti. Puedes pedir agua o un descanso cuando quieras.',
+       gl:'Este é o teu sitio. Séntaste aquí para falar. Se o prefires, o teu pai, a túa nai ou unha persoa de confianza poden estar preto de ti. Podes pedir auga ou un descanso cando queiras.',
+       en:'This is your seat. You sit here to talk. If you prefer, your dad, your mum or someone you trust can be close to you. You can ask for water or a break whenever you like.',
+       teen:{es:'Aquí te sientas para declarar. Puedes estar acompañado/a de tus padres o de una persona de confianza si lo prefieres, salvo que el juez o la jueza decida otra cosa. Puedes pedir pausas.',
+             gl:'Aquí séntaste para declarar. Podes estar acompañado/a dos teus pais ou dunha persoa de confianza se o prefires, agás que o xuíz ou a xuíza decida outra cousa. Podes pedir pausas.',
+             en:'You sit here to give your statement. You can be accompanied by your parents or someone you trust if you prefer, unless the judge decides otherwise. You can ask for breaks.'}}}
+  ]},
+ juicio:{img:'img/sala-juicio.jpg', ar:1400/785, name:{es:'Sala de juicio',gl:'Sala de xuízo',en:'Courtroom'},
+  credit:{es:'Fotografía real de una sala de vistas (caras difuminadas). Fuente: 20minutos.',gl:'Fotografía real dunha sala de vistas (caras difuminadas). Fonte: 20minutos.',en:'Real photograph of a courtroom (faces blurred). Source: 20minutos.'},
+  comic:[
+   {bg:'wait',expr:'happy',tag:{es:'Al llegar',gl:'Ao chegar',en:'Arriving'},
+    t:{es:'El día del juicio, una persona te dirá adónde ir. ¡Sígueme!',gl:'O día do xuízo, unha persoa dirache onde ir. Ségueme!',en:'On the day of the trial, someone will show you where to go. Follow me!',
+     teen:{es:'Al llegar, un funcionario o funcionaria te indicará adónde ir.',gl:'Ao chegar, un funcionario ou funcionaria indicarache onde ir.',en:'When you arrive, a court official will tell you where to go.'}}},
+   {bg:'wait',expr:'listen',tag:{es:'Sala de espera',gl:'Sala de espera',en:'Waiting room'},
+    t:{es:'Esperas en una sala tranquila, lejos de la persona acusada. ¡Puedes traer un cuento!',gl:'Agardas nunha sala tranquila, lonxe da persoa acusada. Podes traer un conto!',en:'You wait in a calm room, away from the accused person. You can bring a book!',
+     teen:{es:'Esperarás, siempre que sea posible, separado de la persona acusada. Los juicios a veces se retrasan.',gl:'Agardarás, sempre que sexa posible, separado da persoa acusada. Os xuízos ás veces atrásanse.',en:'Whenever possible, you’ll wait separately from the accused. Trials sometimes run late.'}}},
+   {bg:'door',expr:'happy',tag:{es:'¡Te toca!',gl:'Tócache!',en:'Your turn!'},
+    t:{es:'¡Te toca! Te llaman por tu nombre y te acompañan a la sala.',gl:'Tócache! Chámante polo teu nome e acompáñante á sala.',en:'Your turn! They call your name and walk you to the room.',
+     teen:{es:'Cuando te llamen, entrarás en la sala y te indicarán dónde sentarte.',gl:'Cando te chamen, entrarás na sala e indicarante onde sentar.',en:'When you’re called, you’ll go into the courtroom and be shown where to sit.'}}},
+   {x:54,y:63,z:2,expr:'talk',tag:{es:'Testigo',gl:'Testemuña',en:'Witness'},
+    t:{es:'Te sientas aquí. Vienes como testigo: la persona que cuenta lo que sabe.',gl:'Séntaste aquí. Vés como testemuña: a persoa que conta o que sabe.',en:'You sit here. You’re a witness: the person who tells what they know.',
+     teen:{es:'Te sentarás en el lugar de declaración. Compareces como testigo.',gl:'Sentarás no lugar de declaración. Compareces como testemuña.',en:'You’ll sit at the witness stand. You appear as a witness.'}}},
+   {x:52,y:24,z:2,expr:'talk',tag:{es:'Juez o jueza',gl:'Xuíz ou xuíza',en:'Judge'},
+    t:{es:'El juez o la jueza te saluda y te recuerda que digas la verdad.',gl:'O xuíz ou a xuíza saúdate e lémbrache que digas a verdade.',en:'The judge says hello and reminds you to tell the truth.',
+     teen:{es:'El juez o la jueza te informará de tu obligación de decir la verdad y de tus derechos.',gl:'O xuíz ou a xuíza informarate da túa obriga de dicir a verdade e dos teus dereitos.',en:'The judge will tell you about your duty to tell the truth and about your rights.'}}},
+   {x:52,y:45,z:1.2,expr:'happy',tag:{es:'Tus derechos',gl:'Os teus dereitos',en:'Your rights'},
+    t:{es:'Tus superpoderes: entenderlo todo, pedir que te lo repitan y pedir un descanso.',gl:'Os teus superpoderes: entendelo todo, pedir que cho repitan e pedir un descanso.',en:'Your superpowers: understanding everything, asking them to repeat and asking for a break.',
+     teen:{es:'Puedes pedir que te lo expliquen todo, aclaraciones y descansos, y medidas para no ver a la persona acusada.',gl:'Podes pedir que cho expliquen todo, aclaracións e descansos, e medidas para non ver a persoa acusada.',en:'You can ask for everything to be explained, for clarification and breaks, and for measures so you don’t see the accused.'}}},
+   {x:54,y:60,z:1.6,expr:'listen',tag:{es:'Declaración',gl:'Declaración',en:'Statement'},
+    t:{es:'Ahora cuentas lo que sabes, con tus palabras y sin prisa.',gl:'Agora contas o que sabes, coas túas palabras e sen présa.',en:'Now you tell what you know, in your own words and with no rush.',
+     teen:{es:'Declaras: primero pregunta quien te propuso como testigo y luego las demás partes. Responde solo lo que sepas.',gl:'Declaras: primeiro pregunta quen te propuxo como testemuña e despois as demais partes. Responde só o que saibas.',en:'You testify: first the party who called you asks, then the others. Only answer what you know.'}}},
+   {x:52,y:45,z:1.2,expr:'talk',tag:{es:'La verdad',gl:'A verdade',en:'The truth'},
+    t:{es:'Siempre la verdad. Si la persona acusada es de tu familia cercana, puedes no declarar.',gl:'Sempre a verdade. Se a persoa acusada é da túa familia próxima, podes non declarar.',en:'Always the truth. If the accused person is close family, you can choose not to testify.',
+     teen:{es:'Con 14 años o más prometes decir la verdad; mentir puede ser falso testimonio. Si es un familiar directo, puedes no declarar (art. 416 LECrim).',gl:'Con 14 anos ou máis prometes dicir a verdade; mentir pode ser falso testemuño. Se é un familiar directo, podes non declarar (art. 416 LECrim).',en:'At 14 or over you promise to tell the truth; lying can be false testimony. If it’s a close relative, you may choose not to testify (art. 416 LECrim).'}}},
+   {x:52,y:45,z:1,expr:'party',
+    t:{es:'¡Lo harás genial! Ahora explora la sala tocando los números de abajo.',gl:'Vaiche saír xenial! Agora explora a sala tocando os números de abaixo.',en:'You’ll do brilliantly! Now explore the room by tapping the numbers below.',
+     teen:{es:'Ya conoces el proceso. Abajo puedes explorar la sala tocando los números.',gl:'Xa coñeces o proceso. Abaixo podes explorar a sala tocando os números.',en:'Now you know the process. Below you can explore the room by tapping the numbers.'}}}
+  ],
+  pts:[
+   {x:52,y:24,l:{es:'Tribunal',gl:'Tribunal',en:'Bench'},
+    d:{es:'Aquí se sientan el juez o los jueces. Dirigen el juicio, escuchan a todos y deciden. Están un poco más altos para que todo el mundo les vea y les oiga. Cerca suele estar el letrado o letrada de la Administración de Justicia.',
+       gl:'Aquí séntanse o xuíz ou os xuíces. Dirixen o xuízo, escoitan a todos e deciden. Están un pouco máis altos para que todo o mundo os vexa e os oia. Preto adoita estar o letrado ou letrada da Administración de Xustiza.',
+       en:'The judge or judges sit here. They lead the trial, listen to everyone and decide. They sit a little higher so everyone can see and hear them. The court clerk usually sits nearby.',
+       teen:{es:'Tribunal. Lo forman uno o varios jueces o magistrados, que dirigen el juicio, valoran las pruebas y dictan sentencia. A su lado suele estar el o la LAJ, que da fe de lo que ocurre.',
+             gl:'Tribunal. Fórmano un ou varios xuíces ou maxistrados, que dirixen o xuízo, valoran as probas e ditan sentenza. Ao seu carón adoita estar o ou a LAJ, que dá fe do que ocorre.',
+             en:'Bench. One or more judges who lead the trial, weigh the evidence and give the ruling. Next to them is usually the LAJ (court clerk), who certifies what happens.'}}},
+   {x:22,y:40,l:{es:'Acusación',gl:'Acusación',en:'Prosecution'},
+    d:{es:'En uno de los lados suele sentarse el o la fiscal y, si la hay, la abogada o abogado de la víctima.',
+       gl:'Nun dos lados adoita sentarse o ou a fiscal e, se a hai, a avogada ou avogado da vítima.',
+       en:'On one side usually sit the prosecutor and, if there is one, the victim’s lawyer.',
+       teen:{es:'Acusación. El Ministerio Fiscal y, si la hay, la acusación particular (el abogado o abogada de la víctima).',
+             gl:'Acusación. O Ministerio Fiscal e, se a hai, a acusación particular (o avogado ou avogada da vítima).',
+             en:'Prosecution. The Public Prosecutor and, if there is one, the private prosecution (the victim’s lawyer).'}}},
+   {x:86,y:46,l:{es:'Defensa',gl:'Defensa',en:'Defence'},
+    d:{es:'En el otro lado se sienta la abogada o el abogado de la persona acusada. También puede hacerte preguntas, siempre con respeto.',
+       gl:'No outro lado séntase a avogada ou o avogado da persoa acusada. Tamén pode facerche preguntas, sempre con respecto.',
+       en:'On the other side sits the lawyer of the accused person. They may also ask you questions, always respectfully.',
+       teen:{es:'Defensa. Asiste a la persona acusada, que tiene derecho a defenderse. Puede hacerte preguntas, siempre con respeto; el tribunal impide las que no sean adecuadas.',
+             gl:'Defensa. Asiste a persoa acusada, que ten dereito a defenderse. Pode facerche preguntas, sempre con respecto; o tribunal impide as que non sexan axeitadas.',
+             en:'Defence. Assists the accused, who has the right to a defence. They may ask you questions, always respectfully; the court stops inappropriate ones.'}}},
+   {x:54,y:63,l:{es:'Lugar de declaración',gl:'Lugar de declaración',en:'Witness stand'},
+    d:{es:'La persona que declara se sienta en el centro, con un micrófono. Si eres menor, se pueden tomar medidas para que no tengas que sentarte aquí o para que no veas a la persona acusada.',
+       gl:'A persoa que declara séntase no centro, cun micrófono. Se es menor, pódense tomar medidas para que non teñas que sentarte aquí ou para que non vexas á persoa acusada.',
+       en:'The person giving a statement sits in the middle, with a microphone. If you are a minor, measures can be taken so you don’t have to sit here or don’t see the accused.',
+       teen:{es:'Lugar de declaración. Aquí declaran testigos y peritos ante el tribunal. Siendo menor, se pueden acordar medidas para que no veas a la persona acusada, como un biombo o la videoconferencia.',
+             gl:'Lugar de declaración. Aquí declaran testemuñas e peritos ante o tribunal. Sendo menor, pódense acordar medidas para que non vexas á persoa acusada, como un biombo ou a videoconferencia.',
+             en:'Witness stand. Witnesses and experts testify to the court here. As a minor, measures can be ordered so you don’t see the accused, such as a screen or a video link.'}}},
+   {x:14,y:11,l:{es:'Pantallas',gl:'Pantallas',en:'Screens'},
+    d:{es:'Permiten que alguien declare por videoconferencia desde otra sala, sin entrar aquí.',
+       gl:'Permiten que alguén declare por videoconferencia desde outra sala, sen entrar aquí.',
+       en:'They let someone testify by video link from another room, without coming in here.',
+       teen:{es:'Pantallas de videoconferencia. Permiten declarar desde otra sala sin entrar aquí; es una de las medidas de protección para víctimas menores de edad.',
+             gl:'Pantallas de videoconferencia. Permiten declarar desde outra sala sen entrar aquí; é unha das medidas de protección para vítimas menores de idade.',
+             en:'Video-link screens. They allow testimony from another room without coming in here; it’s one of the protective measures for child victims.'}}},
+   {x:46,y:90,l:{es:'Público',gl:'Público',en:'Public'},
+    d:{es:'Aquí se sienta el público. Cuando hay menores, muchas veces el juicio se hace a puerta cerrada, sin público, para proteger tu intimidad.',
+       gl:'Aquí séntase o público. Cando hai menores, moitas veces o xuízo faise a porta pechada, sen público, para protexer a túa intimidade.',
+       en:'The public sits here. When minors are involved, trials are often held behind closed doors, without the public, to protect your privacy.',
+       teen:{es:'Zona de público. Los juicios suelen ser públicos, pero cuando hay menores pueden celebrarse a puerta cerrada para proteger tu intimidad.',
+             gl:'Zona de público. Os xuízos adoitan ser públicos, pero cando hai menores poden celebrarse a porta pechada para protexer a túa intimidade.',
+             en:'Public area. Trials are usually public, but when minors are involved they can be held behind closed doors to protect your privacy.'}}}
+  ]}
+};
+const ORDER=[
+ {es:'Llegas con una persona de confianza.',gl:'Chegas cunha persoa de confianza.',en:'You arrive with someone you trust.'},
+ {es:'Esperas en una sala tranquila, lejos de la persona acusada.',gl:'Agardas nunha sala tranquila, lonxe da persoa acusada.',en:'You wait in a calm room, away from the accused.'},
+ {es:'Te llaman y te acompañan a tu sitio.',gl:'Chámante e acompáñante ao teu sitio.',en:'They call you and walk you to your seat.'},
+ {es:'Te recuerdan que digas la verdad y te explican tus derechos.',gl:'Lémbranche que digas a verdade e explícanche os teus dereitos.',en:'They remind you to tell the truth and explain your rights.'},
+ {es:'Te hacen preguntas con calma.',gl:'Fanche preguntas con calma.',en:'They ask you questions calmly.'},
+ {es:'Terminas y te vas acompañado.',gl:'Remata e vaste acompañado.',en:'You finish and leave with someone.'}
+];
+
 function viewGame(){
-  const pct=Math.round(S.done.size/6*100);
+  const N=LEVELS.length, pct=Math.round(S.done.size/N*100);
   return `<div class="crumb">${t('home')} › ${t('tGame')}</div><h1>${t('tGame')}</h1>
    <div class="hero" style="margin-bottom:14px">${bubo('happy',70)}<div style="flex:1"><p style="margin:0 0 6px">${t('gameIntro')}</p>
-   <div class="note">${t('progress')}: ${S.done.size}/6</div><div class="progress"><i style="width:${pct}%"></i></div></div></div>
-   ${LEVELS.map((lv,i)=>`<button class="lvl ${S.done.has(i+1)?'done':''}" onclick="go('nivel/${i+1}')"><span class="n">${S.done.has(i+1)?'✓':i+1}</span><span class="lvic">${pic(lv.e)}</span><span style="flex:1"><span class="note">${t('lvl')} ${i+1}</span><b style="display:block;color:var(--pri)">${esc(L(lv.t))}</b></span>${ic('arrowR')}</button>`).join('')}`;
+   <div class="note">${t('progress')}: ${S.done.size}/${N}</div><div class="progress"><i style="width:${pct}%"></i></div></div></div>
+   <h2>${t('section')}</h2>
+   ${LEVELS.map((lv,i)=>`<button class="lvl ${S.done.has(i+1)?'done':''}" onclick="go('nivel/${i+1}')"><span class="n">${S.done.has(i+1)?'✓':i+1}</span><span class="lvic">${pic(lv.e)}</span><span style="flex:1"><span class="note">${t('storyTitle')}</span><b style="display:block;color:var(--pri)">${esc(L(lv.t))}</b></span>${ic('arrowR')}</button>`).join('')}`;
 }
 function levelShell(n, body){
-  const lv=LEVELS[n-1];
-  return `<div class="crumb">${t('tGame')} › ${t('lvl')} ${n}</div><span class="pill">${t('lvl')} ${n} / 6</span><h1 class="lvh">${pic(lv.e)} ${esc(L(lv.t))}</h1>${body}
+  const lv=LEVELS[n-1], N=LEVELS.length;
+  return `<div class="crumb">${t('tGame')} › ${t('section')}</div><span class="pill">${t('section')} · ${n} / ${N}</span><h1 class="lvh">${pic(lv.e)} ${esc(L(lv.t))}</h1>${body}
    <div class="lvnav"><button class="btn sec" onclick="go('nivel/${n-1}')" ${n===1?'disabled':''}>${ic('arrowL')} ${t('prevL')}</button>
    <button class="btn ok" onclick="finishLevel(${n})">${ic('check')} ${t('finish')}</button>
-   <button class="btn sec" onclick="go('nivel/${n+1}')" ${n===6?'disabled':''}>${t('nextL')} ${ic('arrowR')}</button></div>`;
+   <button class="btn sec" onclick="go('nivel/${n+1}')" ${n===N?'disabled':''}>${t('nextL')} ${ic('arrowR')}</button></div>`;
 }
 function finishLevel(n){
-  S.done.add(n); renderSide();
+  const N=LEVELS.length; S.done.add(n); renderSide(); try{ speechSynthesis.cancel(); }catch(e){}
   document.getElementById('app').innerHTML=`<div class="card" style="text-align:center">${bubo('party',130)}<h1>${t('done')}</h1><p>${esc(L(LEVELS[n-1].t))}</p>
-   <div class="progress" style="max-width:300px;margin:10px auto"><i style="width:${Math.round(S.done.size/6*100)}%"></i></div>
-   <div class="row" style="justify-content:center;margin-top:14px">${n<6?`<button class="btn" onclick="go('nivel/${n+1}')">${t('nextL')} ${ic('arrowR')}</button>`:''}<button class="btn sec" onclick="go('juego')">${t('backMap')}</button></div></div>`;
+   <div class="progress" style="max-width:300px;margin:10px auto"><i style="width:${Math.round(S.done.size/N*100)}%"></i></div>
+   <div class="row" style="justify-content:center;margin-top:14px">${n<N?`<button class="btn" onclick="go('nivel/${n+1}')">${t('nextL')} ${ic('arrowR')}</button>`:''}<button class="btn sec" onclick="go('juego')">${t('backMap')}</button></div></div>`;
   window.scrollTo(0,0);
 }
-const flipCards = arr => `<p class="note">${t('tap')}</p><div class="grid3">${arr.map(r=>`<div class="flip" onclick="this.classList.toggle('on')" onkeydown="if(event.key==='Enter')this.classList.toggle('on')" role="button" tabindex="0"><div class="in"><div class="f">${pic(r.e)}<b>${esc(L(r.t))}</b></div><div class="b">${esc(L(r.d))}</div></div></div>`).join('')}</div>`;
+/* Recorte de la foto con el punto (px,py) en la posición (cx,cy) de un recuadro de proporción ca.
+   Devuelve el estilo de fondo y dónde queda el punto dentro del recuadro, en %. */
+function crop(R,px,py,z,ca=1.6,cx=.5,cy=.5){
+  z=Math.max(z,R.ar/ca*1.02); const zy=z*ca/R.ar;
+  const pos=(p,k,c)=>k<=1?50:Math.max(0,Math.min(100,(c-p*k)/(1-k)*100));
+  const X=pos(px/100,z,cx), Y=pos(py/100,zy,cy), at=(P,k,p)=>k<=1?p*100:((1-k)*P/100+p*k)*100;
+  return {style:`background-image:url('${R.img}');background-size:${(z*100).toFixed(0)}% auto;background-position:${X.toFixed(1)}% ${Y.toFixed(1)}%`, mx:at(X,z,px/100).toFixed(1), my:at(Y,zy,py/100).toFixed(1)};
+}
+/* ===== El cuento de Bubo en cómic: una idea por viñeta; con las flechas, Bubo salta de una viñeta a la siguiente ===== */
+const COMIC={key:null,i:0,playing:false,u:null,downX:null,swiped:false};
+const COMIC_AR=4/3;
+/* Ilustraciones sencillas para las escenas que no salen en la foto */
+function comicScene(name){
+  const svg=body=>`<svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true">${body}</svg>`;
+  if(name==='wait') return svg(`<rect width="400" height="300" fill="#FDEFE4"/><rect y="212" width="400" height="88" fill="#EBCFAE"/><rect y="206" width="400" height="8" fill="#FFFFFF" opacity=".7"/>
+   <rect x="252" y="96" width="104" height="80" rx="10" fill="#BFE4FF" stroke="#FFFFFF" stroke-width="8"/><path d="M304 96v80M252 136h104" stroke="#FFFFFF" stroke-width="5"/><circle cx="282" cy="120" r="9" fill="#FFFFFF"/><circle cx="294" cy="116" r="11" fill="#FFFFFF"/>
+   <circle cx="190" cy="128" r="22" fill="#FFFFFF" stroke="#B69CFF" stroke-width="6"/><path d="M190 128v-13M190 128l9 6" stroke="#3E2F5B" stroke-width="4" stroke-linecap="round"/>
+   <rect x="150" y="172" width="180" height="14" rx="6" fill="#7FB8FF"/><rect x="150" y="146" width="180" height="24" rx="8" fill="#A8D4FF"/><rect x="160" y="186" width="10" height="26" fill="#5C6482"/><rect x="310" y="186" width="10" height="26" fill="#5C6482"/>
+   <rect x="262" y="160" width="34" height="11" rx="2" fill="#FF8FB1"/><rect x="266" y="157" width="26" height="4" rx="2" fill="#FFFFFF"/>
+   <rect x="352" y="176" width="30" height="36" rx="5" fill="#FFB86B"/><circle cx="367" cy="162" r="20" fill="#7ED6A5"/><circle cx="354" cy="170" r="12" fill="#8EE29A"/>`);
+  if(name==='door') return svg(`<rect width="400" height="300" fill="#EAF2FB"/><rect y="220" width="400" height="80" fill="#D9C4A8"/><rect y="214" width="400" height="8" fill="#FFFFFF" opacity=".7"/>
+   <rect x="214" y="82" width="124" height="138" rx="12" fill="#C98B5B"/><rect x="226" y="120" width="100" height="40" rx="6" fill="#D9A06E"/><rect x="226" y="168" width="100" height="40" rx="6" fill="#D9A06E"/>
+   <rect x="238" y="92" width="76" height="22" rx="6" fill="#FFFFFF"/><text x="276" y="108" text-anchor="middle" font-size="15" font-weight="800" fill="#2F2A40" font-family="Nunito, Arial, sans-serif">${esc(L({es:'SALA',gl:'SALA',en:'ROOM'}))}</text>
+   <circle cx="318" cy="164" r="6" fill="#F2C14E"/><path d="M130 196h58M172 180l16 16-16 16" stroke="#FF8FB1" stroke-width="9" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+   <circle cx="360" cy="60" r="16" fill="#FFE066"/><path d="M360 36v-8M360 92v-8M336 60h-8M392 60h-8" stroke="#FFE066" stroke-width="4" stroke-linecap="round"/>`);
+  return '';
+}
+function comicBg(R,p){ return p.bg ? `<div class="cbg">${comicScene(p.bg)}</div>` : `<div class="cbg" style="${crop(R,p.x,p.y,p.z,COMIC_AR,.5,.62).style}"></div>`; }
+function comicBlock(key){
+  const R=ROOMS[key], n=R.comic.length;
+  return `<section class="comic" id="comic" tabindex="0" onkeydown="if(event.key==='ArrowRight'){comicStep(1);event.preventDefault()}else if(event.key==='ArrowLeft'){comicStep(-1);event.preventDefault()}">
+   <div class="comic-head"><h2>${t('storyTitle')}</h2><button class="btn sec" id="cPlay" onclick="comicPlay()">${ic('sound')} <span>${t('storyPlay')}</span></button></div>
+   <div class="cview" id="cview"><div class="ctrack" id="ctrack">
+    ${R.comic.map((p,i)=>`<div class="cpanel" data-i="${i}" onclick="comicTap(${i})" role="group" aria-label="${i+1} / ${n}">${comicBg(R,p)}<span class="cnum">${i+1}</span>${p.tag?`<span class="ctag">${esc(L(p.tag))}</span>`:''}<div class="cbubble">${esc(L(p.t))}</div></div>`).join('')}
+    <div class="cowl" id="cowl" aria-hidden="true"><div class="chop" id="chop">${bubo(R.comic[0].expr,80)}</div></div>
+   </div></div>
+   <div class="cnav"><button class="carrow" id="cPrev" onclick="comicStep(-1)" aria-label="${t('aulaPrev')}">${ic('arrowL')}</button>
+    <div class="cdots">${R.comic.map((_,i)=>`<button class="cdot" onclick="comicGo(${i})" aria-label="${i+1} / ${n}"></button>`).join('')}</div>
+    <button class="carrow next" id="cNext" onclick="comicStep(1)" aria-label="${t('aulaNext')}">${ic('arrowR')}</button></div>
+   <p class="sr" aria-live="polite" id="cLive"></p></section>`;
+}
+/* Coloca las viñetas en tira, centra la actual y pone a Bubo de pie en ella */
+function comicLayout(anim){
+  const v=document.getElementById('cview'), tr=document.getElementById('ctrack'), owl=document.getElementById('cowl'); if(!v||!tr||!owl) return;
+  const R=ROOMS[COMIC.key], W=v.clientWidth, pw=Math.min(W*(W<560?.84:.62),520), gap=14, ph=Math.round(pw/COMIC_AR), i=COMIC.i;
+  const os=pw<330?60:(TEEN()?66:80);
+  v.style.height=(ph+30)+'px'; v.style.setProperty('--os',os+'px');
+  tr.querySelectorAll('.cpanel').forEach((p,j)=>{ p.style.width=pw+'px'; p.style.height=ph+'px'; p.style.left=(j*(pw+gap))+'px'; p.classList.toggle('on',j===i); p.setAttribute('aria-hidden',j===i?'false':'true'); });
+  [tr,owl].forEach(el=>el.style.transition=anim?'':'none');
+  tr.style.transform=`translateX(${((W-pw)/2-i*(pw+gap)).toFixed(1)}px)`;
+  owl.style.transform=`translate(${(i*(pw+gap)+6).toFixed(1)}px,${ph-os+10}px)`;
+  if(!anim){ void tr.offsetWidth; tr.style.transition=''; owl.style.transition=''; }
+  document.querySelectorAll('#comic .cdot').forEach((d,j)=>d.classList.toggle('on',j===i));
+  const pb=document.getElementById('cPrev'), nb=document.getElementById('cNext'); if(pb) pb.disabled=i===0; if(nb) nb.disabled=i===R.comic.length-1;
+  const live=document.getElementById('cLive'); if(live) live.textContent=`${i+1} / ${R.comic.length}. ${L(R.comic[i].t)}`;
+}
+function comicInit(key){
+  COMIC.key=key; COMIC.i=0; COMIC.playing=false; comicLayout(false);
+  const v=document.getElementById('cview'); if(!v) return;
+  /* deslizar con el dedo o el ratón para pasar de viñeta */
+  v.addEventListener('pointerdown',e=>{ COMIC.downX=e.clientX; });
+  v.addEventListener('pointerup',e=>{ if(COMIC.downX===null) return; const dx=e.clientX-COMIC.downX; COMIC.downX=null;
+    if(Math.abs(dx)>45){ COMIC.swiped=true; setTimeout(()=>COMIC.swiped=false,350); comicStep(dx<0?1:-1); } });
+  v.addEventListener('pointercancel',()=>{ COMIC.downX=null; });
+}
+function comicGo(i,auto){
+  const R=ROOMS[COMIC.key]; if(!R||!document.getElementById('ctrack')){ COMIC.playing=false; return; }
+  i=Math.max(0,Math.min(R.comic.length-1,i)); if(i===COMIC.i) return;
+  if(!auto) comicStop();
+  const dir=i>COMIC.i?1:-1; COMIC.i=i;
+  const hop=document.getElementById('chop'); hop.innerHTML=bubo(R.comic[i].expr,80); hop.classList.remove('hopR','hopL'); void hop.offsetWidth; hop.classList.add(dir>0?'hopR':'hopL');
+  comicLayout(true);
+  if(S.autoSpeak&&!auto) speak(L(R.comic[i].t));
+}
+const comicStep = d => comicGo(COMIC.i+d);
+function comicTap(i){ if(COMIC.swiped) return; if(i!==COMIC.i) comicGo(i); }
+/* Escuchar el cuento: Bubo lee cada viñeta y salta solo a la siguiente */
+function comicBtn(){ const b=document.getElementById('cPlay'); if(b) b.innerHTML=`${ic('sound')} <span>${COMIC.playing?t('storyStop'):t('storyPlay')}</span>`; }
+function comicPlay(){ if(COMIC.playing) return comicStop(); if(!('speechSynthesis' in window)) return; COMIC.playing=true; comicBtn(); comicSpeak(); }
+function comicSpeak(){
+  const R=ROOMS[COMIC.key]; if(!R||!COMIC.playing) return;
+  try{ speechSynthesis.cancel(); }catch(e){}
+  const u=new SpeechSynthesisUtterance(L(R.comic[COMIC.i].t)); u.lang={es:'es-ES',gl:'gl-ES',en:'en-GB'}[LANG]; u.rate=.95; COMIC.u=u;
+  u.onend=()=>{ if(!COMIC.playing||COMIC.u!==u) return;
+    if(COMIC.i<R.comic.length-1) setTimeout(()=>{ if(!COMIC.playing) return; comicGo(COMIC.i+1,true); setTimeout(comicSpeak,750); },300);
+    else comicStop(); };
+  speechSynthesis.speak(u);
+}
+function comicStop(){ if(!COMIC.playing) return; COMIC.playing=false; COMIC.u=null; try{ speechSynthesis.cancel(); }catch(e){} comicBtn(); }
+window.addEventListener('resize',()=>{ if(document.getElementById('cview')) comicLayout(false); });
+/* Foto con números: cada número abre una viñeta con esa zona ampliada */
+function photoBlock(key, pre='p'){
+  const R=ROOMS[key];
+  return `<div id="${pre}Box"><div class="photo"><img src="${R.img}" alt="${esc(L(R.name))}">
+    ${R.pts.map((p,i)=>`<button class="hs" style="left:${p.x}%;top:${p.y}%" data-i="${i}" onclick="pickPoint('${key}',${i},'${pre}')" aria-label="${i+1}. ${esc(L(p.l))}">${i+1}</button>`).join('')}</div>
+   <p class="credit">${esc(L(R.credit))} ${t('seatNote')}</p>
+   <div class="ptchips">${R.pts.map((p,i)=>`<button data-i="${i}" onclick="pickPoint('${key}',${i},'${pre}')"><span class="k">${i+1}</span>${esc(L(p.l))}</button>`).join('')}</div>
+   <div id="${pre}Info"></div></div>`;
+}
+function pickPoint(key,i,pre){
+  const R=ROOMS[key], p=R.pts[i], n=R.pts.length, c=crop(R,p.x,p.y,2.4);
+  const wrap=document.getElementById(pre+'Box'); if(wrap) wrap.querySelectorAll('.hs,.ptchips button').forEach(b=>b.classList.toggle('on',+b.dataset.i===i));
+  const box=document.getElementById(pre+'Info'); if(!box) return;
+  box.innerHTML=`<figure class="vig vig-pt"><div class="vscene" style="${c.style}"><span class="vmark" style="left:${c.mx}%;top:${c.my}%">${i+1}</span></div>
+   <div class="vtalk"><div class="vline">${bubo('talk',TEEN()?50:62)}<div class="vbubble"><b>${i+1}. ${esc(L(p.l))}</b><br>${esc(L(p.d))}<br>${spk(L(p.l)+'. '+L(p.d))}</div></div>
+   <div class="vptnav"><button class="btn sec" onclick="pickPoint('${key}',${(i-1+n)%n},'${pre}')" aria-label="${t('aulaPrev')}">${ic('arrowL')}</button><span class="note">${i+1} / ${n}</span><button class="btn sec" onclick="pickPoint('${key}',${(i+1)%n},'${pre}')" aria-label="${t('aulaNext')}">${ic('arrowR')}</button></div></div></figure>`;
+  if(S.autoSpeak) speak(L(p.d));
+  box.scrollIntoView({block:'nearest',behavior:'smooth'});
+}
+let orderState={next:0,shuffled:[]};
+function shuffleOrder(){ const idx=ORDER.map((_,i)=>i); for(let i=idx.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[idx[i],idx[j]]=[idx[j],idx[i]];} orderState={next:0,shuffled:idx}; }
+function orderBlock(){
+  return `<h2 style="margin-top:0">${t('orderTitle')}</h2><p class="note">${t('orderDesc')}</p>
+   ${orderState.shuffled.map(i=>`<button class="step ${i<orderState.next?'placed':''}" onclick="tapStep(${i},this)">${i<orderState.next?`<b>${i+1}.</b> `:''}${esc(L(ORDER[i]))}</button>`).join('')}
+   ${orderState.next>=ORDER.length?`<div class="mrow">${bubo('party',46)}<div class="msg bot info">${t('orderDone')}</div></div>`:''}`;
+}
+function tapStep(i,el){ if(i<orderState.next) return; if(i===orderState.next){ orderState.next++; document.getElementById('orderBox').innerHTML=orderBlock(); } else { el.classList.remove('no'); void el.offsetWidth; el.classList.add('no'); } }
+function levelRoom(n){
+  const key=LEVELS[n-1].key; if(key==='juicio') shuffleOrder(); setTimeout(()=>comicInit(key),0);
+  return levelShell(n, `${comicBlock(key)}<h2>${t('explore')}</h2><p class="note">${t('tapPoint')}</p>${photoBlock(key,'p')}${key==='juicio'?`<div id="orderBox" class="card">${orderBlock()}</div>`:''}`);
+}
+const LEVEL_VIEWS=LEVELS.map((_,i)=>()=>levelRoom(i+1));
 
-/* Nivel 1 */
+/* ======================= DATOS DEL MODO AULA ======================= */
+const AULA_T={rights:{es:'Conozco mis derechos',gl:'Coñezo os meus dereitos',en:'I know my rights'},pros:{es:'Descubro a los profesionales',gl:'Descubro os profesionais',en:'I meet the professionals'},
+ feel:{es:'Expreso cómo me siento',gl:'Expreso como me sinto',en:'I say how I feel'},keys:{es:'Claves para declarar',gl:'Claves para declarar',en:'Keys to giving a statement'},help:{es:'¿A quién pido ayuda?',gl:'A quen lle pido axuda?',en:'Who can I ask for help?'}};
 const RIGHTS=[
  {e:'👂',t:{es:'A ser escuchado',gl:'A ser escoitado',en:'To be heard'},d:{es:'Tu opinión cuenta en lo que te afecta.',gl:'A túa opinión conta no que che afecta.',en:'Your opinion counts in what affects you.',teen:{es:'Derecho a ser oído en todo procedimiento que te afecte (LO 1/1996, art. 9).',gl:'Dereito a ser oído en todo procedemento que che afecte (LO 1/1996, art. 9).',en:'Right to be heard in any proceeding affecting you (LO 1/1996, art. 9).'}}},
  {e:'💡',t:{es:'A entender',gl:'A entender',en:'To understand'},d:{es:'Te deben explicar todo con palabras que entiendas.',gl:'Débenche explicar todo con palabras que entendas.',en:'Everything must be explained in words you understand.',teen:{es:'Derecho a entender y ser entendido (Estatuto de la Víctima, art. 4).',gl:'Dereito a entender e ser entendido (Estatuto da Vítima, art. 4).',en:'Right to understand and be understood (Victims\' Statute, art. 4).'}}},
@@ -1142,17 +1565,6 @@ const RIGHTS=[
  {e:'🔒',t:{es:'A tu intimidad',gl:'Á túa intimidade',en:'To privacy'},d:{es:'Tu imagen y tus datos están protegidos.',gl:'A túa imaxe e os teus datos están protexidos.',en:'Your image and data are protected.'}},
  {e:'⚖️',t:{es:'A un abogado gratis',gl:'A un avogado de balde',en:'To a free lawyer'},d:{es:'Si eres víctima de maltrato o abuso.',gl:'Se es vítima de maltrato ou abuso.',en:'If you are a victim of abuse.'}}
 ];
-const QUIZ1=[
- {q:{es:'Si no entiendo algo en el juzgado, tengo que quedarme callado.',gl:'Se non entendo algo no xulgado, teño que quedar calado.',en:'If I don\'t understand something in court, I have to stay quiet.'},a:false,x:{es:'Puedes preguntar todas las veces que necesites.',gl:'Podes preguntar todas as veces que precises.',en:'You can ask as many times as you need.'}},
- {q:{es:'Puedo pedir ayuda yo solo, aunque no esté un adulto conmigo.',gl:'Podo pedir axuda eu só, aínda que non estea un adulto comigo.',en:'I can ask for help on my own, even without an adult.'},a:true,x:{es:'La ley te permite contarlo tú mismo.',gl:'A lei permíteche contalo ti mesmo.',en:'The law lets you report it yourself.'}},
- {q:{es:'Si alguien me hace daño, es culpa mía.',gl:'Se alguén me fai dano, é culpa miña.',en:'If someone hurts me, it is my fault.'},a:false,x:{es:'Nunca es culpa tuya.',gl:'Nunca é culpa túa.',en:'It is never your fault.'}},
- {q:{es:'Nadie puede publicar fotos mías sin permiso.',gl:'Ninguén pode publicar fotos miñas sen permiso.',en:'Nobody can post photos of me without permission.'},a:true,x:{es:'Tu imagen está protegida por la ley.',gl:'A túa imaxe está protexida pola lei.',en:'Your image is protected by law.'}}
-];
-const TF={es:['Verdadero','Falso'],gl:['Verdadeiro','Falso'],en:['True','False']};
-function answerTF(i,v){ const q=QUIZ1[i], box=document.getElementById('q1'+i), b=box.querySelectorAll('.opt'); b.forEach(x=>x.classList.remove('right','wrong')); b[v?0:1].classList.add(v===q.a?'right':'wrong'); box.querySelector('.fb').textContent=(v===q.a?t('right'):t('wrong'))+' '+L(q.x); }
-function level1(){ return levelShell(1, flipCards(RIGHTS)+`<h2>${LANG==='en'?'True or false?':LANG==='gl'?'Verdadeiro ou falso?':'¿Verdadero o falso?'}</h2>`+QUIZ1.map((q,i)=>`<div class="card" id="q1${i}"><b>${esc(L(q.q))}</b><div class="grid" style="margin-top:8px"><button class="opt" onclick="answerTF(${i},true)">${TF[LANG][0]}</button><button class="opt" onclick="answerTF(${i},false)">${TF[LANG][1]}</button></div><p class="fb note" style="margin:0"></p></div>`).join('')); }
-
-/* Nivel 2 */
 const PROS=[
  {e:'👩‍⚖️',t:{es:'Juez o jueza',gl:'Xuíz ou xuíza',en:'Judge'},d:{es:'Escucha a todas las personas y decide de forma justa.',gl:'Escoita a todas as persoas e decide de forma xusta.',en:'Listens to everyone and decides fairly.',teen:{es:'Dirige el proceso, valora las pruebas y dicta la sentencia de forma independiente.',gl:'Dirixe o proceso, valora as probas e dita a sentenza de forma independente.',en:'Leads the proceedings, weighs the evidence and gives the ruling independently.'}}},
  {e:'🧑‍💼',t:{es:'Fiscal',gl:'Fiscal',en:'Prosecutor'},d:{es:'Defiende la ley y a los niños y niñas.',gl:'Defende a lei e os nenos e nenas.',en:'Defends the law and children.',teen:{es:'Defiende la legalidad y el interés superior del menor. La Fiscalía de Menores vela por tu protección.',gl:'Defende a legalidade e o interese superior do menor. A Fiscalía de Menores vela pola túa protección.',en:'Upholds the law and the best interests of the child. The Juvenile Prosecutor watches over your protection.'}}},
@@ -1161,71 +1573,6 @@ const PROS=[
  {e:'🧠',t:{es:'Psicólogo o psicóloga',gl:'Psicólogo ou psicóloga',en:'Psychologist'},d:{es:'Te acompaña y te pregunta con calma.',gl:'Acompáñate e pregúntache con calma.',en:'Stays with you and asks questions calmly.'}},
  {e:'💙',t:{es:'Oficina de Asistencia a las Víctimas',gl:'Oficina de Asistencia ás Vítimas',en:'Victim Support Office'},d:{es:'Te explican todo y te acompañan, gratis.',gl:'Explícanche todo e acompáñante, de balde.',en:'They explain everything and stay with you, for free.'}}
 ];
-function level2(){ return levelShell(2, flipCards(PROS)); }
-
-/* Nivel 3: fotos reales con puntos interactivos */
-const PHOTOS={
- gesell:{img:'img/sala-gesell.jpg', credit:{es:'Imagen de referencia de una sala con espejo unidireccional.',gl:'Imaxe de referencia dunha sala con espello unidireccional.',en:'Reference image of a room with a one-way mirror.'},
-  intro:{es:'Muchas veces, los niños y niñas no declaran en la sala de juicio, sino en una sala como esta, llamada sala Gesell. Así solo tienes que contarlo una vez y no ves a nadie que te dé miedo.',gl:'Moitas veces, os nenos e nenas non declaran na sala de xuízo, senón nunha sala coma esta, chamada sala Gesell. Así só tes que contalo unha vez e non ves a ninguén que che dea medo.',en:'Children often don\'t testify in the courtroom, but in a room like this, called a Gesell room. That way you only tell it once and don\'t see anyone who scares you.',
-   teen:{es:'La sala Gesell permite tomar declaración de forma protegida. Se usa sobre todo para la prueba preconstituida de menores de 14 años, pero con 14 o más también puedes pedir declarar sin contacto visual con la persona acusada.',gl:'A sala Gesell permite tomar declaración de forma protexida. Úsase sobre todo para a proba preconstituída de menores de 14 anos, pero con 14 ou máis tamén podes pedir declarar sen contacto visual coa persoa acusada.',en:'The Gesell room allows statements to be taken in a protected way. It is mainly used for pre-recorded statements from children under 14, but at 14 or over you can also ask to testify without visual contact with the accused.'}},
-  pts:[
-   {x:35,y:24,l:{es:'Espejo especial',gl:'Espello especial',en:'Special mirror'},d:{es:'Desde aquí parece un espejo, pero al otro lado hay otra sala donde el juez, el fiscal y los abogados ven y escuchan. No están contigo.',gl:'Desde aquí parece un espello, pero ao outro lado hai outra sala onde o xuíz, o fiscal e os avogados ven e escoitan. Non están contigo.',en:'From here it looks like a mirror, but on the other side there is a room where the judge, prosecutor and lawyers watch and listen. They are not with you.'}},
-   {x:17,y:62,l:{es:'Tu sitio',gl:'O teu sitio',en:'Your seat'},d:{es:'Te sientas aquí. Puedes pedir agua o un descanso cuando lo necesites.',gl:'Séntaste aquí. Podes pedir auga ou un descanso cando o precises.',en:'You sit here. You can ask for water or a break whenever you need.'}},
-   {x:64,y:52,l:{es:'Psicólogo/a',gl:'Psicólogo/a',en:'Psychologist'},d:{es:'Una persona experta habla contigo con calma. Es la única persona en la sala contigo. Si los demás tienen preguntas, se las pasan a ella.',gl:'Unha persoa experta fala contigo con calma. É a única persoa na sala contigo. Se os demais teñen preguntas, pásanllas a ela.',en:'An expert talks with you calmly. They are the only person in the room with you. If the others have questions, they pass them on to them.'}},
-   {x:40,y:43,l:{es:'Grabación',gl:'Gravación',en:'Recording'},d:{es:'La conversación se graba con cámaras y micrófonos. Así normalmente solo tienes que contarlo una vez.',gl:'A conversa grávase con cámaras e micrófonos. Así normalmente só tes que contalo unha vez.',en:'The conversation is recorded with cameras and microphones, so you usually only have to tell it once.'}}
-  ], note:{es:'Muchas salas preparadas para menores tienen colores, cojines y juguetes para que estés más cómodo.',gl:'Moitas salas preparadas para menores teñen cores, almofadas e xoguetes para que esteas máis cómodo.',en:'Many rooms prepared for children have colours, cushions and toys so you feel more comfortable.'}},
- court:{img:'img/sala-juicio.jpg', credit:{es:'Fotografía real de una sala de vistas (caras difuminadas). Fuente: 20minutos.',gl:'Fotografía real dunha sala de vistas (caras difuminadas). Fonte: 20minutos.',en:'Real photograph of a courtroom (faces blurred). Source: 20minutos.'},
-  intro:{es:'Esta es una sala de juicio de verdad. Toca los puntos para saber quién se sienta en cada sitio.',gl:'Esta é unha sala de xuízo de verdade. Toca os puntos para saber quen se senta en cada sitio.',en:'This is a real courtroom. Tap the points to find out who sits where.'},
-  pts:[
-   {x:52,y:24,l:{es:'Tribunal',gl:'Tribunal',en:'Bench'},d:{es:'Aquí se sientan el juez o los jueces. Dirigen el juicio, escuchan a todos y deciden. Están un poco más altos para que todo el mundo les vea y les oiga. Cerca suele estar el letrado o letrada de la Administración de Justicia.',gl:'Aquí séntanse o xuíz ou os xuíces. Dirixen o xuízo, escoitan a todos e deciden. Están un pouco máis altos para que todo o mundo os vexa e os oia. Preto adoita estar o letrado ou letrada da Administración de Xustiza.',en:'The judge or judges sit here. They lead the trial, listen to everyone and decide. They sit a little higher so everyone can see and hear them. The court clerk usually sits nearby.'}},
-   {x:22,y:40,l:{es:'Acusación',gl:'Acusación',en:'Prosecution'},d:{es:'En uno de los lados suele sentarse el o la fiscal y, si la hay, la abogada o abogado de la víctima. El sitio exacto puede cambiar en cada sala.',gl:'Nun dos lados adoita sentarse o ou a fiscal e, se a hai, a avogada ou avogado da vítima. O sitio exacto pode cambiar en cada sala.',en:'On one side usually sit the prosecutor and, if there is one, the victim\'s lawyer. The exact place can vary in each room.'}},
-   {x:86,y:46,l:{es:'Defensa',gl:'Defensa',en:'Defence'},d:{es:'En el otro lado se sienta la abogada o el abogado de la persona acusada.',gl:'No outro lado séntase a avogada ou o avogado da persoa acusada.',en:'On the other side sits the lawyer of the accused person.'}},
-   {x:54,y:63,l:{es:'Lugar de declaración',gl:'Lugar de declaración',en:'Witness stand'},d:{es:'La persona que declara se sienta en el centro, con un micrófono. Si eres menor, se pueden tomar medidas para que no tengas que sentarte aquí o para que no veas a la persona acusada.',gl:'A persoa que declara séntase no centro, cun micrófono. Se es menor, pódense tomar medidas para que non teñas que sentarte aquí ou para que non vexas á persoa acusada.',en:'The person giving a statement sits in the middle, with a microphone. If you are a minor, measures can be taken so you don\'t have to sit here or don\'t see the accused.'}},
-   {x:14,y:11,l:{es:'Pantallas',gl:'Pantallas',en:'Screens'},d:{es:'Permiten que alguien declare por videoconferencia desde otra sala, sin entrar aquí.',gl:'Permiten que alguén declare por videoconferencia desde outra sala, sen entrar aquí.',en:'They let someone testify by video link from another room, without coming in here.'}},
-   {x:46,y:90,l:{es:'Público',gl:'Público',en:'Public'},d:{es:'Aquí se sienta el público. Cuando hay menores, muchas veces el juicio se hace a puerta cerrada, sin público, para proteger tu intimidad.',gl:'Aquí séntase o público. Cando hai menores, moitas veces o xuízo faise a porta pechada, sen público, para protexer a túa intimidade.',en:'The public sits here. When minors are involved, trials are often held behind closed doors, without the public, to protect your privacy.'}}
-  ]}
-};
-const ORDER=[
- {es:'Llegas con una persona de confianza.',gl:'Chegas cunha persoa de confianza.',en:'You arrive with someone you trust.'},
- {es:'Esperas en una sala tranquila, lejos de la persona acusada.',gl:'Agardas nunha sala tranquila, lonxe da persoa acusada.',en:'You wait in a calm room, away from the accused.'},
- {es:'Alguien te explica qué va a pasar.',gl:'Alguén che explica que vai pasar.',en:'Someone explains what is going to happen.'},
- {es:'Te hacen preguntas con calma.',gl:'Fanche preguntas con calma.',en:'They ask you questions calmly.'},
- {es:'Si lo necesitas, pides un descanso.',gl:'Se o precisas, pides un descanso.',en:'If you need it, you ask for a break.'},
- {es:'Terminas y te vas acompañado.',gl:'Remata e vaste acompañado.',en:'You finish and leave with someone.'}
-];
-let roomMode='gesell', orderState={next:0,shuffled:[]};
-function photoBlock(mode, idPrefix='p'){
-  const P=PHOTOS[mode];
-  return `<div class="photo"><img src="${P.img}" alt="${esc(mode==='court'?t('roomCourt'):t('roomGesell'))}">
-    ${P.pts.map((p,i)=>`<button class="hs" style="left:${p.x}%;top:${p.y}%" data-i="${i}" onclick="pickPoint('${mode}',${i},'${idPrefix}')" aria-label="${esc(L(p.l))}">${i+1}</button>`).join('')}</div>
-   <p class="credit">${esc(L(P.credit))}</p>
-   <div id="${idPrefix}Info"></div>
-   <ol class="hlist">${P.pts.map((p,i)=>`<li><button data-i="${i}" onclick="pickPoint('${mode}',${i},'${idPrefix}')"><span class="k">${i+1}</span><b>${esc(L(p.l))}</b></button></li>`).join('')}</ol>`;
-}
-function pickPoint(mode,i,pre){
-  const p=PHOTOS[mode].pts[i];
-  document.querySelectorAll('.hs,.hlist button').forEach(b=>b.classList.toggle('on', +b.dataset.i===i));
-  const box=document.getElementById(pre+'Info');
-  if(box){ box.innerHTML=`<div class="mrow" style="margin-top:12px">${bubo('talk',46)}<div class="msg bot"><b>${i+1}. ${esc(L(p.l))}</b><br>${esc(L(p.d))}<br>${spk(L(p.d))}</div></div>`; }
-  if(S.autoSpeak) speak(L(p.d));
-}
-function setRoom(m){ roomMode=m; document.getElementById('roomBox').innerHTML=roomBlock(); }
-function roomBlock(){
-  const P=PHOTOS[roomMode];
-  return `<div class="tabs" role="tablist"><button role="tab" class="${roomMode==='gesell'?'on':''}" onclick="setRoom('gesell')">${t('roomGesell')}</button><button role="tab" class="${roomMode==='court'?'on':''}" onclick="setRoom('court')">${t('roomCourt')}</button></div>
-   <div class="mrow">${bubo('talk',46)}<div class="msg bot">${esc(L(P.intro))}</div></div>
-   <p class="note">${t('tapPoint')}</p>${photoBlock(roomMode)}${P.note?`<p class="note">${esc(L(P.note))}</p>`:''}`;
-}
-function shuffleOrder(){ const idx=ORDER.map((_,i)=>i); for(let i=idx.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[idx[i],idx[j]]=[idx[j],idx[i]];} orderState={next:0,shuffled:idx}; }
-function orderBlock(){
-  return `<h2 style="margin-top:0">${t('orderTitle')}</h2><p class="note">${t('orderDesc')}</p>
-   ${orderState.shuffled.map(i=>`<button class="step ${i<orderState.next?'placed':''}" onclick="tapStep(${i},this)">${i<orderState.next?`<b>${i+1}.</b> `:''}${esc(L(ORDER[i]))}</button>`).join('')}
-   ${orderState.next>=ORDER.length?`<div class="mrow">${bubo('party',46)}<div class="msg bot info">${t('orderDone')}</div></div>`:''}`;
-}
-function tapStep(i,el){ if(i<orderState.next) return; if(i===orderState.next){ orderState.next++; document.getElementById('orderBox').innerHTML=orderBlock(); } else { el.classList.remove('no'); void el.offsetWidth; el.classList.add('no'); } }
-function level3(){ shuffleOrder(); roomMode='gesell'; return levelShell(3, `<div id="roomBox">${roomBlock()}</div><div id="orderBox" class="card">${orderBlock()}</div>`); }
-
-/* Nivel 4 */
 const EMOS=[
  {e:'😊',l:{es:'Tranquilo',gl:'Tranquilo',en:'Calm'},p:{es:'«Estoy bien, podemos seguir.»',gl:'«Estou ben, podemos seguir.»',en:'"I\'m OK, we can carry on."'}},
  {e:'😰',l:{es:'Nervioso',gl:'Nervioso',en:'Nervous'},p:{es:'«Estoy nervioso. ¿Me das un momento?»',gl:'«Estou nervioso. Dásme un momento?»',en:'"I\'m nervous. Can I have a moment?"'}},
@@ -1234,16 +1581,6 @@ const EMOS=[
  {e:'😨',l:{es:'Con miedo',gl:'Con medo',en:'Scared'},p:{es:'«Tengo miedo. ¿Puede estar conmigo alguien de confianza?»',gl:'«Teño medo. Pode estar comigo alguén de confianza?»',en:'"I\'m scared. Can someone I trust be with me?"'}},
  {e:'😕',l:{es:'Confundido',gl:'Confuso',en:'Confused'},p:{es:'«No he entendido la pregunta. ¿Me la explicas otra vez?»',gl:'«Non entendín a pregunta. Explícasma outra vez?»',en:'"I didn\'t understand the question. Can you explain it again?"'}}
 ];
-function pickEmo(i,el){ document.querySelectorAll('.emo button').forEach(b=>b.classList.remove('sel')); el.classList.add('sel'); const e=EMOS[i];
-  const lead={es:'Si te sientes así, puedes decir:',gl:'Se te sentes así, podes dicir:',en:'If you feel like this, you can say:'};
-  document.getElementById('emoInfo').innerHTML=`<div class="mrow">${bubo('listen',46)}<div class="msg bot">${esc(L(lead))}<br><b>${esc(L(e.p))}</b><br>${spk(L(e.p))}</div></div>`; }
-let breathT=null;
-function breathe(){ clearInterval(breathT); let n=0, inh=true; const tick=()=>{ const ball=document.getElementById('ball'), lab=document.getElementById('bLab'); if(!ball){clearInterval(breathT);return;} ball.classList.toggle('grow',inh); lab.textContent=inh?t('inhale'):t('exhale'); inh=!inh; if(++n>8){clearInterval(breathT); lab.textContent='✓';} }; tick(); breathT=setInterval(tick,4000); }
-function level4(){ const intro={es:'Todas las emociones están bien. Elige cómo te sientes y aprende una frase para decirlo.',gl:'Todas as emocións están ben. Escolle como te sentes e aprende unha frase para dicilo.',en:'All feelings are OK. Choose how you feel and learn a sentence to say it.'};
-  return levelShell(4, `<p>${esc(L(intro))}</p><div class="emo">${EMOS.map((e,i)=>`<button onclick="pickEmo(${i},this)">${pic(e.e)}${esc(L(e.l))}</button>`).join('')}</div><div id="emoInfo" style="margin-top:12px"></div>
-   <div class="card breath"><h2 style="margin-top:0">${t('breathe')}</h2><div id="ball" class="ball"></div><b id="bLab">&nbsp;</b><button class="btn sec" onclick="breathe()">${t('start')}</button></div>`); }
-
-/* Nivel 5 */
 const KEYS=[
  {e:'✅',t:{es:'Di siempre la verdad',gl:'Di sempre a verdade',en:'Always tell the truth'},d:{es:'Cuenta solo lo que recuerdas, con tus palabras.',gl:'Conta só o que lembras, coas túas palabras.',en:'Only say what you remember, in your own words.'}},
  {e:'🤷',t:{es:'Puedes decir «no lo sé»',gl:'Podes dicir «non o sei»',en:'You can say "I don\'t know"'},d:{es:'O «no me acuerdo». Es mejor que inventar.',gl:'Ou «non me lembro». É mellor que inventar.',en:'Or "I don\'t remember". It\'s better than guessing.'}},
@@ -1252,42 +1589,29 @@ const KEYS=[
  {e:'🙅',t:{es:'No tienes que adivinar',gl:'Non tes que adiviñar',en:'You don\'t have to guess'},d:{es:'Ni decir lo que crees que quieren oír.',gl:'Nin dicir o que cres que queren oír.',en:'Or say what you think they want to hear.'}},
  {e:'💙',t:{es:'Nadie te va a regañar',gl:'Ninguén te vai rifar',en:'Nobody will tell you off'},d:{es:'Lo estás haciendo bien, cuentes como lo cuentes.',gl:'Estalo facendo ben, contes como o contes.',en:'You are doing well, however you tell it.'}}
 ];
-const QUIZ5=[
- {q:{es:'Te hacen una pregunta y no te acuerdas. ¿Qué haces?',gl:'Fante unha pregunta e non te lembras. Que fas?',en:'You are asked a question and you don\'t remember. What do you do?'},o:[{es:'Me invento algo',gl:'Invento algo',en:'Make something up'},{es:'Digo «no me acuerdo»',gl:'Digo «non me lembro»',en:'Say "I don\'t remember"'}],a:1},
- {q:{es:'Estás muy cansado y nervioso.',gl:'Estás moi canso e nervioso.',en:'You are very tired and nervous.'},o:[{es:'Pido un descanso',gl:'Pido un descanso',en:'Ask for a break'},{es:'Aguanto hasta el final',gl:'Aguanto ata o final',en:'Hold on until the end'}],a:0},
- {q:{es:'No entiendes una palabra de la pregunta.',gl:'Non entendes unha palabra da pregunta.',en:'You don\'t understand a word in the question.'},o:[{es:'Contesto lo que sea',gl:'Contesto o que sexa',en:'Answer anything'},{es:'Pido que me la expliquen',gl:'Pido que ma expliquen',en:'Ask them to explain it'}],a:1}
-];
-function answerMC(i,j){ const q=QUIZ5[i], box=document.getElementById('q5'+i), b=box.querySelectorAll('.opt'); b.forEach(x=>x.classList.remove('right','wrong')); b[j].classList.add(j===q.a?'right':'wrong'); box.querySelector('.fb').textContent= j===q.a?t('right'):t('wrong')+' '+L(q.o[q.a]); }
-function level5(){ const intro={es:'Nadie te dirá qué tienes que contar: eso lo decides tú. Pero hay claves que te ayudan a hacerlo con tranquilidad.',gl:'Ninguén che dirá que tes que contar: iso decídelo ti. Pero hai claves que che axudan a facelo con tranquilidade.',en:'Nobody will tell you what to say: that\'s up to you. But there are keys that help you do it calmly.'};
-  return levelShell(5, `<div class="mrow">${bubo('talk',46)}<div class="msg bot">${esc(L(intro))}</div></div>
-   <div class="grid3" style="margin-top:14px">${KEYS.map(k=>`<div class="card" style="margin:0"><div class="kic">${pic(k.e)}</div><b style="color:var(--pri)">${esc(L(k.t))}</b><p class="note" style="margin:4px 0 0">${esc(L(k.d))}</p></div>`).join('')}</div>
-   <h2>${LANG==='en'?'What would you do?':LANG==='gl'?'Que farías?':'¿Qué harías?'}</h2>
-   ${QUIZ5.map((q,i)=>`<div class="card" id="q5${i}"><b>${esc(L(q.q))}</b>${q.o.map((o,j)=>`<button class="opt" onclick="answerMC(${i},${j})">${esc(L(o))}</button>`).join('')}<p class="fb note" style="margin:0"></p></div>`).join('')}`); }
-
-/* Nivel 6 */
-function level6(){ const intro={es:'Pedir ayuda es de valientes. Estas personas y teléfonos están para ti.',gl:'Pedir axuda é de valentes. Estas persoas e teléfonos están para ti.',en:'Asking for help is brave. These people and numbers are there for you.'};
-  return levelShell(6, `<div class="mrow">${bubo('happy',46)}<div class="msg bot">${esc(L(intro))}</div></div>${phonesHTML()}<div class="card"><b>${t('tChat')}</b><p class="note">${t('dChat')}</p><button class="btn" onclick="go('chat')">${ic('chat')} ${t('tChat')}</button></div>`); }
-const LEVEL_VIEWS=[level1,level2,level3,level4,level5,level6];
 
 /* ======================= DICCIONARIO ======================= */
 const W=(e,w,d,teen)=>({e,w,d:teen?Object.assign({},d,{teen}):d});
 const WORDS=[
  W('⚖️',{es:'Justicia',gl:'Xustiza',en:'Justice'},{es:'Lo que se hace para que se respeten los derechos de todas las personas.',gl:'O que se fai para que se respecten os dereitos de todas as persoas.',en:'What is done so everyone\'s rights are respected.'},{es:'Poder del Estado que resuelve conflictos aplicando la ley, a través de jueces y tribunales independientes.',gl:'Poder do Estado que resolve conflitos aplicando a lei, a través de xuíces e tribunais independentes.',en:'State power that resolves disputes by applying the law, through independent judges and courts.'}),
- W('🏛️',{es:'Juzgado',gl:'Xulgado',en:'Court'},{es:'El edificio donde trabajan los jueces y se hacen los juicios.',gl:'O edificio onde traballan os xuíces e se fan os xuízos.',en:'The building where judges work and trials take place.'}),
+ W('🏛️',{es:'Plaza',gl:'Praza',en:'Court seat (plaza)'},{es:'El sitio donde trabaja un juez o una jueza dentro del tribunal. Antes se llamaba «juzgado».',gl:'O sitio onde traballa un xuíz ou unha xuíza dentro do tribunal. Antes chamábase «xulgado».',en:'The place where a judge works within the court. It used to be called a “juzgado”.'},{es:'Con la Ley Orgánica 1/2025, los juzgados pasan a integrarse en Tribunales de Instancia, organizados en secciones. Cada juez o jueza ocupa una plaza dentro de su sección. Antes se llamaba «juzgado».',gl:'Coa Lei Orgánica 1/2025, os xulgados pasan a integrarse en Tribunais de Instancia, organizados en seccións. Cada xuíz ou xuíza ocupa unha praza dentro da súa sección. Antes chamábase «xulgado».',en:'Under Organic Law 1/2025, courts (“juzgados”) are merged into first-instance tribunals organised into sections. Each judge holds a seat (“plaza”) within their section. It used to be called a “juzgado”.'}),
  W('👩‍⚖️',{es:'Juez / jueza',gl:'Xuíz / xuíza',en:'Judge'},{es:'Persona que escucha a todos y decide de forma justa.',gl:'Persoa que escoita a todos e decide de forma xusta.',en:'Person who listens to everyone and decides fairly.'},{es:'Profesional que dirige el procedimiento y dicta resoluciones de forma independiente e imparcial.',gl:'Profesional que dirixe o procedemento e dita resolucións de forma independente e imparcial.',en:'Professional who leads proceedings and issues decisions independently and impartially.'}),
  W('🧑‍💼',{es:'Fiscal',gl:'Fiscal',en:'Prosecutor'},{es:'Persona que defiende la ley y protege a los menores.',gl:'Persoa que defende a lei e protexe os menores.',en:'Person who defends the law and protects minors.'},{es:'Miembro del Ministerio Fiscal: promueve la acción de la justicia y defiende la legalidad y el interés del menor.',gl:'Membro do Ministerio Fiscal: promove a acción da xustiza e defende a legalidade e o interese do menor.',en:'Member of the Public Prosecutor\'s Office: brings cases to justice and defends the law and the child\'s interests.'}),
  W('👨‍💼',{es:'Abogado / abogada',gl:'Avogado / avogada',en:'Lawyer'},{es:'Persona que te ayuda y defiende tus derechos.',gl:'Persoa que che axuda e defende os teus dereitos.',en:'Person who helps you and defends your rights.'}),
- W('📣',{es:'Denuncia',gl:'Denuncia',en:'Report'},{es:'Contar a la policía o al juzgado algo malo que ha pasado.',gl:'Contar á policía ou ao xulgado algo malo que pasou.',en:'Telling the police or court about something bad that happened.'},{es:'Comunicación a la policía, Fiscalía o juzgado de hechos que pueden ser delito, para que se investiguen.',gl:'Comunicación á policía, Fiscalía ou xulgado de feitos que poden ser delito, para que se investiguen.',en:'Notifying the police, prosecutor or court of facts that may be a crime, so they are investigated.'}),
+ W('📣',{es:'Denuncia',gl:'Denuncia',en:'Report'},{es:'Contar a la policía o en la plaza judicial algo malo que ha pasado.',gl:'Contar á policía ou na praza xudicial algo malo que pasou.',en:'Telling the police or the court (plaza judicial) about something bad that happened.'},{es:'Comunicación a la policía, a la Fiscalía o al tribunal de hechos que pueden ser delito, para que se investiguen.',gl:'Comunicación á policía, á Fiscalía ou ao tribunal de feitos que poden ser delito, para que se investiguen.',en:'Notifying the police, prosecutor or court of facts that may be a crime, so they are investigated.'}),
  W('🚫',{es:'Delito',gl:'Delito',en:'Crime'},{es:'Algo que la ley prohíbe porque hace daño a otras personas.',gl:'Algo que a lei prohibe porque fai dano a outras persoas.',en:'Something the law forbids because it hurts other people.'},{es:'Conducta prevista y castigada en el Código Penal.',gl:'Conduta prevista e castigada no Código Penal.',en:'Conduct defined and punished in the Criminal Code.'}),
  W('🗣️',{es:'Declarar',gl:'Declarar',en:'Give a statement'},{es:'Contar lo que sabes o lo que te ha pasado.',gl:'Contar o que sabes ou o que che pasou.',en:'Telling what you know or what happened to you.'}),
- W('👀',{es:'Testigo',gl:'Testemuña',en:'Witness'},{es:'Persona que vio u oyó algo y lo cuenta.',gl:'Persoa que viu ou oíu algo e o conta.',en:'Person who saw or heard something and tells about it.'}),
+ W('👀',{es:'Testigo',gl:'Testemuña',en:'Witness'},{es:'Persona que vio u oyó algo y lo cuenta. Tiene que decir la verdad.',gl:'Persoa que viu ou oíu algo e o conta. Ten que dicir a verdade.',en:'Person who saw or heard something and tells about it. They must tell the truth.'},{es:'Persona que declara sobre hechos que conoce. Está obligada a decir la verdad, salvo que pueda acogerse a la dispensa por ser familiar directo de la persona acusada (art. 416 LECrim).',gl:'Persoa que declara sobre feitos que coñece. Está obrigada a dicir a verdade, agás que poida acollerse á dispensa por ser familiar directo da persoa acusada (art. 416 LECrim).',en:'Person who testifies about facts they know. They must tell the truth, unless they can use the exemption for close relatives of the accused (art. 416 LECrim).'}),
  W('💙',{es:'Víctima',gl:'Vítima',en:'Victim'},{es:'Persona a la que alguien ha hecho daño. Nunca es culpa suya.',gl:'Persoa á que alguén lle fixo dano. Nunca é culpa súa.',en:'Person someone has hurt. It is never their fault.'},{es:'Persona que ha sufrido un daño por un delito. Tiene los derechos del Estatuto de la Víctima (Ley 4/2015).',gl:'Persoa que sufriu un dano por un delito. Ten os dereitos do Estatuto da Vítima (Lei 4/2015).',en:'Person harmed by a crime. They have the rights in the Victims\' Statute (Law 4/2015).'}),
- W('🧑‍⚖️',{es:'Juicio',gl:'Xuízo',en:'Trial'},{es:'Reunión en el juzgado para escuchar a todos y decidir.',gl:'Reunión no xulgado para escoitar a todos e decidir.',en:'Meeting in court to hear everyone and decide.'},{es:'Fase del proceso en la que se practican las pruebas ante el tribunal, que después dicta sentencia.',gl:'Fase do proceso na que se practican as probas ante o tribunal, que despois dita sentenza.',en:'Stage of the proceedings where evidence is presented to the court, which then gives its ruling.'}),
+ W('🧑‍⚖️',{es:'Juicio',gl:'Xuízo',en:'Trial'},{es:'Reunión en la sala de juicio de la plaza judicial para escuchar a todos y decidir.',gl:'Reunión na sala de xuízo da praza xudicial para escoitar a todos e decidir.',en:'Meeting in the courtroom to hear everyone and decide.'},{es:'Fase del proceso en la que se practican las pruebas ante el tribunal, que después dicta sentencia.',gl:'Fase do proceso na que se practican as probas ante o tribunal, que despois dita sentenza.',en:'Stage of the proceedings where evidence is presented to the court, which then gives its ruling.'}),
  W('📄',{es:'Sentencia',gl:'Sentenza',en:'Ruling'},{es:'La decisión final del juez, por escrito.',gl:'A decisión final do xuíz, por escrito.',en:'The judge\'s final decision, in writing.'}),
  W('🎥',{es:'Prueba preconstituida',gl:'Proba preconstituída',en:'Pre-recorded statement'},{es:'Grabar lo que cuentas una vez para no tener que repetirlo.',gl:'Gravar o que contas unha vez para non ter que repetilo.',en:'Recording what you say once so you don\'t have to repeat it.'},{es:'Declaración grabada antes del juicio, con todas las garantías, que sustituye a declarar en el juicio (LECrim, art. 449 ter).',gl:'Declaración gravada antes do xuízo, con todas as garantías, que substitúe a declarar no xuízo (LECrim, art. 449 ter).',en:'Statement recorded before trial with full guarantees, replacing testimony at trial (LECrim, art. 449 ter).'}),
- W('🪞',{es:'Sala Gesell',gl:'Sala Gesell',en:'Gesell room'},{es:'Sala con un espejo especial donde puedes contarlo tranquilo, sin ver al resto.',gl:'Sala cun espello especial onde podes contalo tranquilo, sen ver ao resto.',en:'Room with a special mirror where you can talk calmly without seeing the others.'}),
  W('🛡️',{es:'Orden de protección',gl:'Orde de protección',en:'Protection order'},{es:'Decisión del juez para que alguien no se acerque a ti.',gl:'Decisión do xuíz para que alguén non se achegue a ti.',en:'A judge\'s decision so someone can\'t come near you.'}),
- W('📝',{es:'Letrado/a de la Admón. de Justicia',gl:'Letrado/a da Admón. de Xustiza',en:'Court clerk'},{es:'Persona que vigila que todo se haga bien y quede registrado.',gl:'Persoa que vixía que todo se faga ben e quede rexistrado.',en:'Person who checks everything is done properly and recorded.'}),
+ W('📝',{es:'Letrado/a de la Administración de Justicia (LAJ)',gl:'Letrado/a da Administración de Xustiza (LAJ)',en:'Court clerk (LAJ)'},{es:'Persona que vigila que todo se haga bien y quede guardado.',gl:'Persoa que vixía que todo se faga ben e quede gardado.',en:'Person who checks everything is done properly and kept on record.'},{es:'Profesional que da fe pública de lo que ocurre en el proceso, documenta las actuaciones y dirige la oficina judicial.',gl:'Profesional que dá fe pública do que ocorre no proceso, documenta as actuacións e dirixe a oficina xudicial.',en:'Official who certifies what happens in proceedings, keeps the record and runs the court office.'}),
+ W('🏢',{es:'Sala polivalente',gl:'Sala polivalente',en:'Multi-purpose room'},{es:'Sala de la plaza judicial que sirve para muchas cosas, por ejemplo para escuchar a quien tiene algo importante que contar.',gl:'Sala da praza xudicial que serve para moitas cousas, por exemplo para escoitar a quen ten algo importante que contar.',en:'A court room used for lots of things, for example to listen to someone who has something important to say.'},{es:'Sala multiusos de la sede judicial donde se practican actuaciones como declaraciones durante la investigación de un caso.',gl:'Sala multiusos da sede xudicial onde se practican actuacións como declaracións durante a investigación dun caso.',en:'Multi-purpose room in the court building where procedures such as statements during an investigation take place.'}),
+ W('👨‍💼',{es:'Defensa',gl:'Defensa',en:'Defence'},{es:'El abogado o la abogada que ayuda a la persona acusada.',gl:'O avogado ou a avogada que axuda á persoa acusada.',en:'The lawyer who helps the accused person.'},{es:'Parte que asiste a la persona investigada o acusada y ejerce su derecho de defensa.',gl:'Parte que asiste á persoa investigada ou acusada e exerce o seu dereito de defensa.',en:'The party that assists the person under investigation or accused and exercises their right to a defence.'}),
+ W('🙋',{es:'Comparecer',gl:'Comparecer',en:'Appear (in court)'},{es:'Ir a la plaza judicial cuando te llaman, por ejemplo para contar lo que sabes.',gl:'Ir á praza xudicial cando te chaman, por exemplo para contar o que sabes.',en:'Going to the court when you are called, for example to tell what you know.'},{es:'Presentarse ante el juez o el tribunal tras haber sido citado, por ejemplo como testigo.',gl:'Presentarse ante o xuíz ou o tribunal tras ser citado, por exemplo como testemuña.',en:'Appearing before the judge or court after being summoned, for example as a witness.'}),
+ W('🤐',{es:'Derecho a no declarar',gl:'Dereito a non declarar',en:'Right not to testify',teen:{es:'Dispensa de declarar',gl:'Dispensa de declarar',en:'Exemption from testifying'}},{es:'Si la persona acusada es de tu familia más cercana, puedes elegir no contar nada. Te lo explicarán con calma.',gl:'Se a persoa acusada é da túa familia máis próxima, podes escoller non contar nada. Explicarancho con calma.',en:'If the accused person is your close family, you can choose not to say anything. They will explain it to you calmly.'},{es:'Los familiares directos de la persona acusada (padres, hijos, hermanos, pareja…) pueden no declarar como testigos (art. 416 LECrim). El juez o la jueza informa de ello antes de la declaración.',gl:'Os familiares directos da persoa acusada (pais, fillos, irmáns, parella…) poden non declarar como testemuñas (art. 416 LECrim). O xuíz ou a xuíza informa diso antes da declaración.',en:'Close relatives of the accused (parents, children, siblings, partner…) may decline to testify as witnesses (art. 416 LECrim). The judge informs them before the statement.'}),
  W('🧠',{es:'Psicólogo / psicóloga',gl:'Psicólogo / psicóloga',en:'Psychologist'},{es:'Persona que cuida de cómo te sientes.',gl:'Persoa que coida de como te sentes.',en:'Person who looks after how you feel.'}),
  W('🔒',{es:'Confidencial',gl:'Confidencial',en:'Confidential'},{es:'Que se guarda en secreto para protegerte.',gl:'Que se garda en segredo para protexerte.',en:'Kept private to protect you.'}),
  W('📱',{es:'Ciberacoso',gl:'Ciberacoso',en:'Cyberbullying'},{es:'Molestar, insultar o amenazar a alguien por internet.',gl:'Molestar, insultar ou ameazar a alguén por internet.',en:'Bothering, insulting or threatening someone online.'}),
@@ -1330,20 +1654,20 @@ const AULA_QUIZ=[
  {q:{es:'¿Quién decide en un juicio?',gl:'Quen decide nun xuízo?',en:'Who decides in a trial?'},o:[{es:'El juez o jueza',gl:'O xuíz ou xuíza',en:'The judge'},{es:'El público',gl:'O público',en:'The public'},{es:'La policía',gl:'A policía',en:'The police'}],a:0},
  {q:{es:'Si no entiendes una pregunta…',gl:'Se non entendes unha pregunta…',en:'If you don\'t understand a question…'},o:[{es:'Te callas',gl:'Calas',en:'Stay quiet'},{es:'Pides que te la expliquen',gl:'Pides que cha expliquen',en:'Ask for it to be explained'},{es:'Contestas cualquier cosa',gl:'Contestas calquera cousa',en:'Answer anything'}],a:1},
  {q:{es:'¿A qué número llamas si estás en peligro?',gl:'A que número chamas se estás en perigo?',en:'Which number do you call if you are in danger?'},o:[{es:'112',gl:'112',en:'112'},{es:'010',gl:'010',en:'010'},{es:'123',gl:'123',en:'123'}],a:0},
- {q:{es:'¿Para qué sirve la sala Gesell?',gl:'Para que serve a sala Gesell?',en:'What is the Gesell room for?'},o:[{es:'Para declarar con tranquilidad y una sola vez',gl:'Para declarar con tranquilidade e unha soa vez',en:'To testify calmly and only once'},{es:'Para castigar',gl:'Para castigar',en:'To punish'},{es:'Para esperar',gl:'Para agardar',en:'To wait'}],a:0},
+ {q:{es:'Si la persona acusada es tu padre o tu madre, ¿qué puedes hacer?',gl:'Se a persoa acusada é o teu pai ou a túa nai, que podes facer?',en:'If the accused person is your dad or mum, what can you do?'},o:[{es:'Elegir no declarar',gl:'Escoller non declarar',en:'Choose not to testify'},{es:'Mentir para protegerle',gl:'Mentir para protexelo',en:'Lie to protect them'},{es:'Nada, tengo que contarlo todo',gl:'Nada, teño que contalo todo',en:'Nothing, I must tell everything'}],a:0},
  {q:{es:'¿Quién cuida de tu bienestar en el colegio?',gl:'Quen coida do teu benestar no colexio?',en:'Who looks after your wellbeing at school?'},o:[{es:'La persona coordinadora de bienestar',gl:'A persoa coordinadora de benestar',en:'The wellbeing coordinator'},{es:'Nadie',gl:'Ninguén',en:'Nobody'},{es:'El conserje',gl:'O conserxe',en:'The caretaker'}],a:0},
  {q:{es:'¿Puedes pedir ayuda tú solo?',gl:'Podes pedir axuda ti só?',en:'Can you ask for help on your own?'},o:[{es:'Sí',gl:'Si',en:'Yes'},{es:'Solo con mis padres',gl:'Só cos meus pais',en:'Only with my parents'},{es:'No',gl:'Non',en:'No'}],a:0}
 ];
 function aulaSlides(){
   const sl=[], cards=arr=>`<div class="grid3">${arr.map(r=>`<div class="card" style="margin:0"><span class="aic">${pic(r.e)}</span><br><b style="color:var(--pri)">${esc(L(r.t||r.l))}</b><p class="note">${esc(L(r.d||r.p))}</p></div>`).join('')}</div>`;
   sl.push(`<div class="slide" style="text-align:center">${bubo('happy',170)}<h1 style="font-size:1.9em">${t('appName')}</h1><p>${TEEN()?t('helloTeenSub'):t('helloKidSub')}</p></div>`);
-  sl.push(`<div class="slide"><span class="pill">${t('lvl')} 1</span><h1>${L(LEVELS[0].t)}</h1>${cards(RIGHTS)}</div>`);
-  sl.push(`<div class="slide"><span class="pill">${t('lvl')} 2</span><h1>${L(LEVELS[1].t)}</h1>${cards(PROS)}</div>`);
-  sl.push(`<div class="slide"><span class="pill">${t('lvl')} 3</span><h1>${t('roomGesell')}</h1>${photoBlock('gesell','ag')}</div>`);
-  sl.push(`<div class="slide"><span class="pill">${t('lvl')} 3</span><h1>${t('roomCourt')}</h1>${photoBlock('court','ac')}</div>`);
-  sl.push(`<div class="slide"><span class="pill">${t('lvl')} 4</span><h1>${L(LEVELS[3].t)}</h1>${cards(EMOS)}</div>`);
-  sl.push(`<div class="slide"><span class="pill">${t('lvl')} 5</span><h1>${L(LEVELS[4].t)}</h1>${cards(KEYS)}</div>`);
-  sl.push(`<div class="slide"><span class="pill">${t('lvl')} 6</span><h1>${L(LEVELS[5].t)}</h1>${phonesHTML()}</div>`);
+  sl.push(`<div class="slide"><h1>${L(AULA_T.rights)}</h1>${cards(RIGHTS)}</div>`);
+  sl.push(`<div class="slide"><h1>${L(AULA_T.pros)}</h1>${cards(PROS)}</div>`);
+  sl.push(`<div class="slide"><span class="pill">${t('section')}</span><h1>${L(LEVELS[0].t)}</h1>${photoBlock('poli','ag')}</div>`);
+  sl.push(`<div class="slide"><span class="pill">${t('section')}</span><h1>${L(LEVELS[1].t)}</h1>${photoBlock('juicio','ac')}</div>`);
+  sl.push(`<div class="slide"><h1>${L(AULA_T.feel)}</h1>${cards(EMOS)}</div>`);
+  sl.push(`<div class="slide"><h1>${L(AULA_T.keys)}</h1>${cards(KEYS)}</div>`);
+  sl.push(`<div class="slide"><h1>${L(AULA_T.help)}</h1>${phonesHTML()}</div>`);
   const demo={es:[['me','Hola, en el grupo de clase se ríen de mí todos los días.'],['bot','Gracias por contármelo. Eso es acoso y no es culpa tuya. En tu colegio hay una persona coordinadora de bienestar que puede ayudarte.'],['bot','Si quieres, puedo ponerte en contacto con una persona especialista. Tú decides.']],
    gl:[['me','Ola, no grupo da clase rinse de min todos os días.'],['bot','Grazas por contarmo. Iso é acoso e non é culpa túa. No teu colexio hai unha persoa coordinadora de benestar que pode axudarte.'],['bot','Se queres, podo poñerte en contacto cunha persoa especialista. Ti decides.']],
    en:[['me','Hi, in the class group chat they laugh at me every day.'],['bot','Thank you for telling me. That is bullying and it is not your fault. Your school has a wellbeing coordinator who can help you.'],['bot','If you want, I can put you in touch with a specialist. It\'s up to you.']]}[LANG];
@@ -1382,6 +1706,7 @@ function showCamo(){
   const c=document.getElementById('camo');
   const days=['L','M','X','J','V'].map((d,i)=>`<div>${d}<br>${['☁️','⛅','🌧️','☁️','⛅'][i]}<br>${[16,18,15,17,19][i]}°</div>`).join('');
   c.innerHTML=`<div id="camoCloud"><svg width="170" height="136" viewBox="0 0 100 80" aria-hidden="true"><g fill="#fff"><ellipse cx="50" cy="54" rx="44" ry="21"/><circle cx="25" cy="45" r="18"/><circle cx="52" cy="31" r="25"/><circle cx="77" cy="47" r="15"/></g></svg></div><div class="temp">17°</div><div class="city">Nube · Nublado</div><div class="days">${days}</div>`;
+  if(typeof vrCleanup==='function') vrCleanup(); /* que no siga sonando nada detrás del camuflaje */
   c.hidden=false; document.title='Nube'; document.getElementById('app').innerHTML=''; closeNav(); closeSos();
   let timer=null; const cl=document.getElementById('camoCloud');
   cl.addEventListener('pointerdown',e=>{e.preventDefault();timer=setTimeout(hideCamo,3000);}); ['pointerup','pointerleave'].forEach(ev=>cl.addEventListener(ev,()=>clearTimeout(timer))); cl.addEventListener('contextmenu',e=>e.preventDefault());
@@ -1403,11 +1728,15 @@ function render(){
   else if(r==='consejos') html=viewTips();
   else if(r.startsWith('consejos/')) html=viewTips(+r.split('/')[1]);
   else if(r==='ayuda') html=viewHelp();
+  else if((r==='rv'||r.startsWith('rv/')) && typeof viewRV==='function') html=viewRV(r.split('/')[1]);
   else if(r==='aula') html=viewAula();
   else if(r==='ajustes') html=viewSettings();
   else html=viewHome();
   const prev=document.getElementById('chatInput'), draft=prev?prev.value:'', typing=prev&&document.activeElement===prev;
+  if(typeof comicStop==='function') comicStop();
+  if(typeof vrCleanup==='function') vrCleanup();
   app.innerHTML=html;
+  if(typeof vrAfterRender==='function') vrAfterRender(r);
   const inp=document.getElementById('chatInput'); if(inp&&draft) inp.value=draft; if(inp&&typing) inp.focus();
   if(r.startsWith('consejos/')){ const d=document.getElementById('tip'+r.split('/')[1]); if(d) d.scrollIntoView({block:'start'}); }
   if(r==='chat'&&S.age){ const m=document.getElementById('msgs'); if(m&&m.lastElementChild) m.lastElementChild.scrollIntoView({block:'end'}); }
@@ -1419,6 +1748,7 @@ if(location.hash) history.replaceState(null,'',location.pathname);
 if(S.camo) showCamo(); else render();
 if('serviceWorker' in navigator && location.protocol==='https:') navigator.serviceWorker.register('sw.js').catch(()=>{});
 </script>
+<script src="vr.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" defer></script>
 </body>
 </html>

@@ -1,11 +1,11 @@
-# Mi Justicia · DATAthon Justicia 2026 · Reto 2 Infancia y Juventud
+# Bubo · DATAthon Justicia 2026 · Reto 2 Infancia y Juventud
 
 App web instalable (PWA) para que niños, niñas y adolescentes entiendan la justicia y pidan ayuda.
 Sin inicio de sesión, sin historial y con botón de salida rápida. Guía: Bubo, un búho.
 
 ## Archivos
 - `index.html`: la app completa (HTML, CSS y JavaScript sin frameworks).
-- `img/`: fotos de la sala Gesell y de la sala de juicio (caras difuminadas).
+- `img/`: fotos de la sala polivalente y de la sala de juicio (caras difuminadas), usadas en «Mi camino por la justicia».
 - `manifest.webmanifest`, `sw.js`, `icon.svg`: para instalarla en el móvil y usarla sin conexión. Instalada, aparece como «Nube» con icono de nube (camuflaje).
 - `worker.js`: servidor gratuito opcional (Cloudflare Workers AI) con el que Bubo conversa de forma libre, apoyándose solo en los textos oficiales.
 
@@ -34,4 +34,16 @@ Sin esto la app funciona igual: Bubo entiende saludos, emociones, respuestas de 
 
 ## Antes de un uso real
 - Revisar los textos legales con profesionales del derecho.
-- Sustituir la foto de la sala de juicio (fuente: 20minutos) por una imagen con licencia o propia del Ministerio, y la de la sala Gesell por una foto real de una sala adaptada para menores.
+- Sustituir la foto de la sala de juicio (fuente: 20minutos) por una imagen con licencia o propia del Ministerio, y confirmar la licencia de la foto de la sala polivalente.
+
+## Mi camino por la justicia
+Una sola sección, «Exploro la plaza judicial», con dos salas: la sala polivalente (sala penal de la plaza judicial) y la sala de juicio. En cada una, Bubo cuenta un cuento en tres viñetas (se puede escuchar en voz alta) y después se explora una foto real: al tocar un número aparece una viñeta con esa zona ampliada y la explicación de Bubo. La sala de juicio termina con el juego de ordenar los pasos del día. Todos los textos tienen versión para menores de 14 y para 14 o más.
+
+## Realidad virtual
+Sección nueva en el menú y en el inicio. Está hecha con A-Frame (WebXR), que se descarga de internet solo al entrar en una experiencia (`vr.js` sí se guarda para usar sin conexión, A-Frame no).
+- **Mi diccionario de globos**: las palabras del diccionario flotan en globos en una plaza; se pinchan con la chincheta que se lleva en la mano y Bubo explica la palabra (en pantalla y en voz alta).
+- **Escape room de derechos**: cuatro candados (ser escuchado, ir acompañado, no ver al acusado, entenderlo todo). Cada objeto con «?» plantea un caso; la respuesta correcta abre un candado. Al salir se consigue la llave de derechos (solo en memoria). Para 14+ los casos llevan referencias legales y hay cronómetro.
+- **Sala de espera mágica**: playa o bosque, 3 minutos de respiración guiada con sonido ambiente sintetizado. Menores de 14: 3 s tomar aire / 4 s soltarlo, guiado por Bubo con voz. 14+: 4-4-6 con avisos sonoros.
+- **Las puertas**: pasillo con seis puertas («me molestan en clase», «en casa no estoy bien», «alguien tiene una foto mía»…). Cada una lleva a quién acudir, una frase para pedir ayuda y botones para llamar. Debajo de la escena están las mismas puertas como botones normales.
+
+Cómo se usa: con el ratón o con el dedo se arrastra para mirar alrededor (también arriba y abajo) y un clic o un toque corto elige el objeto; el botón «Pantalla completa» de la esquina de la escena la amplía y se sigue jugando igual (con 112 y Salir a mano); en el móvil también basta con moverlo; con gafas Cardboard se pulsa el botón de las gafas y se elige mirando fijamente un objeto 1,5 segundos o pulsando el botón de las gafas. El botón de gafas solo aparece en los móviles que pueden usarlas. El modo gafas necesita un navegador con WebXR (Chrome en Android); en iPhone funciona en la pantalla, sin modo gafas.
