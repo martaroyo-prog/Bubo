@@ -817,7 +817,8 @@ function viewHome(){
    </div>
    <p class="note" style="margin-top:18px">${ic('lock')} ${t('noSave')}</p>`;
 }
-function viewHelp(){ return `<div class="crumb">${t('home')} › ${t('tHelp')}</div><h1>${t('tHelp')}</h1>${phonesHTML()}`; }
+function viewHelp(){ return `<div class="crumb">${t('home')} › ${t('tHelp')}</div><h1>${t('tHelp')}</h1>${phonesHTML()}
+  <div class="mrow" style="margin-top:16px">${bubo('talk',46)}<div class="msg bot">${esc(L(CH.helpPage))}<br><button class="btn" style="margin-top:10px" onclick="go('chat')">${ic('chat')} ${esc(L(CH.keepChat))}</button></div></div>`; }
 
 /* ======================= CHAT ======================= */
 /* Frases de Bubo. Cada clave tiene varias versiones para no repetirse; "teen" = 14 o más. */
@@ -856,6 +857,11 @@ const CH = {
  ongoing:[{es:'Siento mucho que siga pasando. No es justo, y no tienes por qué aguantarlo. Una persona especialista puede ayudarte a que pare. ¿Quieres que te ponga en contacto con ella?',gl:'Sinto moito que siga pasando. Non é xusto, e non tes por que aguantalo. Unha persoa especialista pode axudarte a que pare. Queres que te poña en contacto con ela?',en:'I\'m really sorry it\'s still happening. It isn\'t fair, and you don\'t have to put up with it. A specialist can help make it stop. Would you like me to put you in touch?'}],
  already:[{es:'De eso ya te he contado lo principal. Si quieres más detalle, una persona especialista te lo puede explicar mejor. ¿Te pongo con ella?',gl:'Diso xa che contei o principal. Se queres máis detalle, unha persoa especialista pode explicarcho mellor. Póñote con ela?',en:'I\'ve already told you the main things about that. If you want more detail, a specialist can explain it better. Shall I put you through?'}],
  doubt:[{es:'¿Te queda alguna duda?',gl:'Quédache algunha dúbida?',en:'Is anything still unclear?'},{es:'¿Tiene sentido? Pregúntame lo que quieras.',gl:'Ten sentido? Pregúntame o que queiras.',en:'Does that make sense? Ask me anything.'}],
+ afterPhones:[{es:'Puedes llamar a cualquiera de ellos cuando quieras, también ahora mismo. Y mientras tanto, yo sigo aquí contigo. ¿Quieres seguir contándome?',gl:'Podes chamar a calquera deles cando queiras, tamén agora mesmo. E mentres tanto, eu sigo aquí contigo. Queres seguir contándome?',en:'You can call any of them whenever you want, even right now. And in the meantime, I\'m still here with you. Do you want to keep telling me?'},
+  {es:'Llamar es una muy buena idea, y nadie te va a obligar a contar nada que no quieras. Si antes te apetece seguir hablando conmigo, aquí estoy. ¿Seguimos?',gl:'Chamar é unha moi boa idea, e ninguén te vai obrigar a contar nada que non queiras. Se antes che apetece seguir falando comigo, aquí estou. Seguimos?',en:'Calling is a really good idea, and nobody will make you say anything you don\'t want to. If you\'d like to keep talking with me first, I\'m here. Shall we carry on?'}],
+ keepYes:{es:'Sí, sigamos hablando',gl:'Si, sigamos falando',en:'Yes, let\'s keep talking'},
+ helpPage:{es:'Llamar es una muy buena idea. Y si antes quieres hablar conmigo, aquí sigo.',gl:'Chamar é unha moi boa idea. E se antes queres falar comigo, aquí sigo.',en:'Calling is a really good idea. And if you\'d like to talk with me first, I\'m still here.'},
+ keepChat:{es:'Seguir hablando con Bubo',gl:'Seguir falando con Bubo',en:'Keep talking with Bubo'},
  phonesIntro:{es:'Estos son los teléfonos de ayuda. Son gratuitos:',gl:'Estes son os teléfonos de axuda. Son de balde:',en:'These are the help numbers. They are free:'},
  crisis:{es:'Lo que me cuentas es muy importante y me preocupa cómo estás. No estás solo ni sola. Puedes llamar ahora al 024 (te escuchan a cualquier hora) o al 112 si estás en peligro. También puedo ponerte con una persona especialista. Y yo sigo aquí contigo.',gl:'O que me contas é moi importante e preocúpame como estás. Non estás só nin soa. Podes chamar agora ao 024 (escóitante a calquera hora) ou ao 112 se estás en perigo. Tamén podo poñerte cunha persoa especialista. E eu sigo aquí contigo.',en:'What you are telling me is very important and I\'m worried about how you are. You are not alone. You can call 024 now (they listen at any time) or 112 if you are in danger. I can also put you through to a specialist. And I\'m still here with you.'},
  dunnoChip:{es:'No lo sé',gl:'Non o sei',en:'I don\'t know'},
@@ -902,7 +908,7 @@ const INTENT = [
  ['no',/^(no|nop|nope|nah|non|para nada|todavia no|aun no|ainda non|not yet)\b/]
 ];
 /* Preguntas de Bubo que se contestan con sí o no: se acepta la respuesta aunque venga con más palabras. */
-const YN_ASKS = new Set(['danger','told','adult','helped','person']);
+const YN_ASKS = new Set(['danger','told','adult','helped','person','more']);
 const YN_LEAD = [['dunno',/^(no se(?! (lo|la|los|las|le|les)\b)|non sei|ni idea|no lo se|non o sei|i don ?t know|not sure)\b/],['no',/^(no|non|nop|nope|nah|aun no|todavia no|ainda non|ahora no|agora non|mejor no|de momento no|por ahora no|not yet|not now|para nada|nunca|a nadie|nadie|ninguen)\b/],['yes',/^(si|sii+|sip|vale|ok|okay|claro|venga|dale|de acuerdo|por supuesto|yes|yeah|yep|sure)\b/]];
 const ONLINE = /(internet|redes|instagram|\binsta\b|tiktok|whatsapp|wasap|movil|mobil|online|youtube|discord|snapchat|twitch|roblox|fortnite|telegram|chat de clase)/;
 const isQuestion =(raw,n) => /[?¿]/.test(raw) || /^(que|como|cuando|donde|quien|cual|por que|puedo|tengo que|hay que|what|how|can|when|where|who|why)\b/.test(n);
@@ -928,6 +934,7 @@ function setChips(kind){
   else if(kind==='yn') c.chips=[{l:t('yes'),a:'y'},{l:t('no'),a:'n'}];
   else if(kind==='person') c.chips=[{l:L(CH.yesPlease),a:'y',cls:'strong'},{l:L(CH.notNow),a:'n'}];
   else if(kind==='open') c.chips=[{l:t('talkPerson'),a:'person',cls:'strong'},{l:t('seePhones'),a:'phones'}];
+  else if(kind==='keep') c.chips=[{l:L(CH.keepYes),a:'y',cls:'strong'},{l:t('talkPerson'),a:'person'}];
   else c.chips=[];
 }
 const chatRender = () => { if(route()==='chat') render(); };
@@ -947,7 +954,8 @@ function onChip(a){
   const ch=c.chips.find(x=>x.a===a); addMe(ch?ch.l:'');
   if(a==='y'||a==='n'||a==='d') return answerAsk({y:'yes',n:'no',d:'dunno'}[a]);
   if(a.startsWith('t:')) return topicReply(a.slice(2));
-  if(a==='phones') return say([[L(CH.phonesIntro),{phones:'all'}]],'open');
+  /* después de los teléfonos, Bubo sigue la conversación en lugar de quedarse callado */
+  if(a==='phones'){ c.ask='more'; return say([[L(CH.phonesIntro),{phones:'all'}],[P('afterPhones'),{expr:'listen'}]],'keep'); }
 }
 /* Respuesta a un sí / no / no sé, según lo último que preguntó Bubo. */
 function answerAsk(kind){
